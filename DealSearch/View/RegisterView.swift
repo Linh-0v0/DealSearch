@@ -49,7 +49,7 @@ struct RegisterView: View {
                 
                 VStack(alignment: .leading) {
                     Text("DATE OF BIRTH*").modifier(registerFieldTitle())
-                    TextField("dd / mm / yyyy)", text: $phoneNumber).modifier(registerInputField())
+                    TextField("dd / mm / yyyy", text: $phoneNumber).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
                 
                 VStack(alignment: .leading) {
