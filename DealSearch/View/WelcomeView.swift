@@ -37,7 +37,7 @@ struct WelcomeView: View {
                 .padding(.horizontal, 30)
                 
                 // MARK: Button
-                NavigationLink(destination: WelcomeBackView(), isActive: $willMoveToNextScreen) {
+                NavigationLink(destination: PhoneNumVerifyView(), isActive: $willMoveToNextScreen) {
                 Button(action: {
                     willMoveToNextScreen = true
                 }, label: {
@@ -47,7 +47,8 @@ struct WelcomeView: View {
                         .overlay(Text("Let's buy ")
                             .font(Font.custom("Montserrat-Bold", size: 22))
                             .foregroundColor(.white))
-                }).padding(.bottom, 40)
+                })
+                .padding(.bottom, 40)
                 }
             }
         }
