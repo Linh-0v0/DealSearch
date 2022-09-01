@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C463AEA328C093AD008A9348 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463AEA228C093AD008A9348 /* WelcomeView.swift */; };
+		C463AEA628C0A188008A9348 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */; };
+		C463AEA828C0A191008A9348 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */; };
+		C463AEAA28C0A1DC008A9348 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */; };
+		C463AEAC28C0A1E6008A9348 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */; };
+		C463AEAE28C0A1FE008A9348 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */; };
+		C463AEB128C0A5FB008A9348 /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */; };
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CC828B8A7CF00B017EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC728B8A7CF00B017EB /* ContentView.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
@@ -26,6 +32,13 @@
 
 /* Begin PBXFileReference section */
 		C463AEA228C093AD008A9348 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		C463AEAF28C0A234008A9348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
 		C4CB7CC728B8A7CF00B017EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C463AEA428C0A15B008A9348 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */,
+				C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */,
+				C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */,
+				C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */,
+				C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		C4CB7CB928B8A7CF00B017EB = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +98,8 @@
 		C4CB7CC428B8A7CF00B017EB /* DealSearch */ = {
 			isa = PBXGroup;
 			children = (
+				C463AEAF28C0A234008A9348 /* Info.plist */,
+				C463AEA428C0A15B008A9348 /* Font */,
 				C4CB7CD528B8A8BC00B017EB /* Model */,
 				C4CB7CD428B8A8B500B017EB /* ViewModel */,
 				C4CB7CD328B8A8B100B017EB /* View */,
@@ -99,6 +126,7 @@
 			children = (
 				C4CB7CC728B8A7CF00B017EB /* ContentView.swift */,
 				C463AEA228C093AD008A9348 /* WelcomeView.swift */,
+				C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,8 +210,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C463AEAA28C0A1DC008A9348 /* Montserrat-Regular.ttf in Resources */,
+				C463AEA628C0A188008A9348 /* OpenSans-Light.ttf in Resources */,
 				C4DB03A428BBB37600C3EB4E /* Product.json in Resources */,
 				C4CB7CCD28B8A7D100B017EB /* Preview Assets.xcassets in Resources */,
+				C463AEAE28C0A1FE008A9348 /* Montserrat-SemiBold.ttf in Resources */,
+				C463AEA828C0A191008A9348 /* OpenSans-Regular.ttf in Resources */,
+				C463AEAC28C0A1E6008A9348 /* Montserrat-Bold.ttf in Resources */,
 				C4CB7CD928B8AC1100B017EB /* Category.json in Resources */,
 				C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */,
 				C4CB7CE128BA0A4D00B017EB /* Shop.json in Resources */,
@@ -198,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DB03A828BBE72A00C3EB4E /* ProdRelatedInfo.swift in Sources */,
+				C463AEB128C0A5FB008A9348 /* ButtonAnimation.swift in Sources */,
 				C4DB03A628BBE3EA00C3EB4E /* CategoryData.swift in Sources */,
 				C4CB7CD728B8AA0700B017EB /* UserStruct.swift in Sources */,
 				C4CB7CDB28B8B3ED00B017EB /* ShopProduct.swift in Sources */,
@@ -338,6 +372,7 @@
 				DEVELOPMENT_TEAM = 83GY35J32F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DealSearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -367,6 +402,7 @@
 				DEVELOPMENT_TEAM = 83GY35J32F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DealSearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

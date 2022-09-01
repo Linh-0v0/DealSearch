@@ -9,35 +9,42 @@ import SwiftUI
 
 struct WelcomeView: View {
     var body: some View {
+        // MARK: Image
         VStack {
-            Spacer()
-            Image("penguin-money")
+            Spacer().frame(width: 0, height: 20)
+            Image("money-penguin")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 230)
-                .padding(.bottom, 30)
-            
-            Text("Welcome to")
-                .font(.system(size: 12, weight: .light, design: .serif)).foregroundColor(ColorConstants.textDescr)
-                .padding(.bottom, 10)
-            Text("Canh Cut!")
-                .font(.system(size: 12, weight: .light, design: .serif)).foregroundColor(ColorConstants.textDescr)
-                .padding(.bottom, 10)
-            
-            Spacer()
+                .frame(width: 280)
+                .padding(.bottom, 0)
+            // MARK: Text
+            VStack(alignment: .leading) {
+                Text("Welcome to")
+                    .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Black"))
+                    .padding(.bottom, 0)
+                
+                Text("Canh Cut!")
+                    .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
+                    .padding(.bottom, 23)
+                
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
+                    .padding(.bottom, 30)
+            }
+            .padding(.horizontal, 30)
+            // MARK: Button
             Button(action: {
-                active = false
+                Text("")
             }, label: {
                 Capsule()
-                    .fill(ColorConstants.buttonDescr)
-                    .frame(width: 300, height:60)
-                    .overlay(Text("Continue ")
-                        .font(Font.custom("Inter-SemiBold", size: 20))
+                    .fill(Color("Green"))
+                    .frame(width: 280, height:60)
+                    .overlay(Text("Let's buy ")
+                        .font(Font.custom("Montserrat-Bold", size: 22))
                         .foregroundColor(.white))
             })
-            .zIndex(100)
-            .padding(.bottom, 20)
         }
+        
     }
 }
 
