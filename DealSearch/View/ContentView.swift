@@ -15,7 +15,7 @@ struct ContentView: View {
     var usersList: [String:[Any]] = Defaults.getUsersList()
     
     var body: some View {
-        WelcomeView()
+        RegisterView()
 //        VStack {
 //            TextField("Enter your name", text: $username)
 //            Button {

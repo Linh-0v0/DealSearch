@@ -15,6 +15,8 @@
 		C463AEAC28C0A1E6008A9348 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */; };
 		C463AEAE28C0A1FE008A9348 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */; };
 		C463AEB128C0A5FB008A9348 /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */; };
+		C46EFC6C28C0BB160063732D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46EFC6B28C0BB150063732D /* RegisterView.swift */; };
+		C46EFC6F28C0BBE50063732D /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46EFC6E28C0BBE50063732D /* Modifier.swift */; };
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CC828B8A7CF00B017EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC728B8A7CF00B017EB /* ContentView.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 		C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C463AEAF28C0A234008A9348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
+		C46EFC6B28C0BB150063732D /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		C46EFC6E28C0BBE50063732D /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
 		C4CB7CC728B8A7CF00B017EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		C46EFC6D28C0BBCF0063732D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C46EFC6E28C0BBE50063732D /* Modifier.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		C4CB7CB928B8A7CF00B017EB = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +114,7 @@
 			children = (
 				C463AEAF28C0A234008A9348 /* Info.plist */,
 				C463AEA428C0A15B008A9348 /* Font */,
+				C46EFC6D28C0BBCF0063732D /* Helper */,
 				C4CB7CD528B8A8BC00B017EB /* Model */,
 				C4CB7CD428B8A8B500B017EB /* ViewModel */,
 				C4CB7CD328B8A8B100B017EB /* View */,
@@ -130,6 +143,7 @@
 				C463AEA228C093AD008A9348 /* WelcomeView.swift */,
 				C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */,
 				C421749028C0AB2A0071F1F5 /* WelcomeBackView.swift */,
+				C46EFC6B28C0BB150063732D /* RegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,9 +249,11 @@
 			files = (
 				C421749128C0AB2A0071F1F5 /* WelcomeBackView.swift in Sources */,
 				C4DB03A828BBE72A00C3EB4E /* ProdRelatedInfo.swift in Sources */,
+				C46EFC6C28C0BB160063732D /* RegisterView.swift in Sources */,
 				C463AEB128C0A5FB008A9348 /* ButtonAnimation.swift in Sources */,
 				C4DB03A628BBE3EA00C3EB4E /* CategoryData.swift in Sources */,
 				C4CB7CD728B8AA0700B017EB /* UserStruct.swift in Sources */,
+				C46EFC6F28C0BBE50063732D /* Modifier.swift in Sources */,
 				C4CB7CDB28B8B3ED00B017EB /* ShopProduct.swift in Sources */,
 				C4FCB9FD28BB75F0000E1DAB /* ProductData.swift in Sources */,
 				C463AEA328C093AD008A9348 /* WelcomeView.swift in Sources */,
