@@ -17,8 +17,7 @@ struct PhoneNumVerifyView: View {
                     .font(Font.custom("Montserrat", size: 36)).foregroundColor(Color("Black"))
                     .padding(.bottom, 0
                     )
-            
-            // MARK: Input field
+            // MARK: Input number field
                 Text("Mobile Number")
                     .font(Font.custom("Montserrat-Bold", size: 36
                         )).foregroundColor(Color("Green"))
@@ -37,6 +36,7 @@ struct PhoneNumVerifyView: View {
                         
                     }.padding(.bottom, 20)
             }.font(Font.custom("Montserrat-Regular", size: 20))
+            
             // MARK: Button
             Button(action: {
                 Text("")
@@ -50,7 +50,8 @@ struct PhoneNumVerifyView: View {
             })
             Spacer().frame(width: 0, height: 190)
             }
-            .padding(.horizontal, 40)
+        
+        .padding(.horizontal, 40)
         
         }
         
