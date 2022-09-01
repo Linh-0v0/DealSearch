@@ -47,7 +47,7 @@ struct WelcomeView: View {
                         .overlay(Text("Let's buy ")
                             .font(Font.custom("Montserrat-Bold", size: 22))
                             .foregroundColor(.white))
-                })
+                }).padding(.bottom, 40)
                 }
             }
         }

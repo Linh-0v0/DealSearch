@@ -55,7 +55,7 @@ struct WelcomeBackView: View {
                         .font(Font.custom("Montserrat-Bold", size: 22))
                         .foregroundColor(.white))
             })
-            Spacer().frame(width: 0, height: 190)
+            Spacer().frame(width: 0, height: 170)
         }
     }
     
