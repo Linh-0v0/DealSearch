@@ -17,7 +17,7 @@ struct PhoneNumVerifyView: View {
                     .font(Font.custom("Montserrat", size: 36)).foregroundColor(Color("Black"))
                     .padding(.bottom, 0
                     )
-            // MARK: Input mobile number
+            // MARK: Input number field
                 Text("Mobile Number")
                     .font(Font.custom("Montserrat-Bold", size: 36
                         )).foregroundColor(Color("Green"))
