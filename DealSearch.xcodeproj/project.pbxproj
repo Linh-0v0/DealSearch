@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C421749128C0AB2A0071F1F5 /* WelcomeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421749028C0AB2A0071F1F5 /* WelcomeBackView.swift */; };
 		C463AEA328C093AD008A9348 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463AEA228C093AD008A9348 /* WelcomeView.swift */; };
 		C463AEA628C0A188008A9348 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */; };
 		C463AEA828C0A191008A9348 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C421749028C0AB2A0071F1F5 /* WelcomeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
 		C463AEA228C093AD008A9348 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				C4CB7CC728B8A7CF00B017EB /* ContentView.swift */,
 				C463AEA228C093AD008A9348 /* WelcomeView.swift */,
 				C463AEB028C0A5FB008A9348 /* ButtonAnimation.swift */,
+				C421749028C0AB2A0071F1F5 /* WelcomeBackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C421749128C0AB2A0071F1F5 /* WelcomeBackView.swift in Sources */,
 				C4DB03A828BBE72A00C3EB4E /* ProdRelatedInfo.swift in Sources */,
 				C463AEB128C0A5FB008A9348 /* ButtonAnimation.swift in Sources */,
 				C4DB03A628BBE3EA00C3EB4E /* CategoryData.swift in Sources */,

@@ -11,12 +11,12 @@ struct WelcomeView: View {
     var body: some View {
         // MARK: Image
         VStack {
-            Spacer().frame(width: 0, height: 20)
             Image("money-penguin")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 280)
+                .frame(width: 290)
                 .padding(.bottom, 0)
+            
             // MARK: Text
             VStack(alignment: .leading) {
                 Text("Welcome to")
@@ -25,13 +25,14 @@ struct WelcomeView: View {
                 
                 Text("Canh Cut!")
                     .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
-                    .padding(.bottom, 23)
+                    .padding(.bottom, 13)
                 
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 33)
             }
             .padding(.horizontal, 30)
+            
             // MARK: Button
             Button(action: {
                 Text("")
