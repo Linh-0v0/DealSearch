@@ -37,9 +37,10 @@ struct WelcomeView: View {
                 .padding(.horizontal, 30)
                 
                 // MARK: Button
-                NavigationLink(destination: PhoneNumVerifyView(), isActive: $willMoveToNextScreen) {
+                NavigationLink(destination: EmailVerifyView(), isActive: $willMoveToNextScreen) {
                 Button(action: {
                     willMoveToNextScreen = true
+                    print(Defaults.getCurrentUserDetail())
                 }, label: {
                     Capsule()
                         .fill(Color("Green"))

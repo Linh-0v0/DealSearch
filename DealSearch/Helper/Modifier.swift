@@ -19,6 +19,7 @@ struct registerInputField: ViewModifier{
     func body(content: Content) -> some View {
         content
             .font(Font.custom("Montserrat-Regular", size: 15))
+            .textInputAutocapitalization(.never)
     }
 }
 

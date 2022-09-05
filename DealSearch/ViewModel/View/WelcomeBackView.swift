@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct WelcomeBackView: View {
-    @State private var phoneNumber: String = ""
+    @Binding var emailInputted: String
     @State private var password: String = ""
     
     var body: some View {
@@ -29,7 +30,7 @@ struct WelcomeBackView: View {
                 // MARK: INPUT FIELD
                 VStack {
                     Group {
-                        TextField("0932 66 26 XX", text: $phoneNumber)
+                        TextField("random@gmail.com", text: $emailInputted)
                         Divider()
                             .frame(height: 1)
                             .padding(.bottom, 30)
@@ -38,7 +39,9 @@ struct WelcomeBackView: View {
                         Divider()
                             .frame(height: 1)
                             .padding(.bottom, 0)
-                    }.font(Font.custom("Montserrat-Regular", size: 20))
+                    }
+                    .textInputAutocapitalization(.never)
+                    .font(Font.custom("Montserrat-Regular", size: 20))
                 }.padding(.bottom, 30)
                 
             }
@@ -46,7 +49,8 @@ struct WelcomeBackView: View {
             
             // MARK: Button
             Button(action: {
-                Text("")
+//                Text("")
+                login()
             }, label: {
                 Capsule()
                     .fill(Color("Green"))
@@ -59,10 +63,18 @@ struct WelcomeBackView: View {
         }
     }
     
+    func login() {
+        Auth.auth().signIn(withEmail: emailInputted, password: password) { result, error in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 struct WelcomeBackView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeBackView()
+        WelcomeBackView(emailInputted: .constant("random@gmail.com"))
     }
 }

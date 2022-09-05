@@ -6,9 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct RegisterView: View {
+    @State private var willMoveToNextScreen: Int? = nil
+    @StateObject var users = UserData()
+    @Binding var emailInputted: String
+    
     @State private var phoneNumber: String = ""
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var dateOfBirth: String = ""
+    @State private var password: String = ""
+    @State private var address: String = ""
     
     var body: some View {
         VStack {
@@ -25,7 +35,7 @@ struct RegisterView: View {
                 ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
                     .padding(.bottom, 33)
                 
-                
+                // MARK: Register Form
                 VStack(alignment: .leading) {
                     Text("PHONE NUMBER*").modifier(registerFieldTitle())
                     TextField("Mobile number (pre-filled)", text: $phoneNumber).modifier(registerInputField())
@@ -34,34 +44,43 @@ struct RegisterView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("FIRST NAME*").modifier(registerFieldTitle())
-                        TextField("First Name", text: $phoneNumber).modifier(registerInputField())
+                        TextField("First Name", text: $firstName).modifier(registerInputField())
                     }.padding(.bottom, 0)
                     VStack(alignment: .leading) {
                         Text("LAST NAME*").modifier(registerFieldTitle())
-                        TextField("Last Name", text: $phoneNumber).modifier(registerInputField())
+                        TextField("Last Name", text: $lastName).modifier(registerInputField())
                     }.padding(.bottom, 0)
                 }.modifier(registerPaddingBtwField())
                 
-                VStack(alignment: .leading) {
-                    Text("EMAIL*").modifier(registerFieldTitle())
-                    TextField("Email Address", text: $phoneNumber).modifier(registerInputField())
-                }.modifier(registerPaddingBtwField())
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("PASSWORD*").modifier(registerFieldTitle())
+                        TextField("Password", text: $password).modifier(registerInputField())
+                    }.modifier(registerPaddingBtwField())
+                    VStack(alignment: .leading) {
+                        Text("DATE OF BIRTH*").modifier(registerFieldTitle())
+                        TextField("dd / mm / yyyy", text: $dateOfBirth).modifier(registerInputField())
+                    }.modifier(registerPaddingBtwField())
+                }
                 
                 VStack(alignment: .leading) {
-                    Text("DATE OF BIRTH*").modifier(registerFieldTitle())
-                    TextField("dd / mm / yyyy", text: $phoneNumber).modifier(registerInputField())
+                    Text("EMAIL*").modifier(registerFieldTitle())
+                    TextField("Email Address", text: $emailInputted).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
+                
                 
                 VStack(alignment: .leading) {
                     Text("ADDRESS*").modifier(registerFieldTitle())
-                    TextField("Address", text: $phoneNumber).modifier(registerInputField())
+                    TextField("Address", text: $address).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
             }
             .padding(.horizontal, 30)
             
-            // MARK: Button
+            // MARK: Register Button
             Button(action: {
-                Text("")
+                if checkRegisterForm() {
+                    willMoveToNextScreen = 1
+                }
             }, label: {
                 Capsule()
                     .fill(Color("Green"))
@@ -72,12 +91,32 @@ struct RegisterView: View {
             })
             .padding(.bottom, 20)
             .padding(.top, 10)
+            .background(
+                NavigationLink(destination: WelcomeView(), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
+            )
         }
     }
+    
+    func checkRegisterForm() -> Bool {
+        // Add check all fields here ...
+        Defaults.save(emailInputted, favDeal: "")
+        users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, password: password, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
+        register()
+        return true
+    }
+    
+    func register() {
+        Auth.auth().createUser(withEmail: emailInputted, password: password) { result, error in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(emailInputted: .constant("random@gmail.com"))
     }
 }

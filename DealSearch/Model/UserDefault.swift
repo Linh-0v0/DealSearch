@@ -13,37 +13,40 @@
 import Foundation
 
 struct Defaults {
-    static let (nameKey, attrb1Key, attrb2Key) = ("username", "attrb1", "attrb2")
+    static let (emailKey, favDealKey) = ("email", "favDeal")
     static let userSessionKey = "CurrentUser"
     private static let userDefault = UserDefaults.standard
     
     
     /* Is used to save User to UserDefault following this "UserDetail Struct"*/
     struct UserDetails {
-        let username: String
-        let attrb1: String
-        let attrb2: String
+        let email: String
+        let favDeal: String
         
         init(_ json: [String: String]) {
-            self.username = json[nameKey] ?? ""
-            self.attrb1 = json[attrb1Key] ?? "0"
-            self.attrb2 = json[attrb2Key] ?? "0"
+            self.email = json[emailKey] ?? ""
+            self.favDeal = json[favDealKey] ?? ""
         }
     }
     
     /* Save User to userDefault */
-    static func save(_ username: String, attrb1: String, attrb2: String){
+    static func save(_ email: String, favDeal: String){
         // Save user forkey "CurrentUser" to know whose the login state belong to
-        userDefault.set([nameKey: username, attrb1Key: attrb1, attrb2Key: attrb2],
+        userDefault.set([emailKey: email, favDealKey: favDeal],
                         forKey: userSessionKey)
-        saveToUsersList(username, attrb1: attrb1, attrb2: attrb2)
-        
+        saveToUsersList(email, favDeal: favDeal)
     }
     
-    static func saveToUsersList(_ username: String, attrb1: String, attrb2: String){
+    static func saveToUsersList(_ email: String, favDeal: String){
         // Save user to user list
-        userDefault.set([nameKey: username, attrb1Key: attrb1, attrb2Key: attrb2],
-                        forKey: username)
+        userDefault.set([emailKey: email, favDealKey: favDeal],
+                        forKey: email)
+    }
+    
+    /* Update User */
+    static func update(userKey: String, email: String, favDeal: String) {
+        userDefault.set([emailKey: email, favDealKey: favDeal],
+                        forKey: userKey)
     }
     
     /* Get Value from UserDefaults */
@@ -51,8 +54,8 @@ struct Defaults {
         return UserDetails((userDefault.value(forKey: userSessionKey) as? [String: String]) ?? [:])
     }
     
-    static func getSpecifiedUserDetail(username: String) -> UserDetails {
-        return UserDetails((userDefault.value(forKey: username) as? [String: String]) ?? [:])
+    static func getSpecifiedUserDetail(email: String) -> UserDetails {
+        return UserDetails((userDefault.value(forKey: email) as? [String: String]) ?? [:])
     }
     
     // Return User List containing all Users
@@ -75,8 +78,8 @@ struct Defaults {
     }
     
     // Remove the specified user
-    static func clearUserData(username: String){
-        userDefault.removeObject(forKey: username)
+    static func clearUserData(email: String){
+        userDefault.removeObject(forKey: email)
     }
     
     // Remove all Users

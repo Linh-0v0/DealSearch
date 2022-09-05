@@ -11,14 +11,23 @@ struct ContentView: View {
     
     @StateObject var shopList = ShopData()
     @StateObject var prodDealSortedList = DealCalcSorted()
-    @State private var username: String = ""
+    @State private var email: String = ""
     var usersList: [String:[Any]] = Defaults.getUsersList()
     
     var body: some View {
-        RegisterView()
+        WelcomeView()
+        
 //        VStack {
-//            TextField("Enter your name", text: $username)
+//            TextField("Enter your email", text: $email)
 //            Button {
+//                Defaults.update(userKey: "098712345", email: "vy@gmail.com", favDeal: "")
+//            } label: {
+//                Text("Submit")
+//            }
+//        }
+//
+//            VStack {
+//                Button {
 //                // Save to userDefault
 //                Defaults.save(username, attrb1: "", attrb2: "")
 //
