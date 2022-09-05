@@ -51,7 +51,7 @@ struct PhoneNumVerifyView: View {
             Spacer().frame(width: 0, height: 190)
             }
         
-        .padding(.horizontal, 40)
+        .padding(.horizontal, 60)
         
         }
         
