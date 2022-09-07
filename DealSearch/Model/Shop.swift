@@ -11,7 +11,6 @@ struct Shop: Identifiable {
     var id: String
     var shop_logo: String
     var shop_name: String
-    
 }
 
 
