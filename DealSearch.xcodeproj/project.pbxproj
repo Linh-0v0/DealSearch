@@ -134,11 +134,11 @@
 		C469F22028C65A22003F401A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C469F22528C65A22003F401A /* UserData.swift */,
 				C469F22128C65A22003F401A /* CategoryData.swift */,
-				C469F22228C65A22003F401A /* DealCalcSorted.swift */,
 				C469F22328C65A22003F401A /* ShopData.swift */,
 				C469F22428C65A22003F401A /* ProductData.swift */,
-				C469F22528C65A22003F401A /* UserData.swift */,
+				C469F22228C65A22003F401A /* DealCalcSorted.swift */,
 				C402415B28C7232B00B205B8 /* CurrentUserData.swift */,
 				C469F22628C65A22003F401A /* ProdRelatedInfo.swift */,
 			);

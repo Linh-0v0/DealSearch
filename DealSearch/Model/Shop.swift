@@ -8,7 +8,7 @@
 import Foundation
 
 struct Shop: Identifiable {
-
+    var id: String
 }
 
 

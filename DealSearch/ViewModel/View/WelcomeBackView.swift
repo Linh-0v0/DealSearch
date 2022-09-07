@@ -24,9 +24,8 @@ struct WelcomeBackView: View {
                 
                 HStack {
                     Group {
-                        Text(getName())
-//                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).firstName)
-//                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).lastName)
+                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).firstName)
+                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).lastName)
                     }
                     .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
                     .padding(.bottom, 2)
@@ -92,13 +91,6 @@ struct WelcomeBackView: View {
                 viewRouter.currentPage = .testPage
             }
         }
-    }
-    
-    func getName() -> String {
-        @StateObject var getEmail = CurrentUserData(emailInputted: emailInputted)
-        print("FIRSTNAME:")
-        print(getEmail.currentUserData)
-        return ""
     }
 
 }

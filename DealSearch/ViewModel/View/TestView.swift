@@ -10,8 +10,8 @@ import FirebaseAuth
 
 struct TestView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @State private var willMoveToNextScreen = false
     @State var signOutProcessing = false
+    @StateObject var productList = ProductData()
     
 //    var body: some View {
 //        if loginState.userIsLoggedIn {
@@ -34,9 +34,9 @@ struct TestView: View {
             }
             
             Button {
-                
+                productList.productList
             } label: {
-                Text("")
+                Text("Get Data")
             }
         }
     }
