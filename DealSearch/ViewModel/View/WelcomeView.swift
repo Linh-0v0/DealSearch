@@ -11,7 +11,7 @@ struct WelcomeView: View {
     @State private var willMoveToNextScreen = false
     
     var body: some View {
-        NavigationView {
+        
             // MARK: Image
             VStack {
                 Image("money-penguin")
@@ -53,7 +53,7 @@ struct WelcomeView: View {
                 }
             }
         }
-    }
+    
 }
 
 struct WelcomeView_Previews: PreviewProvider {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CheckEmailExistView: View {
+struct CheckEmailExist: View {
     @Binding var isExisted: Bool
     @Binding var emailInputted: String
     
@@ -20,4 +20,5 @@ struct CheckEmailExistView: View {
             }
         }
     }
+    
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C402415C28C7232B00B205B8 /* CurrentUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C402415B28C7232B00B205B8 /* CurrentUserData.swift */; };
+		C402415E28C879CE00B205B8 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C402415D28C879CE00B205B8 /* ViewRouter.swift */; };
+		C402416028C879F600B205B8 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C402415F28C879F600B205B8 /* MotherView.swift */; };
+		C402416228C8944700B205B8 /* LandingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C402416128C8944700B205B8 /* LandingNavigation.swift */; };
 		C463AEA628C0A188008A9348 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */; };
 		C463AEA828C0A191008A9348 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */; };
 		C463AEAA28C0A1DC008A9348 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */; };
@@ -28,8 +32,7 @@
 		C469F23A28C65A2F003F401A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23128C65A2F003F401A /* TestView.swift */; };
 		C469F23B28C65A2F003F401A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23228C65A2F003F401A /* WelcomeView.swift */; };
 		C469F23C28C65A2F003F401A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23328C65A2F003F401A /* RegisterView.swift */; };
-		C469F23D28C65A2F003F401A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23428C65A2F003F401A /* ContentView.swift */; };
-		C469F23E28C65A2F003F401A /* CheckEmailExistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23528C65A2F003F401A /* CheckEmailExistView.swift */; };
+		C469F23E28C65A2F003F401A /* CheckEmailExist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23528C65A2F003F401A /* CheckEmailExist.swift */; };
 		C469F23F28C65A2F003F401A /* WelcomeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F23628C65A2F003F401A /* WelcomeBackView.swift */; };
 		C469F24328C65ABA003F401A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C469F24228C65ABA003F401A /* GoogleService-Info.plist */; };
 		C469F24628C65B5C003F401A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24528C65B5C003F401A /* FirebaseAuth */; };
@@ -43,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C402415B28C7232B00B205B8 /* CurrentUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserData.swift; sourceTree = "<group>"; };
+		C402415D28C879CE00B205B8 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		C402415F28C879F600B205B8 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		C402416128C8944700B205B8 /* LandingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingNavigation.swift; sourceTree = "<group>"; };
 		C463AEA528C0A188008A9348 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		C463AEA728C0A191008A9348 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -65,8 +72,7 @@
 		C469F23128C65A2F003F401A /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C469F23228C65A2F003F401A /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		C469F23328C65A2F003F401A /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		C469F23428C65A2F003F401A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C469F23528C65A2F003F401A /* CheckEmailExistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailExistView.swift; sourceTree = "<group>"; };
+		C469F23528C65A2F003F401A /* CheckEmailExist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailExist.swift; sourceTree = "<group>"; };
 		C469F23628C65A2F003F401A /* WelcomeBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
 		C469F24228C65ABA003F401A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +136,7 @@
 				C469F22328C65A22003F401A /* ShopData.swift */,
 				C469F22428C65A22003F401A /* ProductData.swift */,
 				C469F22528C65A22003F401A /* UserData.swift */,
+				C402415B28C7232B00B205B8 /* CurrentUserData.swift */,
 				C469F22628C65A22003F401A /* ProdRelatedInfo.swift */,
 			);
 			path = ViewModel;
@@ -139,13 +146,14 @@
 			isa = PBXGroup;
 			children = (
 				C469F23128C65A2F003F401A /* TestView.swift */,
-				C469F23428C65A2F003F401A /* ContentView.swift */,
 				C469F22F28C65A2F003F401A /* ButtonAnimation.swift */,
+				C402416128C8944700B205B8 /* LandingNavigation.swift */,
 				C469F23228C65A2F003F401A /* WelcomeView.swift */,
 				C469F22E28C65A2F003F401A /* EmailVerifyView.swift */,
-				C469F23528C65A2F003F401A /* CheckEmailExistView.swift */,
+				C469F23528C65A2F003F401A /* CheckEmailExist.swift */,
 				C469F23628C65A2F003F401A /* WelcomeBackView.swift */,
 				C469F23328C65A2F003F401A /* RegisterView.swift */,
+				C402415F28C879F600B205B8 /* MotherView.swift */,
 			);
 			name = View;
 			path = ViewModel/View;
@@ -177,6 +185,7 @@
 				C469F21928C65A14003F401A /* Model */,
 				C469F22028C65A22003F401A /* ViewModel */,
 				C469F22D28C65A2F003F401A /* View */,
+				C402415D28C879CE00B205B8 /* ViewRouter.swift */,
 				C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */,
 				C4CB7CC928B8A7D100B017EB /* Assets.xcassets */,
 				C4CB7CD828B8AC1100B017EB /* Category.json */,
@@ -283,15 +292,18 @@
 			files = (
 				C469F23F28C65A2F003F401A /* WelcomeBackView.swift in Sources */,
 				C469F23828C65A2F003F401A /* ButtonAnimation.swift in Sources */,
+				C402415E28C879CE00B205B8 /* ViewRouter.swift in Sources */,
 				C469F22828C65A22003F401A /* DealCalcSorted.swift in Sources */,
-				C469F23E28C65A2F003F401A /* CheckEmailExistView.swift in Sources */,
+				C469F23E28C65A2F003F401A /* CheckEmailExist.swift in Sources */,
 				C469F22B28C65A22003F401A /* UserData.swift in Sources */,
 				C469F22728C65A22003F401A /* CategoryData.swift in Sources */,
 				C469F23A28C65A2F003F401A /* TestView.swift in Sources */,
+				C402415C28C7232B00B205B8 /* CurrentUserData.swift in Sources */,
 				C469F23B28C65A2F003F401A /* WelcomeView.swift in Sources */,
 				C469F21728C659FC003F401A /* PassHash.swift in Sources */,
 				C469F21828C659FC003F401A /* Modifier.swift in Sources */,
-				C469F23D28C65A2F003F401A /* ContentView.swift in Sources */,
+				C402416228C8944700B205B8 /* LandingNavigation.swift in Sources */,
+				C402416028C879F600B205B8 /* MotherView.swift in Sources */,
 				C469F22C28C65A22003F401A /* ProdRelatedInfo.swift in Sources */,
 				C469F23C28C65A2F003F401A /* RegisterView.swift in Sources */,
 				C469F22928C65A22003F401A /* ShopData.swift in Sources */,

@@ -9,8 +9,12 @@ import SwiftUI
 import FirebaseAuth
 
 struct WelcomeBackView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @Binding var emailInputted: String
     @State private var password: String = ""
+    @State var signInProcessing = false
+    @State var signInErrorMessage = ""
+    @StateObject var userData = UserData()
     
     var body: some View {
         VStack {
@@ -19,9 +23,14 @@ struct WelcomeBackView: View {
                     .font(Font.custom("Montserrat-Regular", size: 36)).foregroundColor(Color("Black"))
                     .padding(.bottom, 0)
                 
-                Text("Duc Ho")
+                HStack {
+                    Group {
+                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).firstName)
+                        Text(Defaults.getSpecifiedUserDetail(email: emailInputted).lastName)
+                    }
                     .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
                     .padding(.bottom, 2)
+                }
                 
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit"
                 ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
@@ -49,8 +58,8 @@ struct WelcomeBackView: View {
             
             // MARK: Button
             Button(action: {
-//                Text("")
                 login()
+                print("Login Clicked!")
             }, label: {
                 Capsule()
                     .fill(Color("Green"))
@@ -59,18 +68,32 @@ struct WelcomeBackView: View {
                         .font(Font.custom("Montserrat-Bold", size: 22))
                         .foregroundColor(.white))
             })
+            
+            if !signInErrorMessage.isEmpty {
+                Text("Failed creating account: \(signInErrorMessage)")
+                    .foregroundColor(.red)
+            }
+            
             Spacer().frame(width: 0, height: 170)
         }
+        
+
     }
     
     func login() {
         Auth.auth().signIn(withEmail: emailInputted, password: password) { result, error in
             if error != nil {
-                print(error?.localizedDescription)
+                print("Could not Sign in")
+                signInErrorMessage = error!.localizedDescription
+                print("LoginError:\(error?.localizedDescription)")
+            } else {
+                print("Logged In!")
+                signInProcessing = true
+                viewRouter.currentPage = .testPage
             }
         }
     }
-    
+
 }
 
 struct WelcomeBackView_Previews: PreviewProvider {

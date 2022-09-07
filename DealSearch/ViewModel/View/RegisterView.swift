@@ -9,8 +9,11 @@ import SwiftUI
 import FirebaseAuth
 
 struct RegisterView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var willMoveToNextScreen: Int? = nil
     @StateObject var users = UserData()
+    @State var signUpProcessing = false
+    @State var signUpErrorMessage = ""
     @Binding var emailInputted: String
     
     @State private var phoneNumber: String = ""
@@ -20,6 +23,14 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var address: String = ""
     
+//    var body: some View {
+//        if loginState.userIsLoggedIn {
+//            TestView()
+//        } else {
+//            content
+//        }
+//    }
+//
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -55,7 +66,7 @@ struct RegisterView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("PASSWORD*").modifier(registerFieldTitle())
-                        TextField("Password", text: $password).modifier(registerInputField())
+                        SecureField("Password", text: $password).modifier(registerInputField())
                     }.modifier(registerPaddingBtwField())
                     VStack(alignment: .leading) {
                         Text("DATE OF BIRTH*").modifier(registerFieldTitle())
@@ -78,8 +89,15 @@ struct RegisterView: View {
             
             // MARK: Register Button
             Button(action: {
+                print("Register Click")
                 if checkRegisterForm() {
-                    willMoveToNextScreen = 1
+//                    willMoveToNextScreen = 1
+                    // Save Email to UserDefault
+                    Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
+                  
+                    // Add Info to User db
+                    users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
+                    register()
                 }
             }, label: {
                 Capsule()
@@ -91,24 +109,38 @@ struct RegisterView: View {
             })
             .padding(.bottom, 20)
             .padding(.top, 10)
-            .background(
-                NavigationLink(destination: WelcomeView(), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
-            )
+            
+            if !signUpErrorMessage.isEmpty {
+                        Text("Failed creating account: \(signUpErrorMessage)")
+                            .foregroundColor(.red)
+                    }
         }
+//        .onAppear{
+//            Auth.auth().addStateDidChangeListener { auth, user in
+//                if user != nil {
+//                    loginState.userIsLoggedIn = true
+//                }
+//            }
+//        }
     }
     
     func checkRegisterForm() -> Bool {
         // Add check all fields here ...
-        Defaults.save(emailInputted, favDeal: "")
-        users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, password: password, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
-        register()
+        
+
         return true
     }
     
     func register() {
         Auth.auth().createUser(withEmail: emailInputted, password: password) { result, error in
             if error != nil {
+                print("Could not create account!")
+                signUpErrorMessage = error!.localizedDescription
                 print(error?.localizedDescription)
+            } else {
+                print("Register successfully!")
+                signUpProcessing = true
+                viewRouter.currentPage = .testPage
             }
         }
     }

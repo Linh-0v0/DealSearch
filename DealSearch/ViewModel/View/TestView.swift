@@ -6,14 +6,47 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct TestView: View {
-    @StateObject var users = UserData()
+    @EnvironmentObject var viewRouter: ViewRouter
+    @State private var willMoveToNextScreen = false
+    @State var signOutProcessing = false
+    @StateObject var loginState = UserLoggedInState()
+    
+//    var body: some View {
+//        if loginState.userIsLoggedIn {
+//            content
+//        } else {
+//            WelcomeView()
+//        }
+//    }
+//
     var body: some View {
-        List(users.userList) { item in
-            Text(item.phoneNumber)
+        VStack {
+            Text("LANDING PAGE")
+            
+            Button {
+                Defaults.clearUserSessionData()
+                signOutUser()
+                print("Click Log out !!!")
+            } label: {
+                Text("LOGOUT")
+            }
         }
     }
+    
+    func signOutUser() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+            signOutProcessing = false
+        }
+            viewRouter.currentPage = .emailVerifyPage
+    }
+    
 }
 
 struct TestView_Previews: PreviewProvider {

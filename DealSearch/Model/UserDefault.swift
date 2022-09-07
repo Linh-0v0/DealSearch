@@ -13,7 +13,7 @@
 import Foundation
 
 struct Defaults {
-    static let (emailKey, favDealKey) = ("email", "favDeal")
+    static let (emailKey, firstNameKey, lastNameKey, favDealKey) = ("email", "firstName", "lastName", "favDeal")
     static let userSessionKey = "CurrentUser"
     private static let userDefault = UserDefaults.standard
     
@@ -21,31 +21,35 @@ struct Defaults {
     /* Is used to save User to UserDefault following this "UserDetail Struct"*/
     struct UserDetails {
         let email: String
+        let firstName: String
+        let lastName: String
         let favDeal: String
         
         init(_ json: [String: String]) {
             self.email = json[emailKey] ?? ""
+            self.firstName = json[firstNameKey] ?? ""
+            self.lastName = json[lastNameKey] ?? ""
             self.favDeal = json[favDealKey] ?? ""
         }
     }
     
     /* Save User to userDefault */
-    static func save(_ email: String, favDeal: String){
+    static func save(_ email: String, firstName: String, lastName: String, favDeal: String){
         // Save user forkey "CurrentUser" to know whose the login state belong to
-        userDefault.set([emailKey: email, favDealKey: favDeal],
+        userDefault.set([emailKey: email, firstNameKey: firstName, lastNameKey: lastName, favDealKey: favDeal],
                         forKey: userSessionKey)
-        saveToUsersList(email, favDeal: favDeal)
+        saveToUsersList(email, firstName: firstName, lastName: lastName, favDeal: favDeal)
     }
     
-    static func saveToUsersList(_ email: String, favDeal: String){
+    static func saveToUsersList(_ email: String, firstName: String, lastName: String, favDeal: String){
         // Save user to user list
-        userDefault.set([emailKey: email, favDealKey: favDeal],
+        userDefault.set([emailKey: email, firstNameKey: firstName, lastNameKey: lastName, favDealKey: favDeal],
                         forKey: email)
     }
     
     /* Update User */
-    static func update(userKey: String, email: String, favDeal: String) {
-        userDefault.set([emailKey: email, favDealKey: favDeal],
+    static func update(userKey: String, email: String, firstName: String, lastName: String, favDeal: String) {
+        userDefault.set([emailKey: email, firstNameKey: firstName, lastNameKey: lastName, favDealKey: favDeal],
                         forKey: userKey)
     }
     

@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 func getShopInfo(shopId: Int) -> Shop {
+    
     @StateObject var shopList = ShopData()
+    
     var shopFound: Shop?
     for shop in shopList.shopList {
         if shop.id == shopId {

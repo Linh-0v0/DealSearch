@@ -9,7 +9,6 @@ import Foundation
 import FirebaseFirestore
 
 class UserData: ObservableObject {
-    
     @Published var userList = [User]()
     
     init() {
@@ -42,13 +41,11 @@ class UserData: ObservableObject {
                         return user.id == userToDelete.id
                     }
                 }
-                
-                
             }
         }
     }
     
-    func addData(phoneNum: String, firstName: String, lastName: String, password: String, email: String, dateOfBirth: String, address: String) {
+    func addData(phoneNum: String, firstName: String, lastName: String, email: String, dateOfBirth: String, address: String) {
         // Get a reference to db
         let db = Firestore.firestore()
         

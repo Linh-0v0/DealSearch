@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct EmailVerifyView: View {
+    @StateObject var loginState = UserLoggedInState()
     @State var isExisted: Bool = true
     @State private var willMoveToNextScreen: Int? = nil
-    
     @State private var email: String = ""
     
     var body: some View {
+        if loginState.userIsLoggedIn {
+            TestView()
+        } else {
+            content
+        }
+    }
+    
+    var content: some View {
         // MARK: Text
         VStack(alignment: .leading) {
             Text("Input Your")
@@ -42,7 +50,7 @@ struct EmailVerifyView: View {
             // MARK: Button
             Button(action: {
                 if !email.isEmpty {
-                    isPhoneExisted(email: email)
+                    isEmailExisted(email: email)
                     willMoveToNextScreen = 1
                 }
             }, label: {
@@ -57,11 +65,11 @@ struct EmailVerifyView: View {
         }
         .padding(.horizontal, 40)
         .background(
-            NavigationLink(destination: CheckEmailExistView(isExisted: $isExisted, emailInputted: $email), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
+            NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
         )
     }
     
-    func isPhoneExisted(email: String) {
+    func isEmailExisted(email: String) {
         if !Defaults.getSpecifiedUserDetail(email: email).email.isEmpty {
             // Go to WelcomeBack page
             isExisted = true

@@ -11,13 +11,15 @@ import Firebase
 @main
 struct DealSearchApp: App {
     
+    @StateObject var viewRouter = ViewRouter()
+
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MotherView().environmentObject(viewRouter)
         }
     }
 }
