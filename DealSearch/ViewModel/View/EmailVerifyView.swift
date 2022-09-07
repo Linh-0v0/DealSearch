@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct EmailVerifyView: View {
-    @StateObject var loginState = UserLoggedInState()
     @State var isExisted: Bool = true
     @State private var willMoveToNextScreen: Int? = nil
     @State private var email: String = ""
     
     var body: some View {
-        if loginState.userIsLoggedIn {
+        if !Defaults.getCurrentUserDetail().email.isEmpty {
             TestView()
         } else {
             content

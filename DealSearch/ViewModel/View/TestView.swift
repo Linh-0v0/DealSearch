@@ -12,7 +12,6 @@ struct TestView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State private var willMoveToNextScreen = false
     @State var signOutProcessing = false
-    @StateObject var loginState = UserLoggedInState()
     
 //    var body: some View {
 //        if loginState.userIsLoggedIn {
@@ -32,6 +31,12 @@ struct TestView: View {
                 print("Click Log out !!!")
             } label: {
                 Text("LOGOUT")
+            }
+            
+            Button {
+                
+            } label: {
+                Text("")
             }
         }
     }

@@ -19,6 +19,7 @@ struct CheckEmailExist: View {
                 RegisterView(emailInputted: $emailInputted)
             }
         }
+       
     }
     
 }
