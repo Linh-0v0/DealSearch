@@ -83,7 +83,7 @@ struct RegisterView: View {
             Button(action: {
                 print("Register Click")
                 if checkRegisterForm() {
-
+                    
                     // Add Info to User db
                     users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
                     register()
@@ -100,32 +100,37 @@ struct RegisterView: View {
             .padding(.top, 10)
             
             if !signUpErrorMessage.isEmpty {
-                        Text("Failed creating account: \(signUpErrorMessage)")
-                            .foregroundColor(.red)
-                    }
+                Text("Failed creating account: \(signUpErrorMessage)")
+                    .foregroundColor(.red)
+            }
         }
     }
     
     func checkRegisterForm() -> Bool {
         // Add check all fields here ...
         
-
+        
         return true
     }
     
     func register() {
-        Auth.auth().createUser(withEmail: emailInputted, password: password) { result, error in
-            if error != nil {
-                print("Could not create account!")
-                signUpErrorMessage = error!.localizedDescription
-                print(error?.localizedDescription)
-            } else {
-                print("Register successfully!")
-                // Save Email to UserDefault
-                Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
-                signUpProcessing = true
-                viewRouter.currentPage = .testPage
+        if Defaults.getSpecifiedUserDetail(email: emailInputted).email.isEmpty {
+            Auth.auth().createUser(withEmail: emailInputted, password: password) { result, error in
+                if error != nil {
+                    print("Could not create account!")
+                    signUpErrorMessage = error!.localizedDescription
+                    print(error?.localizedDescription)
+                } else {
+                    print("Register successfully!")
+                    // Save Email to UserDefault
+                    Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
+                    signUpProcessing = true
+                    viewRouter.currentPage = .testPage
+                }
             }
+            
+        } else {
+            signUpErrorMessage = "Email has been registered!"
         }
     }
     
