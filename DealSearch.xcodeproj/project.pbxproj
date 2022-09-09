@@ -41,9 +41,6 @@
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
 		C4CB7CCD28B8A7D100B017EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CCC28B8A7D100B017EB /* Preview Assets.xcassets */; };
-		C4CB7CD928B8AC1100B017EB /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CD828B8AC1100B017EB /* Category.json */; };
-		C4CB7CE128BA0A4D00B017EB /* Shop.json in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CE028BA0A4D00B017EB /* Shop.json */; };
-		C4DB03A428BBB37600C3EB4E /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = C4DB03A328BBB37500C3EB4E /* Product.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,9 +78,6 @@
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
 		C4CB7CC928B8A7D100B017EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4CB7CCC28B8A7D100B017EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C4CB7CD828B8AC1100B017EB /* Category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
-		C4CB7CE028BA0A4D00B017EB /* Shop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Shop.json; sourceTree = "<group>"; };
-		C4DB03A328BBB37500C3EB4E /* Product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +185,6 @@
 				C402415D28C879CE00B205B8 /* ViewRouter.swift */,
 				C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */,
 				C4CB7CC928B8A7D100B017EB /* Assets.xcassets */,
-				C4CB7CD828B8AC1100B017EB /* Category.json */,
-				C4DB03A328BBB37500C3EB4E /* Product.json */,
-				C4CB7CE028BA0A4D00B017EB /* Shop.json */,
 				C4CB7CCB28B8A7D100B017EB /* Preview Content */,
 			);
 			path = DealSearch;
@@ -274,15 +265,12 @@
 			files = (
 				C463AEAA28C0A1DC008A9348 /* Montserrat-Regular.ttf in Resources */,
 				C463AEA628C0A188008A9348 /* OpenSans-Light.ttf in Resources */,
-				C4DB03A428BBB37600C3EB4E /* Product.json in Resources */,
 				C4CB7CCD28B8A7D100B017EB /* Preview Assets.xcassets in Resources */,
 				C463AEAE28C0A1FE008A9348 /* Montserrat-SemiBold.ttf in Resources */,
 				C463AEA828C0A191008A9348 /* OpenSans-Regular.ttf in Resources */,
 				C463AEAC28C0A1E6008A9348 /* Montserrat-Bold.ttf in Resources */,
-				C4CB7CD928B8AC1100B017EB /* Category.json in Resources */,
 				C469F24328C65ABA003F401A /* GoogleService-Info.plist in Resources */,
 				C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */,
-				C4CB7CE128BA0A4D00B017EB /* Shop.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
