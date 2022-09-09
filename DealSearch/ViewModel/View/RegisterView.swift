@@ -23,14 +23,6 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var address: String = ""
     
-//    var body: some View {
-//        if loginState.userIsLoggedIn {
-//            TestView()
-//        } else {
-//            content
-//        }
-//    }
-//
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -91,10 +83,7 @@ struct RegisterView: View {
             Button(action: {
                 print("Register Click")
                 if checkRegisterForm() {
-//                    willMoveToNextScreen = 1
-                    // Save Email to UserDefault
-                    Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
-                  
+
                     // Add Info to User db
                     users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
                     register()
@@ -115,13 +104,6 @@ struct RegisterView: View {
                             .foregroundColor(.red)
                     }
         }
-//        .onAppear{
-//            Auth.auth().addStateDidChangeListener { auth, user in
-//                if user != nil {
-//                    loginState.userIsLoggedIn = true
-//                }
-//            }
-//        }
     }
     
     func checkRegisterForm() -> Bool {
@@ -139,6 +121,8 @@ struct RegisterView: View {
                 print(error?.localizedDescription)
             } else {
                 print("Register successfully!")
+                // Save Email to UserDefault
+                Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
                 signUpProcessing = true
                 viewRouter.currentPage = .testPage
             }

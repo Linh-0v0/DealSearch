@@ -16,7 +16,6 @@
 		C463AEAA28C0A1DC008A9348 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEA928C0A1DC008A9348 /* Montserrat-Regular.ttf */; };
 		C463AEAC28C0A1E6008A9348 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */; };
 		C463AEAE28C0A1FE008A9348 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */; };
-		C469F21728C659FC003F401A /* PassHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F21528C659FC003F401A /* PassHash.swift */; };
 		C469F21828C659FC003F401A /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F21628C659FC003F401A /* Modifier.swift */; };
 		C469F21D28C65A14003F401A /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F21A28C65A14003F401A /* UserDefault.swift */; };
 		C469F21E28C65A14003F401A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469F21B28C65A14003F401A /* User.swift */; };
@@ -37,6 +36,7 @@
 		C469F24328C65ABA003F401A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C469F24228C65ABA003F401A /* GoogleService-Info.plist */; };
 		C469F24628C65B5C003F401A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24528C65B5C003F401A /* FirebaseAuth */; };
 		C469F24828C65B5C003F401A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24728C65B5C003F401A /* FirebaseFirestore */; };
+		C46CE78828CB8E1E0047DE96 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CE78728CB8E1E0047DE96 /* Category.swift */; };
 		C498AFB928C8FB9600DB5CA3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498AFB828C8FB9600DB5CA3 /* Product.swift */; };
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
@@ -57,7 +57,6 @@
 		C463AEAB28C0A1E6008A9348 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		C463AEAD28C0A1FE008A9348 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C463AEAF28C0A234008A9348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		C469F21528C659FC003F401A /* PassHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassHash.swift; sourceTree = "<group>"; };
 		C469F21628C659FC003F401A /* Modifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		C469F21A28C65A14003F401A /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		C469F21B28C65A14003F401A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		C469F23528C65A2F003F401A /* CheckEmailExist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailExist.swift; sourceTree = "<group>"; };
 		C469F23628C65A2F003F401A /* WelcomeBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
 		C469F24228C65ABA003F401A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C46CE78728CB8E1E0047DE96 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C498AFB828C8FB9600DB5CA3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 		C469F21428C659FC003F401A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C469F21528C659FC003F401A /* PassHash.swift */,
 				C469F21628C659FC003F401A /* Modifier.swift */,
 			);
 			path = Helper;
@@ -127,6 +126,7 @@
 				C469F21B28C65A14003F401A /* User.swift */,
 				C498AFB828C8FB9600DB5CA3 /* Product.swift */,
 				C469F21C28C65A14003F401A /* Shop.swift */,
+				C46CE78728CB8E1E0047DE96 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,11 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				C469F22528C65A22003F401A /* UserData.swift */,
-				C469F22128C65A22003F401A /* CategoryData.swift */,
-				C469F22328C65A22003F401A /* ShopData.swift */,
-				C469F22428C65A22003F401A /* ProductData.swift */,
-				C469F22228C65A22003F401A /* DealCalcSorted.swift */,
 				C402415B28C7232B00B205B8 /* CurrentUserData.swift */,
+				C469F22428C65A22003F401A /* ProductData.swift */,
+				C469F22328C65A22003F401A /* ShopData.swift */,
+				C469F22128C65A22003F401A /* CategoryData.swift */,
+				C469F22228C65A22003F401A /* DealCalcSorted.swift */,
 				C469F22628C65A22003F401A /* ProdRelatedInfo.swift */,
 			);
 			path = ViewModel;
@@ -303,12 +303,12 @@
 				C469F23A28C65A2F003F401A /* TestView.swift in Sources */,
 				C402415C28C7232B00B205B8 /* CurrentUserData.swift in Sources */,
 				C469F23B28C65A2F003F401A /* WelcomeView.swift in Sources */,
-				C469F21728C659FC003F401A /* PassHash.swift in Sources */,
 				C469F21828C659FC003F401A /* Modifier.swift in Sources */,
 				C402416228C8944700B205B8 /* LandingNavigation.swift in Sources */,
 				C402416028C879F600B205B8 /* MotherView.swift in Sources */,
 				C469F22C28C65A22003F401A /* ProdRelatedInfo.swift in Sources */,
 				C469F23C28C65A2F003F401A /* RegisterView.swift in Sources */,
+				C46CE78828CB8E1E0047DE96 /* Category.swift in Sources */,
 				C469F22928C65A22003F401A /* ShopData.swift in Sources */,
 				C498AFB928C8FB9600DB5CA3 /* Product.swift in Sources */,
 				C469F21F28C65A14003F401A /* Shop.swift in Sources */,

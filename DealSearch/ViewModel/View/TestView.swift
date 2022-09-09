@@ -11,16 +11,10 @@ import FirebaseAuth
 struct TestView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var signOutProcessing = false
-    @StateObject var productList = ProductData()
+//    @StateObject var productList = ProductData()
+//    @StateObject var shopList = ShopData()
+//    @StateObject var categoryList = CategoryData()
     
-//    var body: some View {
-//        if loginState.userIsLoggedIn {
-//            content
-//        } else {
-//            WelcomeView()
-//        }
-//    }
-//
     var body: some View {
         VStack {
             Text("LANDING PAGE")
@@ -34,7 +28,8 @@ struct TestView: View {
             }
             
             Button {
-                productList.productList
+                print("")
+//                categoryList.categoryList
             } label: {
                 Text("Get Data")
             }

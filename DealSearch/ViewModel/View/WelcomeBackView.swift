@@ -38,17 +38,21 @@ struct WelcomeBackView: View {
                 // MARK: INPUT FIELD
                 VStack {
                     Group {
+                        // Read-only
                         TextField("random@gmail.com", text: $emailInputted)
+                            .disabled(true)
                         Divider()
                             .frame(height: 1)
                             .padding(.bottom, 30)
                         
-                        TextField("Password", text: $password)
+                        SecureField("Password", text: $password)
                         Divider()
                             .frame(height: 1)
                             .padding(.bottom, 0)
                     }
                     .textInputAutocapitalization(.never)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .font(Font.custom("Montserrat-Regular", size: 20))
                 }.padding(.bottom, 30)
                 
@@ -87,6 +91,10 @@ struct WelcomeBackView: View {
                 print("LoginError:\(error?.localizedDescription)")
             } else {
                 print("Logged In!")
+                Defaults.save(emailInputted,
+                              firstName: Defaults.getSpecifiedUserDetail(email: emailInputted).firstName,
+                              lastName: Defaults.getSpecifiedUserDetail(email: emailInputted).lastName,
+                              favDeal: Defaults.getSpecifiedUserDetail(email: emailInputted).favDeal)
                 signInProcessing = true
                 viewRouter.currentPage = .testPage
             }

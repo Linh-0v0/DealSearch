@@ -11,7 +11,6 @@ struct WelcomeView: View {
     @State private var willMoveToNextScreen = false
     
     var body: some View {
-        
             // MARK: Image
             VStack {
                 Image("money-penguin")

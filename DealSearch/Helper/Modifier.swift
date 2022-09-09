@@ -20,6 +20,8 @@ struct registerInputField: ViewModifier{
         content
             .font(Font.custom("Montserrat-Regular", size: 15))
             .textInputAutocapitalization(.never)
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
     }
 }
 

@@ -44,6 +44,8 @@ struct EmailVerifyView: View {
                     )
                 }.padding(.bottom, 20)
                     .textInputAutocapitalization(.never)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
             }.font(Font.custom("Montserrat-Regular", size: 20))
             
             // MARK: Button

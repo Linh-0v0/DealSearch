@@ -6,30 +6,82 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class ShopData: ObservableObject {
     @Published var shopList = [Shop]()
-//    
-//    init() {
-//        load()
-//    }
-//    
-//    func load() {
-//        guard let url = Bundle.main.url(forResource: "Shop", withExtension: "json")
-//        else {
-//            print("Json file not found")
-//            return
-//        }
-//        
-//        let data = try? Data(contentsOf: url)
-//        
-//        let decoder = JSONDecoder()
-//        let decodedData = try? decoder.decode([Shop].self, from: data!)
-//        decoder.keyDecodingStrategy = .convertFromSnakeCase
-//        
-////        print("JSON PARSED DATA: ", decodedData)
-//        self.shopList = decodedData!
-//    }
+    
+    init() {
+        getData()
+    }
+    
+    func updateData(shopToUpdate: Shop) {
+        // Get a reference to db
+        let db = Firestore.firestore()
+        
+        // Set the data to update
+        db.collection("Shops").document(shopToUpdate.id).updateData(["shop_name": "\(shopToUpdate.shop_name)"]) { error in
+            if error == nil {
+                // no error
+                self.getData()
+            }
+        }
+    }
+    
+    func deleteData(shopToDelete: Shop) {
+        // Get a reference to db
+        let db = Firestore.firestore()
+        
+        db.collection("Shops").document(shopToDelete.id).delete { error in
+            if error == nil {
+                // No error
+                // Update UI from the main thread
+                DispatchQueue.main.async {
+                    self.shopList.removeAll { shop in
+                        return shop.id == shopToDelete.id
+                    }
+                }
+            }
+        }
+    }
+    
+    func addData(shop_logo: String, shop_name: String) {
+        // Get a reference to db
+        let db = Firestore.firestore()
+        
+        db.collection("Shops").addDocument(data: ["shop_logo": shop_logo, "shop_name": shop_name]) { error in
+            if error == nil {
+                // No error
+                // Call getData to retreive the lastest data
+                self.getData()
+                
+            }
+        }
+    }
+    
+    func getData() {
+        // Get a reference to db
+        let db = Firestore.firestore()
+        
+        // Read the doc at specific path
+        db.collection("Shops").getDocuments { snapshot, error in
+            if error == nil {
+                // No error
+                if let snapshot = snapshot {
+                    // Update the list property in the main thread
+                    //cuz the data will cause UI change
+                    DispatchQueue.main.async {
+                        // Get all the doc
+                        self.shopList = snapshot.documents.map { d in
+                            // Return the User for each doc returned
+                            return Shop(id: d.documentID, shop_logo: d["shop_logo"] as? String ?? "", shop_name: d["shop_name"] as? String ?? "")
+                        }
+                        print("PRODUCTLIST: \(self.shopList)")
+                    }
+                }
+            }
+        }
+    }
     
 }
 
