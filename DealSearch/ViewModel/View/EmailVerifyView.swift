@@ -21,32 +21,38 @@ struct EmailVerifyView: View {
     }
     
     var content: some View {
-        // MARK: Text
-        VStack(alignment: .leading) {
-            Text("Input Your")
-                .font(Font.custom("Montserrat", size: 36)).foregroundColor(Color("Black"))
-                .padding(.bottom, 0
-                )
-            // MARK: Input number field
-            Text("Email")
-                .font(Font.custom("Montserrat-Bold", size: 36
-                                 )).foregroundColor(Color("Green"))
-                .padding(.bottom, 13)
-            
-            Text("Lorem ipsum dolor sit amet, consec adipiscing elit."
-            ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
-                .padding(.bottom, 20)
-            VStack{
-                Group{
-                    TextField(
-                        "Input your email",
-                        text: $email
+        VStack(alignment: .center) {
+            // MARK: Text
+            VStack(alignment: .leading) {
+                Text("Input Your")
+                    .font(Font.custom("Montserrat", size: 36)).foregroundColor(Color("Black"))
+                    .padding(.bottom, 0
                     )
-                }.padding(.bottom, 20)
-                    .textInputAutocapitalization(.never)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-            }.font(Font.custom("Montserrat-Regular", size: 20))
+                // MARK: Input number field
+                Text("Email")
+                    .font(Font.custom("Montserrat-Bold", size: 36
+                                     )).foregroundColor(Color("Green"))
+                    .padding(.bottom, 13)
+                
+                Text("Lorem ipsum dolor sit amet, consec adipiscing elit."
+                ).font(Font.custom("OpenSans-Regular", size: 16)).foregroundColor(Color("Gray"))
+                    .padding(.bottom, 20)
+                VStack{
+                    Group{
+                        TextField(
+                            "Input your email",
+                            text: $email
+                        )
+                    }.padding(.bottom, 20)
+                        .textInputAutocapitalization(.never)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }.font(Font.custom("Montserrat-Regular", size: 20))
+                
+                Spacer().frame(width: 0, height: 15)
+            }
+            .padding(.horizontal, 40)
+            
             
             // MARK: Button
             Button(action: {
@@ -62,12 +68,10 @@ struct EmailVerifyView: View {
                         .font(Font.custom("Montserrat-Bold", size: 22))
                         .foregroundColor(.white))
             })
-            Spacer().frame(width: 0, height: 190)
+            .background(
+                NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
+            )
         }
-        .padding(.horizontal, 40)
-        .background(
-            NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
-        )
     }
     
     func isEmailExisted(email: String) {
