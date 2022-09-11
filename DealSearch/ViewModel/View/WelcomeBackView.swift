@@ -76,7 +76,7 @@ struct WelcomeBackView: View {
             
             // MARK: Error Message
             if !signInErrorMessage.isEmpty {
-                Text("Failed creating account: \(signInErrorMessage)")
+                Text("Error: \(signInErrorMessage)")
                     .foregroundColor(.red)
             }
             
