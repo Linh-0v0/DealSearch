@@ -16,9 +16,10 @@ struct CheckEmailExist: View {
     var body: some View {
         ZStack {
             if isCheckingEmail {
+                // While fetching data, display this view
                 EmptyView()
             } else {
-                // Check in UserDefault (isExisted) beofre check in FireStore DB
+                // Check "email existence" in UserDefault (isExisted) beofre check in FireStore DB
                 if isExisted || !emailFinding.currentUserData.isEmpty {
                     WelcomeBackView(emailInputted: $emailInputted, emailFound: emailFinding)
                 } else {
@@ -31,6 +32,7 @@ struct CheckEmailExist: View {
     }
     
     private func delayView() async {
+        // Wait for 1 second to fetch data
         // (1 second = 1_000_000_000 nanoseconds)
         try? await Task.sleep(nanoseconds: 1_000_000_000)
         isCheckingEmail = false

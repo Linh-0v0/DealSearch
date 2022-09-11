@@ -76,7 +76,6 @@ class CategoryData: ObservableObject {
                             // Return the User for each doc returned
                             return Category(id: d.documentID, category_image: d["category_image"] as? String ?? "", category_name: d["category_name"] as? String ?? "")
                         }
-                        print("PRODUCTLIST: \(self.categoryList)")
                     }
                 }
             }

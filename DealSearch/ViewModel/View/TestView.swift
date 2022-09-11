@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 
+// MARK: HOME PAGE
 struct TestView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var signOutProcessing = false

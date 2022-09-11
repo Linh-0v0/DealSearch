@@ -36,8 +36,6 @@ class DealCalcSorted: ObservableObject {
     //Return Array cuz .sorted() return array
     func dealSort(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
         var arrSorted = prodDealCalc.sorted(by: {$0.value > $1.value})
-
-//        print("ARRRAY SORTED")
 //        print(arrSorted)
         return arrSorted
     }

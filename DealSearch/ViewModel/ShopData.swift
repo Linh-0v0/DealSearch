@@ -76,7 +76,6 @@ class ShopData: ObservableObject {
                             // Return the User for each doc returned
                             return Shop(id: d.documentID, shop_logo: d["shop_logo"] as? String ?? "", shop_name: d["shop_name"] as? String ?? "")
                         }
-                        print("PRODUCTLIST: \(self.shopList)")
                     }
                 }
             }

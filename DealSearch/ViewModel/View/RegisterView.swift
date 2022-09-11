@@ -10,7 +10,6 @@ import FirebaseAuth
 
 struct RegisterView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @State private var willMoveToNextScreen: Int? = nil
     @StateObject var users = UserData()
     @State var signUpProcessing = false
     @State var signUpErrorMessage = ""
@@ -71,6 +70,7 @@ struct RegisterView: View {
                     Text("EMAIL*").modifier(registerFieldTitle())
                     TextField("Email Address", text: $emailInputted).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
+                    .disabled(true)
                 
                 
                 VStack(alignment: .leading) {
@@ -100,6 +100,7 @@ struct RegisterView: View {
             .padding(.bottom, 20)
             .padding(.top, 10)
             
+            // MARK: Error message
             if !signUpErrorMessage.isEmpty {
                 Text("Failed creating account: \(signUpErrorMessage)")
                     .foregroundColor(.red)
@@ -107,6 +108,7 @@ struct RegisterView: View {
         }
     }
     
+    // MARK: FUNCTIONS
     func checkRegisterForm() -> Bool {
         // Add check all fields here ...
         

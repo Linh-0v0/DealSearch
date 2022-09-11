@@ -38,7 +38,6 @@ class CurrentUserData: ObservableObject {
                                         email: d["email"] as? String ?? "",
                                         address: d["address"] as? String ?? "")
                         }
-                        print("CURRENTUSER: \(self.currentUserData)")
                     }
                 }
             }

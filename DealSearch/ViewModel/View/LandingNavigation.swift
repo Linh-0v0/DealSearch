@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LandingNavigation: View {
     var body: some View {
+        // Check Login state in UserDefault
+        // to navigate to specific view
         if !Defaults.getCurrentUserDetail().email.isEmpty {
             TestView()
         } else {

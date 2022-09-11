@@ -19,6 +19,7 @@ struct WelcomeBackView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
+                // MARK: Title
                 Text("Welcome back!")
                     .font(Font.custom("Montserrat-Regular", size: 36)).foregroundColor(Color("Black"))
                     .padding(.bottom, 0)
@@ -60,7 +61,7 @@ struct WelcomeBackView: View {
             }
             .padding(.horizontal, 30)
             
-            // MARK: Button
+            // MARK: Login Button
             Button(action: {
                 login()
                 print("Login Clicked!")
@@ -73,6 +74,7 @@ struct WelcomeBackView: View {
                         .foregroundColor(.white))
             })
             
+            // MARK: Error Message
             if !signInErrorMessage.isEmpty {
                 Text("Failed creating account: \(signInErrorMessage)")
                     .foregroundColor(.red)
@@ -84,6 +86,7 @@ struct WelcomeBackView: View {
 
     }
     
+    // MARK: FUNCTIONS
     func login() {
         Auth.auth().signIn(withEmail: emailInputted, password: password) { result, error in
             if error != nil {
@@ -92,6 +95,7 @@ struct WelcomeBackView: View {
                 print("LoginError:\(error?.localizedDescription)")
             } else {
                 print("Logged In!")
+                // Save account login to UserDefaults
                 Defaults.save(emailInputted,
                               firstName: emailFound.currentUserData[0].firstName,
                               lastName: emailFound.currentUserData[0].lastName,
