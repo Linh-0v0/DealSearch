@@ -15,6 +15,7 @@ struct RegisterView: View {
     @State var signUpProcessing = false
     @State var signUpErrorMessage = ""
     @Binding var emailInputted: String
+    @StateObject var emailFound: CurrentUserData
     
     @State private var phoneNumber: String = ""
     @State private var firstName: String = ""
@@ -114,7 +115,8 @@ struct RegisterView: View {
     }
     
     func register() {
-        if Defaults.getSpecifiedUserDetail(email: emailInputted).email.isEmpty {
+        // If the email has NOT been registered
+        if emailFound.currentUserData.isEmpty {
             Auth.auth().createUser(withEmail: emailInputted, password: password) { result, error in
                 if error != nil {
                     print("Could not create account!")
@@ -138,6 +140,6 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView(emailInputted: .constant("random@gmail.com"))
+        RegisterView(emailInputted: .constant("random@gmail.com"), emailFound: CurrentUserData(emailInputted: ""))
     }
 }

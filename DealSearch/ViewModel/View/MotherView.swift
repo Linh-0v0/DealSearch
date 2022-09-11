@@ -13,20 +13,20 @@ struct MotherView: View {
     
     var body: some View {
         NavigationView {
-        switch viewRouter.currentPage {
-        case .landingNavigation:
-            LandingNavigation()
-        case .welcomePage:
-            WelcomeView()
-        case .emailVerifyPage:
-            EmailVerifyView()
-        case .testPage:
-            TestView()
-        case .registerPage:
-            RegisterView(emailInputted: .constant(""))
-        case .welcomeBackPage:
-            WelcomeBackView(emailInputted: .constant(""))
-        }
+            switch viewRouter.currentPage {
+            case .landingNavigation:
+                LandingNavigation()
+            case .welcomePage:
+                WelcomeView()
+            case .emailVerifyPage:
+                EmailVerifyView()
+            case .testPage:
+                TestView()
+            case .registerPage:
+                RegisterView(emailInputted: .constant(""), emailFound: CurrentUserData(emailInputted: ""))
+            case .welcomeBackPage:
+                WelcomeBackView(emailInputted: .constant(""), emailFound: CurrentUserData(emailInputted: ""))
+            }
         }
     }
 }

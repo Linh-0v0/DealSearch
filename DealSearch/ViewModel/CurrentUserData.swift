@@ -12,40 +12,9 @@ class CurrentUserData: ObservableObject {
     @Published var currentUserData = [User]()
     
     init(emailInputted: String) {
-//        getData()
         getUserData(emailToFound: emailInputted)
     }
-    
-    func getData() {
-        // Get a reference to db
-        let db = Firestore.firestore()
-        
-        // Read the doc at specific path
-        db.collection("Users").getDocuments { snapshot, error in
-            if error == nil {
-                // No error
-                if let snapshot = snapshot {
-                    // Update the list property in the main thread
-                    //cuz the data will cause UI change
-                    DispatchQueue.main.async {
-                        // Get all the doc
-                        self.currentUserData = snapshot.documents.map { d in
-                            // Return the User for each doc returned
-                            return User(id: d.documentID,
-                                        phoneNumber: d["phoneNumber"] as? String ?? "",
-                                        firstName: d["firstName"] as? String ?? "",
-                                        lastName: d["lastName"] as? String ?? "",
-                                        dateOfBirth: d["dateOfBirth"] as? String ?? "",
-                                        email: d["email"] as? String ?? "",
-                                        address: d["address"] as? String ?? "")
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
- 
+
     func getUserData(emailToFound: String) {
         // Get a reference to db
         let db = Firestore.firestore()

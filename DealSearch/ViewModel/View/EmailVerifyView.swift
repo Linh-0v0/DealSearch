@@ -69,7 +69,7 @@ struct EmailVerifyView: View {
                         .foregroundColor(.white))
             })
             .background(
-                NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
+                NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email, emailFinding: CurrentUserData(emailInputted: email)), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
             )
         }
     }
