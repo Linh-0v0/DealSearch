@@ -86,6 +86,7 @@ struct UpdateSheetView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var productData = TrendingProductData()
     @State var productClicked: Product
+    @State private var updateMessage = ""
     
     @State private var categoryId: Int = 0
     @State private var productDeal: Double = 0
@@ -132,14 +133,19 @@ struct UpdateSheetView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Button {
+                    if checkField() {
                     productData.updateData(productToUpdate: productClicked, category_id: categoryId, product_deal: productDeal, product_image: productImage, product_name: productName, product_price: productPrice, shop_id: shopId)
-                    
+                    updateMessage = "updated"
+                        
                     // Clear the text field after submit
                     categoryId = 0
                     productName = ""
                     productDeal = 0
                     productPrice = 0
                     shopId = 0
+                    } else {
+                        updateMessage = "error"
+                    }
                 } label: {
                     Text("Update Product")
                 }
@@ -147,7 +153,23 @@ struct UpdateSheetView: View {
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 20)
+            
+            if updateMessage == "updated" {
+                Text("Updated!")
+                    .foregroundColor(.green)
+                    .font(.system(size: 25))
+            } else if updateMessage == "error" {
+                Text("Invalid input!")
+                    .foregroundColor(.red)
+                    .font(.system(size: 25))
+            }
         }
     }
     
+    func checkField() -> Bool{
+        if categoryId == 0 || productName.isEmpty || shopId == 0 {
+            return false
+        }
+        return true
+    }
 }
