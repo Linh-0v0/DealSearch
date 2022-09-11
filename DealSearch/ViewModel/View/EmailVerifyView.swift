@@ -73,7 +73,9 @@ struct EmailVerifyView: View {
                 // Go to next page when specific condition is checked
                 NavigationLink(destination: CheckEmailExist(isExisted: $isExisted, emailInputted: $email, emailFinding: CurrentUserData(emailInputted: email)), tag: 1, selection: $willMoveToNextScreen) { EmptyView() }
             )
+            Spacer()
         }
+        
     }
     
     // MARK: Functions

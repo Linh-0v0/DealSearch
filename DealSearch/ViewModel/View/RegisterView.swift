@@ -105,6 +105,7 @@ struct RegisterView: View {
                 Text("Failed creating account: \(signUpErrorMessage)")
                     .foregroundColor(.red)
             }
+            Spacer()
         }
     }
     
