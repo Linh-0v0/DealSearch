@@ -44,20 +44,13 @@ struct TestView: View {
             }
             
             if userData.currentUserData[0].isAdmin == 1 {
-                VStack {
-                    NavigationLink(destination: EditProduct()) {
-                        Text("Edit Products")
-                    }
-                    NavigationLink(destination: EditTrendingProduct()) {
-                        Text("Edit Trending Products")
-                    }
-                    NavigationLink(destination: EditShop()) {
-                        Text("Edit Shops")
-                    }
-                    NavigationLink(destination: EditCategory()) {
-                        Text("Edit Category")
-                    }
+                NavigationLink(destination: AdminDashboard()){
+                    Text("Edit Dashboard")
                 }
+            }
+            
+            NavigationLink(destination: KeysearchByCategView(currentCateg: CurrentSearchData(categoryClickedId: 1))) {
+                Text("Test keysearch view")
             }
         }
         
