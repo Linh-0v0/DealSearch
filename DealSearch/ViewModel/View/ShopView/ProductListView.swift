@@ -23,14 +23,13 @@ struct ProductListView: View {
                 // MARK: POPULAR SEARCH
                 VStack(alignment: .leading) {
                     Text("Popular search")
-                        .font(.system(size: 24, weight: .bold, design: Font.Design.default))
-                        .padding(.bottom, 20)
+                        .foregroundColor(Color.gray)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 10) {
                             ForEach(0..<3, id: \.self) { index in
                                 HStack {
                                     Image(systemName: "magnifyingglass")
-                                    Text("Hello")
+                                    Text("Popular search")
                                         .fontWeight(.bold)
                                 }
                                 .padding()
@@ -75,22 +74,25 @@ struct ProductListView: View {
                         Text("E-commerce store")
                             .font(.system(size: 20, weight: .bold))
                         
-                        LazyVGrid(columns: gridItemVLayout, spacing: 20) {
-                            ForEach(0..<4, id: \.self) { index in
-                                HStack {
-                                    Image(systemName: "magnifyingglass")
-                                    Text("Shopee")
-                                        .fontWeight(.bold)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHGrid(rows: gridItemVLayout, spacing: 20) {
+                                ForEach(0..<6, id: \.self) { index in
+                                    HStack {
+                                        Image(systemName: "magnifyingglass")
+                                        Text("Store")
+                                            .fontWeight(.bold)
+                                    }
+                                    .padding()
+                                    .background(
+                                         Capsule()
+                                             .strokeBorder(Color.black, lineWidth: 0.8)
+                                             .clipped()
+                                    )
+                                    .clipShape(Capsule())
                                 }
-                                .padding()
-                                .background(
-                                     Capsule()
-                                         .strokeBorder(Color.black, lineWidth: 0.8)
-                                         .clipped()
-                                )
-                                .clipShape(Capsule())
                             }
                         }
+                        .frame(height: 130)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -101,39 +103,85 @@ struct ProductListView: View {
                 .cornerRadius(20)
                 .padding(.trailing,30)
                 
-                // MARK: PRODUCT LIST
-                LazyVGrid(columns: gridItemVLayout, spacing: 20) {
-                    ForEach(0..<20, id: \.self) { index in
-                        VStack {
-                            Image("menshirt")
-                                .resizable()
-                                .cornerRadius(20)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150)
-                            
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("Title")
-                                        .font(.system(size: 20, weight: .bold))
-                                        .foregroundColor(.primary)
-                                    Text("$ PRICE".uppercased())
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.secondary)
-                                }
-                                .layoutPriority(100)
-                 
-                                Spacer()
+                // MARK: CATALOG
+                VStack (alignment: .leading) {
+                    Text("Catalog")
+                        .foregroundColor(Color.gray)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHGrid(rows: gridItemVLayout, spacing: 20) {
+                            ForEach(0..<10, id: \.self) { index in
+                                Button(action: {
+                                    print("Clicked")
+                                }, label: {
+                                    VStack {
+                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                            .fill(Color("Green"))
+                                            .frame(width: 100, height: 100)
+                                            
+                                        Text("Catalog")
+                                            .foregroundColor(Color.black)
+                                    }
+                                    
+                                    
+                                })
                             }
-                            .padding(.top, 10)
                         }
-                        .padding()
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-       
-                        )
-                        .padding(.trailing, 30)
+                        .frame(height: 280)
+                    }
+                    .padding(.trailing, 30)
+                }
+                
+                // MARK: PRODUCT LIST
+                VStack(alignment: .leading) {
+                    Text("RECOMMEND FOR YOU")
+                        .font(.system(size: 20, weight: .bold))
+                    LazyVGrid(columns: gridItemVLayout, spacing: 20) {
+                        ForEach(0..<20, id: \.self) { index in
+                            VStack {
+                                Image("menshirt")
+                                    .resizable()
+                                    .cornerRadius(20)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150)
+                                
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Title")
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(.primary)
+                                        Text("$ PRICE".uppercased())
+                                            .font(.system(size: 16))
+                                            .foregroundColor(.secondary)
+                                        
+                                        VStack(alignment: .center) {
+                                            Button(action: {
+                                                print("Clicked")
+                                            }, label: {
+                                                Text("Store")
+                                                    .frame(maxWidth: .infinity)
+                                                    .padding()
+                                                    .foregroundColor(Color.white)
+                                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.black))
+                                                    
+                                        })
+                                        }
+                                    }
+                                    .layoutPriority(100)
+                     
+                                    Spacer()
+                                }
+                                .padding(.top, 10)
+                            }
+                            .padding()
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
+           
+                            )
+                            .padding(.trailing, 30)
+                        }
                     }
                 }
                 

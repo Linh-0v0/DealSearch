@@ -83,7 +83,7 @@ struct ShopContentView: View {
                 VStack (alignment: .leading) {
                     Text("Category")
                         .font(.system(size: 24, weight: .bold))
-                    ScrollView(.horizontal) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: gridItemLayout, spacing: 20) {
                             ForEach(0..<10, id: \.self) { index in
                                 Button(action: {
