@@ -139,11 +139,16 @@ struct ProductListView: View {
                     LazyVGrid(columns: gridItemVLayout, spacing: 20) {
                         ForEach(0..<20, id: \.self) { index in
                             VStack {
-                                Image("menshirt")
-                                    .resizable()
-                                    .cornerRadius(20)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 150)
+                                
+                                ZStack {
+                                    Image("menshirt")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(height: 150)
+                                }
+                                .cornerRadius(20)
+                                .clipped()
+                                .aspectRatio(1, contentMode: .fit)
                                 
                                 HStack {
                                     VStack(alignment: .leading) {

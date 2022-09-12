@@ -10,12 +10,18 @@ import SwiftUI
 struct ProductDetailVie: View {
     var body: some View {
         ScrollView {
-            // MARK: PRODUCT DETAIL
             VStack(alignment: .leading) {
-//                Image("menshirt")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
+//                // MARK: PRODUCT IMAGE
+//                ZStack {
+//                    Image("menshirt")
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(height: 400)
+//                }
+//                .clipped()
+//                .aspectRatio(1, contentMode: .fit)
                 
+                // MARK: PRODUCT DETAIL
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Product name")
@@ -96,13 +102,12 @@ struct ProductDetailVie: View {
                         VStack(alignment: .leading, spacing: 20) {
                             Text("Deal compare")
                                 .font(.system(size: 22, weight: .bold))
-                                .foregroundColor(Color.black)
-                            
+
                             Text("We found 12 other places, the deals are from $ 200 - $ 1000")
                                 .foregroundColor(Color.gray)
                         }
-                        
-                        ForEach(0..<3, id: \.self) { index in
+
+                        ForEach(0..<2, id: \.self) { index in
                             Text("Shopee")
                                 .foregroundColor(Color.white)
                                 .padding()
@@ -113,16 +118,22 @@ struct ProductDetailVie: View {
                             ForEach(0..<3, id: \.self) { index in
                                 HStack {
                                     HStack {
-                                        Image("menshirt")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                        
+                                        ZStack {
+                                            Image("menshirt")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 80)
+                                        }
+                                        .clipped()
+                                        .aspectRatio(1, contentMode: .fit)
+
                                         Text("Product name")
+                                            .font(.system(size: 16))
                                     }
                                     Spacer()
                                     HStack {
                                         Text("$ 400")
-                                        
+
                                         Button(action: {
                                             print("Clicked")
                                         }, label: {
@@ -136,17 +147,84 @@ struct ProductDetailVie: View {
                                                 )
                                         })
                                     }
-                                        
+
                                 }
-                                .padding(.horizontal, 10)
                                 .padding(.vertical, 10)
-                                .frame(width: 400, height: 100)
+                                .frame(height: 100)
+                                .frame(maxWidth: .infinity)
                                 .cornerRadius(10)
                             }
                         }
                         .padding(.bottom, 10)
                     }
                     
+                    // MARK: PRODUCT DESCRIPTION
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("About the product")
+                            .font(.system(size: 22, weight: .bold))
+                        
+                        Text("Product description")
+                            .font(.system(size: 16))
+                            .foregroundColor(Color.gray)
+                    }
+                    .padding(.bottom, 10)
+                    
+                    // MARK: USER COMMENT
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("Reviews from buyer")
+                            .font(.system(size: 22, weight: .bold))
+                        
+                        VStack(alignment: .leading, spacing: 30) {
+                            ForEach(0..<3, id: \.self) { index in
+                                VStack(alignment: .leading, spacing: 15) {
+                                    HStack(spacing: 20) {
+                                        Rectangle()
+                                            .fill(.gray)
+                                            .opacity(0.2)
+                                            .frame(width: 60, height: 60)
+                                            .cornerRadius(50)
+                                        
+                                        VStack(alignment: .leading, spacing: 5) {
+                                            HStack(spacing: 15) {
+                                                Text("User name")
+                                                    .font(.system(size: 16))
+                                                    .foregroundColor(Color.gray)
+                                                
+                                                HStack {
+                                                    Image(systemName: "magnifyingglass")
+                                                    Text("Bought on Shopee")
+                                                        .fontWeight(.medium)
+                                                        .foregroundColor(Color.orange)
+                                                        .font(.system(size: 16))
+                                                }
+                                            }
+                                            
+                                            Text("4.3 review stars")
+                                                .foregroundColor(Color.yellow)
+                                        }
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 10) {
+                                        Text("Good product")
+                                        
+                                        ZStack {
+                                            Image("menshirt")
+                                                .resizable()
+                                                .scaledToFill()
+                                        }
+                                        .frame(width: 100, height:100)
+                                        .clipped()
+                                        .aspectRatio(1, contentMode: .fit)
+                                        
+                                        Text("1 year ago")
+                                            .font(.system(size: 16))
+                                            .foregroundColor(Color.gray)
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
                 .padding(.top, 20)
                 .padding(.trailing, 30)
