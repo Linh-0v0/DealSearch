@@ -21,4 +21,11 @@ enum Page {
     case registerPage
     case welcomeBackPage
     case testPage
+    
+    //Admin
+    case editProduct
+    case editTrendingProduct
+    case editShop
+    case editCategory
+    
 }

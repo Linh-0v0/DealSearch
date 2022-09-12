@@ -10,7 +10,7 @@ import SwiftUI
 struct registerFieldTitle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(Font.custom("Montserrat-SemiBold", size: 16)).foregroundColor(Color("Black"))
+            .font(Font.custom("Montserrat-SemiBold", size: 15)).foregroundColor(Color("Black"))
             .padding(.bottom, 0)
     }
 }
@@ -18,7 +18,7 @@ struct registerFieldTitle: ViewModifier {
 struct registerInputField: ViewModifier{
     func body(content: Content) -> some View {
         content
-            .font(Font.custom("Montserrat-Regular", size: 15))
+            .font(Font.custom("Montserrat-Regular", size: 14))
             .textInputAutocapitalization(.never)
             .autocapitalization(.none)
             .disableAutocorrection(true)

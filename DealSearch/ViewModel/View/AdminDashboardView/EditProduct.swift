@@ -7,59 +7,55 @@
 
 import SwiftUI
 
-struct EditDeleteProduct: View {
+struct EditProduct: View {
     @State private var showingUpdateSheet = false
     @State private var showingAddProduct = false
     @StateObject var productData = ProductData()
     @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(searchResults) { prod in
-                        HStack(alignment: .top, spacing: 17) {
-                            Text(prod.id)
-                            Text(prod.product_name)
-                            
-                            Spacer()
-                            
-                            Group {
-                                // Delete Product
-                                Button {
-                                    productData.deleteData(productToDelete: prod)
-                                } label: {
-                                    Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20)
-                                }
-                                
-                                // Edit Product
-                                Button {
-                                    showingUpdateSheet.toggle()
-                                } label: {
-                                    Image(systemName: "pencil")
-                                        .resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 18, height: 18)
-                                }
-                                .sheet(isPresented: $showingUpdateSheet) {
-                                    UpdateProdSheetView(productClicked: prod)
-                                }
-                            }
+        List {
+            ForEach(searchResults) { prod in
+                HStack(alignment: .top, spacing: 17) {
+                    Text(prod.id)
+                    Text(prod.product_name)
+                    
+                    Spacer()
+                    
+                    Group {
+                        // Delete Product
+                        Button {
+                            productData.deleteData(productToDelete: prod)
+                        } label: {
+                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
+                        // Edit Product
+                        Button {
+                            showingUpdateSheet.toggle()
+                        } label: {
+                            Image(systemName: "pencil")
+                                .resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 18, height: 18)
+                        }
+                        .sheet(isPresented: $showingUpdateSheet) {
+                            UpdateProdSheetView(productClicked: prod)
                         }
                     }
                 }
-                .searchable(text: $searchText)
-                .navigationTitle("All Products")
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Add Product") {
-                            showingAddProduct.toggle()
-                            print("Pressed")
-                        }
-                        .sheet(isPresented: $showingAddProduct) {
-                            AddProduct()
-                        }
-                    }
+            }
+        }
+        .searchable(text: $searchText)
+        .navigationTitle("All Products")
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button("Add Product") {
+                    showingAddProduct.toggle()
+                    print("Pressed")
+                }
+                .sheet(isPresented: $showingAddProduct) {
+                    AddProduct()
                 }
             }
         }
@@ -75,9 +71,9 @@ struct EditDeleteProduct: View {
     }
 }
 
-struct EditDeleteProduct_Previews: PreviewProvider {
+struct EditProduct_Previews: PreviewProvider {
     static var previews: some View {
-        EditDeleteProduct(productData: ProductData())
+        EditProduct(productData: ProductData())
     }
 }
 
@@ -142,14 +138,14 @@ struct UpdateProdSheetView: View {
                             product_name: productName,
                             product_price: productPrice,
                             shop_id: shopId)
-                    updateMessage = "updated"
+                        updateMessage = "updated"
                         
-                    // Clear the text field after submit
-                    categoryId = 0
-                    productName = ""
-                    productDeal = 0
-                    productPrice = 0
-                    shopId = 0
+                        // Clear the text field after submit
+                        categoryId = 0
+                        productName = ""
+                        productDeal = 0
+                        productPrice = 0
+                        shopId = 0
                     } else {
                         updateMessage = "error"
                     }

@@ -14,52 +14,48 @@ struct EditCategory: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(searchResults) { categ in
-                        HStack(alignment: .top, spacing: 17) {
-                            Text(categ.id)
-                            Text(categ.category_name)
-                            
-                            Spacer()
-                            
-                            Group {
-                                // Delete Category
-                                Button {
-                                    categoryData.deleteData(categoryToDelete: categ)
-                                } label: {
-                                    Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20)
-                                }
-                                
-                                // Edit Product
-                                Button {
-                                    showingUpdateSheet.toggle()
-                                } label: {
-                                    Image(systemName: "pencil")
-                                        .resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 18, height: 18)
-                                }
-                                .sheet(isPresented: $showingUpdateSheet) {
-                                    UpdateCategSheetView(categoryClicked: categ)
-                                }
-                            }
+        List {
+            ForEach(searchResults) { categ in
+                HStack(alignment: .top, spacing: 17) {
+                    Text(categ.id)
+                    Text(categ.category_name)
+                    
+                    Spacer()
+                    
+                    Group {
+                        // Delete Category
+                        Button {
+                            categoryData.deleteData(categoryToDelete: categ)
+                        } label: {
+                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
+                        // Edit Product
+                        Button {
+                            showingUpdateSheet.toggle()
+                        } label: {
+                            Image(systemName: "pencil")
+                                .resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 18, height: 18)
+                        }
+                        .sheet(isPresented: $showingUpdateSheet) {
+                            UpdateCategSheetView(categoryClicked: categ)
                         }
                     }
                 }
-                .searchable(text: $searchText)
-                .navigationTitle("All Categories")
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Add Category") {
-                            showingAddCategory.toggle()
-                            print("Pressed")
-                        }
-                        .sheet(isPresented: $showingAddCategory) {
-                            AddCategory()
-                        }
-                    }
+            }
+        }
+        .searchable(text: $searchText)
+        .navigationTitle("All Categories")
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button("Add Category") {
+                    showingAddCategory.toggle()
+                    print("Pressed")
+                }
+                .sheet(isPresented: $showingAddCategory) {
+                    AddCategory()
                 }
             }
         }
@@ -117,12 +113,12 @@ struct UpdateCategSheetView: View {
                 Button {
                     if checkField() {
                         categoryData.updateData(categoryToUpdate: categoryClicked, category_name: categoryName, category_image: categoryImage ?? categoryClicked.category_image)
-                    updateMessage = "updated"
+                        updateMessage = "updated"
                         
-                    // Clear the text field after submit
-                    categoryName = ""
-                    categoryImage = ""
-                    
+                        // Clear the text field after submit
+                        categoryName = ""
+                        categoryImage = ""
+                        
                     } else {
                         updateMessage = "error"
                     }

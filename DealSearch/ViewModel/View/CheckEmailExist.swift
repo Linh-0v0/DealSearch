@@ -34,7 +34,7 @@ struct CheckEmailExist: View {
     private func delayView() async {
         // Wait for 1 second to fetch data
         // (1 second = 1_000_000_000 nanoseconds)
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        try? await Task.sleep(nanoseconds: 1_500_000_000)
         isCheckingEmail = false
     }
 }

@@ -22,6 +22,8 @@ struct RegisterView: View {
     @State private var dateOfBirth: String = ""
     @State private var password: String = ""
     @State private var address: String = ""
+    @State private var isAdmin = 0
+    @State private var adminPass: String = ""
     
     var body: some View {
         VStack {
@@ -77,8 +79,27 @@ struct RegisterView: View {
                     Text("ADDRESS*").modifier(registerFieldTitle())
                     TextField("Address", text: $address).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
+                
+                VStack {
+                    Text("ACCOUNT TYPE*")
+                        .modifier(registerFieldTitle())
+                    Picker("Account Type", selection: $isAdmin) {
+                        Text("Admin").tag(1)
+                        Text("User").tag(0)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }.modifier(registerPaddingBtwField())
+                
+                if isAdmin == 1 {
+                    VStack(alignment: .leading) {
+                        Text("ADMIN VALIDATE PASS*").modifier(registerFieldTitle())
+                        SecureField("Password", text: $adminPass).modifier(registerInputField())
+                    }.modifier(registerPaddingBtwField())
+                }
             }
             .padding(.horizontal, 30)
+            
+           
             
             // MARK: Register Button
             Button(action: {
@@ -86,7 +107,7 @@ struct RegisterView: View {
                 if checkRegisterForm() {
                     
                     // Add Info to User db
-                    users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, email: emailInputted, dateOfBirth: dateOfBirth, address: address)
+                    users.addData(phoneNum: phoneNumber, firstName: firstName, lastName: lastName, email: emailInputted, dateOfBirth: dateOfBirth, address: address, isAdmin: isAdmin)
                     register()
                 }
             }, label: {
@@ -97,7 +118,7 @@ struct RegisterView: View {
                         .font(Font.custom("Montserrat-Bold", size: 22))
                         .foregroundColor(.white))
             })
-            .padding(.bottom, 20)
+            .padding(.bottom, 10)
             .padding(.top, 10)
             
             // MARK: Error message
@@ -105,14 +126,16 @@ struct RegisterView: View {
                 Text("Failed creating account: \(signUpErrorMessage)")
                     .foregroundColor(.red)
             }
+            
         }
     }
     
     // MARK: FUNCTIONS
     func checkRegisterForm() -> Bool {
-        // Add check all fields here ...
-        
-        
+        if isAdmin == 1 && adminPass != "098765" {
+            signUpErrorMessage = "Wrong Admin Password!"
+            return false
+        }
         return true
     }
     

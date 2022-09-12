@@ -36,7 +36,9 @@ class CurrentUserData: ObservableObject {
                                         lastName: d["lastName"] as? String ?? "",
                                         dateOfBirth: d["dateOfBirth"] as? String ?? "",
                                         email: d["email"] as? String ?? "",
-                                        address: d["address"] as? String ?? "")
+                                        address: d["address"] as? String ?? "",
+                                        isAdmin: d["isAdmin"] as? Int ?? 0
+                            )
                         }
                     }
                 }

@@ -14,52 +14,48 @@ struct EditShop: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(searchResults) { shop in
-                        HStack(alignment: .top, spacing: 17) {
-                            Text(shop.id)
-                            Text(shop.shop_name)
-                            
-                            Spacer()
-                            
-                            Group {
-                                // Delete Shop
-                                Button {
-                                    shopData.deleteData(shopToDelete: shop)
-                                } label: {
-                                    Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20)
-                                }
-                                
-                                // Edit Product
-                                Button {
-                                    showingUpdateSheet.toggle()
-                                } label: {
-                                    Image(systemName: "pencil")
-                                        .resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 18, height: 18)
-                                }
-                                .sheet(isPresented: $showingUpdateSheet) {
-                                    UpdateShopSheetView(shopClicked: shop)
-                                }
-                            }
+        List {
+            ForEach(searchResults) { shop in
+                HStack(alignment: .top, spacing: 17) {
+                    Text(shop.id)
+                    Text(shop.shop_name)
+                    
+                    Spacer()
+                    
+                    Group {
+                        // Delete Shop
+                        Button {
+                            shopData.deleteData(shopToDelete: shop)
+                        } label: {
+                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
+                        // Edit Product
+                        Button {
+                            showingUpdateSheet.toggle()
+                        } label: {
+                            Image(systemName: "pencil")
+                                .resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 18, height: 18)
+                        }
+                        .sheet(isPresented: $showingUpdateSheet) {
+                            UpdateShopSheetView(shopClicked: shop)
                         }
                     }
                 }
-                .searchable(text: $searchText)
-                .navigationTitle("All Shops")
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Add Shop") {
-                            showingAddShop.toggle()
-                            print("Pressed")
-                        }
-                        .sheet(isPresented: $showingAddShop) {
-                            AddShop()
-                        }
-                    }
+            }
+        }
+        .searchable(text: $searchText)
+        .navigationTitle("All Shops")
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button("Add Shop") {
+                    showingAddShop.toggle()
+                    print("Pressed")
+                }
+                .sheet(isPresented: $showingAddShop) {
+                    AddShop()
                 }
             }
         }
@@ -115,12 +111,12 @@ struct UpdateShopSheetView: View {
                 Button {
                     if checkField() {
                         shopData.updateData(shopToUpdate: shopClicked, shop_name: shopName, shop_logo: shopLogo ?? shopClicked.shop_logo)
-                    updateMessage = "updated"
+                        updateMessage = "updated"
                         
-                    // Clear the text field after submit
-                    shopName = ""
-                    shopLogo = ""
-                    
+                        // Clear the text field after submit
+                        shopName = ""
+                        shopLogo = ""
+                        
                     } else {
                         updateMessage = "error"
                     }

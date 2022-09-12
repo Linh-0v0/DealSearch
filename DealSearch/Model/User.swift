@@ -15,4 +15,5 @@ struct User: Identifiable {
     var dateOfBirth: String
     var email: String
     var address: String
+    var isAdmin: Int
 }

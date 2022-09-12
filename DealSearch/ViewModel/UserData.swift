@@ -45,11 +45,11 @@ class UserData: ObservableObject {
         }
     }
     
-    func addData(phoneNum: String, firstName: String, lastName: String, email: String, dateOfBirth: String, address: String) {
+    func addData(phoneNum: String, firstName: String, lastName: String, email: String, dateOfBirth: String, address: String, isAdmin: Int) {
         // Get a reference to db
         let db = Firestore.firestore()
         
-        db.collection("Users").addDocument(data: ["phoneNumber" : phoneNum, "firstName": firstName, "lastName": lastName, "email": email, "dateOfBirth": dateOfBirth, "address": address]) { error in
+        db.collection("Users").addDocument(data: ["phoneNumber" : phoneNum, "firstName": firstName, "lastName": lastName, "email": email, "dateOfBirth": dateOfBirth, "address": address, "isAdmin": isAdmin]) { error in
             if error == nil {
                 // No error
                 // Call getData to retreive the lastest data
@@ -80,7 +80,9 @@ class UserData: ObservableObject {
                                         lastName: d["lastName"] as? String ?? "",
                                         dateOfBirth: d["dateOfBirth"] as? String ?? "",
                                         email: d["email"] as? String ?? "",
-                                        address: d["address"] as? String ?? "")
+                                        address: d["address"] as? String ?? "",
+                                        isAdmin: d["isAmin"] as? Int ?? 0
+                            )
                         }
                     }
                 }

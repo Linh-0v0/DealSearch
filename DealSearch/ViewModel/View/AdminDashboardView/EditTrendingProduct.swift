@@ -13,38 +13,34 @@ struct EditTrendingProduct: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(searchResults) { prod in
-                        HStack(alignment: .top, spacing: 17) {
-                            Text(prod.id)
-                            Text(prod.product_name)
-                            
-                            Spacer()
-                            
-                            // Delete Product
-                            Button {
-                                productData.deleteData(productToDelete: prod)
-                            } label: {
-                                Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                    .frame(width: 20, height: 20)
-                            }
-                        }
+        List {
+            ForEach(searchResults) { prod in
+                HStack(alignment: .top, spacing: 17) {
+                    Text(prod.id)
+                    Text(prod.product_name)
+                    
+                    Spacer()
+                    
+                    // Delete Product
+                    Button {
+                        productData.deleteData(productToDelete: prod)
+                    } label: {
+                        Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
                     }
                 }
-                .searchable(text: $searchText)
-                .navigationTitle("Trending Products")
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Add Product") {
-                            showingAddSheet.toggle()
-                            print("Pressed")
-                        }
-                        .sheet(isPresented: $showingAddSheet) {
-                            AddToTrendingList()
-                        }
-                    }
+            }
+        }
+        .searchable(text: $searchText)
+        .navigationTitle("Trending Products")
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button("Add Product") {
+                    showingAddSheet.toggle()
+                    print("Pressed")
+                }
+                .sheet(isPresented: $showingAddSheet) {
+                    AddToTrendingList()
                 }
             }
         }

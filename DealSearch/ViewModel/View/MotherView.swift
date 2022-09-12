@@ -26,6 +26,16 @@ struct MotherView: View {
                 RegisterView(emailInputted: .constant(""), emailFound: CurrentUserData(emailInputted: ""))
             case .welcomeBackPage:
                 WelcomeBackView(emailInputted: .constant(""), emailFound: CurrentUserData(emailInputted: ""))
+                
+                //Admin
+            case .editProduct:
+                EditProduct()
+            case .editTrendingProduct:
+                EditTrendingProduct()
+            case .editCategory:
+                EditCategory()
+            case .editShop:
+                EditShop()
             }
         }
     }
