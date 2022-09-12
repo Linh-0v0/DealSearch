@@ -86,7 +86,7 @@ struct AddProduct: View {
                 Text("Added!")
                     .foregroundColor(.green)
                     .font(.system(size: 25))
-            } else if addMessage == "error" {
+            } else {
                 Text("Invalid input!")
                     .foregroundColor(.red)
                     .font(.system(size: 25))

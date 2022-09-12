@@ -41,6 +41,8 @@
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
 		C4CB7CCD28B8A7D100B017EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CCC28B8A7D100B017EB /* Preview Assets.xcassets */; };
+<<<<<<< HEAD
+<<<<<<< HEAD
 		C4DF286728CE58A000FB9B1E /* AddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF286628CE58A000FB9B1E /* AddProduct.swift */; };
 		C4DF286928CE5F8100FB9B1E /* TrendingProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF286828CE5F8100FB9B1E /* TrendingProductData.swift */; };
 		C4DF286B28CE605A00FB9B1E /* EditDeleteProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF286A28CE605A00FB9B1E /* EditDeleteProduct.swift */; };
@@ -49,6 +51,10 @@
 		EA60B6E528CDF91F004C9664 /* ShopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60B6E428CDF91F004C9664 /* ShopContentView.swift */; };
 		EA60B6E728CE3A4F004C9664 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60B6E628CE3A4F004C9664 /* ProductListView.swift */; };
 		EA60B6EB28CE47E1004C9664 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60B6EA28CE47E1004C9664 /* ProductDetailView.swift */; };
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +92,8 @@
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
 		C4CB7CC928B8A7D100B017EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4CB7CCC28B8A7D100B017EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+<<<<<<< HEAD
 		C4DF286628CE58A000FB9B1E /* AddProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProduct.swift; sourceTree = "<group>"; };
 		C4DF286828CE5F8100FB9B1E /* TrendingProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProductData.swift; sourceTree = "<group>"; };
 		C4DF286A28CE605A00FB9B1E /* EditDeleteProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeleteProduct.swift; sourceTree = "<group>"; };
@@ -94,6 +102,10 @@
 		EA60B6E428CDF91F004C9664 /* ShopContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopContentView.swift; sourceTree = "<group>"; };
 		EA60B6E628CE3A4F004C9664 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		EA60B6EA28CE47E1004C9664 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +171,14 @@
 		C469F22D28C65A2F003F401A /* View */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+<<<<<<< HEAD
 				C4DF286528CE582800FB9B1E /* AdminDashboardView */,
 				EA60B6E328CDF907004C9664 /* ShopView */,
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
 				C469F23128C65A2F003F401A /* TestView.swift */,
 				C469F22F28C65A2F003F401A /* ButtonAnimation.swift */,
 				C402416128C8944700B205B8 /* LandingNavigation.swift */,
@@ -217,6 +235,8 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+<<<<<<< HEAD
 		C4DF286528CE582800FB9B1E /* AdminDashboardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +256,10 @@
 			path = ShopView;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
+=======
+>>>>>>> parent of 0ae69a8 (Update shop view)
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,13 +356,11 @@
 				C4DF286F28CE898A00FB9B1E /* AddToTrendingList.swift in Sources */,
 				C4DF286D28CE765D00FB9B1E /* EditTrendingProduct.swift in Sources */,
 				C402415C28C7232B00B205B8 /* CurrentUserData.swift in Sources */,
-				EA60B6E528CDF91F004C9664 /* ShopContentView.swift in Sources */,
 				C469F23B28C65A2F003F401A /* WelcomeView.swift in Sources */,
 				C469F21828C659FC003F401A /* Modifier.swift in Sources */,
 				C402416228C8944700B205B8 /* LandingNavigation.swift in Sources */,
 				C402416028C879F600B205B8 /* MotherView.swift in Sources */,
 				C469F22C28C65A22003F401A /* ProdRelatedInfo.swift in Sources */,
-				EA60B6EB28CE47E1004C9664 /* ProductDetailView.swift in Sources */,
 				C469F23C28C65A2F003F401A /* RegisterView.swift in Sources */,
 				C46CE78828CB8E1E0047DE96 /* Category.swift in Sources */,
 				C469F22928C65A22003F401A /* ShopData.swift in Sources */,
@@ -346,7 +368,6 @@
 				C469F21F28C65A14003F401A /* Shop.swift in Sources */,
 				C469F21E28C65A14003F401A /* User.swift in Sources */,
 				C469F21D28C65A14003F401A /* UserDefault.swift in Sources */,
-				EA60B6E728CE3A4F004C9664 /* ProductListView.swift in Sources */,
 				C469F22A28C65A22003F401A /* ProductData.swift in Sources */,
 				C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */,
 				C4DF286928CE5F8100FB9B1E /* TrendingProductData.swift in Sources */,
