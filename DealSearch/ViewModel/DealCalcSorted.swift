@@ -10,7 +10,7 @@ import SwiftUI
 
 class DealCalcSorted: ObservableObject {
     @Published var prodDealSorted = [Product]()
-    @StateObject var productList = ProductData()
+    @StateObject private var productList = ProductData()
     
     init() {
         productDealSorted(productList: productList.productList)

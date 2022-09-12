@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AddToTrendingList: View {
-    @StateObject var trendingProdData = TrendingProductData()
-    @StateObject var productData = ProductData()
+    @StateObject private var trendingProdData = TrendingProductData()
+    @StateObject private var productData = ProductData()
     @State private var searchText = ""
     @State private var addMessage = ""
     

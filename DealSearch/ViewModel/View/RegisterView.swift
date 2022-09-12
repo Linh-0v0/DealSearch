@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct RegisterView: View {
     @EnvironmentObject var viewRouter: ViewRouter
-    @StateObject var users = UserData()
+    @StateObject private var users = UserData()
     @State var signUpProcessing = false
     @State var signUpErrorMessage = ""
     @Binding var emailInputted: String

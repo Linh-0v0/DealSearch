@@ -15,12 +15,12 @@ class ShopData: ObservableObject {
         getData()
     }
     
-    func updateData(shopToUpdate: Shop) {
+    func updateData(shopToUpdate: Shop, shop_name: String, shop_logo: String) {
         // Get a reference to db
         let db = Firestore.firestore()
         
         // Set the data to update
-        db.collection("Shops").document(shopToUpdate.id).updateData(["shop_name": "\(shopToUpdate.shop_name)"]) { error in
+        db.collection("Shops").document(shopToUpdate.id).updateData(["shop_name": shop_name, "shop_logo": shop_logo]) { error in
             if error == nil {
                 // no error
                 self.getData()

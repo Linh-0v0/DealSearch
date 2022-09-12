@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddProduct: View {
-    @StateObject var productData = ProductData()
+    @StateObject private var productData = ProductData()
     @State private var addMessage = ""
     
     @State private var categoryId: Int = 0

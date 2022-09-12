@@ -12,9 +12,9 @@ import FirebaseAuth
 struct TestView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var signOutProcessing = false
-//    @StateObject var productList = ProductData()
-//    @StateObject var shopList = ShopData()
-//    @StateObject var categoryList = CategoryData()
+//    @StateObject private var productList = ProductData()
+//    @StateObject private var shopList = ShopData()
+//    @StateObject private var categoryList = CategoryData()
     
     var body: some View {
         VStack {

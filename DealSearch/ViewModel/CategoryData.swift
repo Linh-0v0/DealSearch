@@ -15,12 +15,12 @@ class CategoryData: ObservableObject {
         getData()
     }
     
-    func updateData(categoryToUpdate: Category) {
+    func updateData(categoryToUpdate: Category, category_name: String, category_image: String) {
         // Get a reference to db
         let db = Firestore.firestore()
         
         // Set the data to update
-        db.collection("Category").document(categoryToUpdate.id).updateData(["category_name": "\(categoryToUpdate.category_name)"]) { error in
+        db.collection("Category").document(categoryToUpdate.id).updateData(["category_name": category_name, "category_image": category_image]) { error in
             if error == nil {
                 // no error
                 self.getData()
@@ -28,7 +28,7 @@ class CategoryData: ObservableObject {
         }
     }
     
-    func deleteData(categoryToDelete: Shop) {
+    func deleteData(categoryToDelete: Category) {
         // Get a reference to db
         let db = Firestore.firestore()
         

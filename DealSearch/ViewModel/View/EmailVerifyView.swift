@@ -10,7 +10,7 @@ import SwiftUI
 struct EmailVerifyView: View {
     @State var isExisted: Bool = true
     @State private var willMoveToNextScreen: Int? = nil
-    @State private var email: String = ""
+    @State var email: String = ""
     
     var body: some View {
         // If logged in, go to Home Page
