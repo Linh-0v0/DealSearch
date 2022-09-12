@@ -13,6 +13,7 @@ struct EditTrendingProduct: View {
     @State private var searchText = ""
     
     var body: some View {
+        // MARK: TRENDING PRODUCT LIST
         List {
             ForEach(searchResults) { prod in
                 HStack(alignment: .top, spacing: 17) {

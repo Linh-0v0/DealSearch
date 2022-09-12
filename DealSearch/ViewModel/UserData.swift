@@ -81,7 +81,7 @@ class UserData: ObservableObject {
                                         dateOfBirth: d["dateOfBirth"] as? String ?? "",
                                         email: d["email"] as? String ?? "",
                                         address: d["address"] as? String ?? "",
-                                        isAdmin: d["isAmin"] as? Int ?? 0
+                                        isAdmin: d["isAdmin"] as? Int ?? 0
                             )
                         }
                     }

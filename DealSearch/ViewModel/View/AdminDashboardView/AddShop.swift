@@ -26,6 +26,7 @@ struct AddShop: View {
             }
             Spacer().frame(width: 0, height: 80)
             
+            // MARK: INPUT FIELDS
             VStack(spacing:20) {
                 Group {
                     VStack(alignment: .leading) {

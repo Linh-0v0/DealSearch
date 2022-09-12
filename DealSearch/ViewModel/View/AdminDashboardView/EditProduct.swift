@@ -14,6 +14,7 @@ struct EditProduct: View {
     @State private var searchText = ""
     
     var body: some View {
+        // MARK: PRODUCT LIST
         List {
             ForEach(searchResults) { prod in
                 HStack(alignment: .top, spacing: 17) {
@@ -99,6 +100,7 @@ struct UpdateProdSheetView: View {
             }
             Spacer().frame(width: 0, height: 80)
             
+            // MARK: UPDATE FIELD INPUTS
             VStack(spacing:20) {
                 Group {
                     VStack(alignment: .leading) {
@@ -128,6 +130,7 @@ struct UpdateProdSheetView: View {
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 
+                // MARK: BUTTON UPDATE
                 Button {
                     if checkField() {
                         productData.updateData(

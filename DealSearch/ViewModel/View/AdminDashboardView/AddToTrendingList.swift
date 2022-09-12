@@ -14,6 +14,7 @@ struct AddToTrendingList: View {
     @State private var addMessage = ""
     
     var body: some View {
+        // MARK: INPUT FIELDS
         VStack {
             NavigationView {
                 List {

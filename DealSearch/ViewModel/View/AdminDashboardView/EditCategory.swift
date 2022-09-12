@@ -14,6 +14,7 @@ struct EditCategory: View {
     @State private var searchText = ""
     
     var body: some View {
+        // MARK: CATEGORY LIST
         List {
             ForEach(searchResults) { categ in
                 HStack(alignment: .top, spacing: 17) {
@@ -97,6 +98,7 @@ struct UpdateCategSheetView: View {
             }
             Spacer().frame(width: 0, height: 80)
             
+            // MARK: CATEGORY INPUT FIELDS
             VStack(spacing:20) {
                 Group {
                     VStack(alignment: .leading) {
@@ -110,6 +112,7 @@ struct UpdateCategSheetView: View {
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 
+                // MARK: BUTTON UPDATE
                 Button {
                     if checkField() {
                         categoryData.updateData(categoryToUpdate: categoryClicked, category_name: categoryName, category_image: categoryImage ?? categoryClicked.category_image)
