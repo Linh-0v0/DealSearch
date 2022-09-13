@@ -43,7 +43,7 @@ struct RegisterView: View {
                 // MARK: Register Form
                 VStack(alignment: .leading) {
                     Text("PHONE NUMBER*").modifier(registerFieldTitle())
-                    TextField("Mobile number (pre-filled)", text: $phoneNumber).modifier(registerInputField())
+                    TextField("Mobile number", text: $phoneNumber).modifier(registerInputField())
                 }.modifier(registerPaddingBtwField())
                 
                 HStack {

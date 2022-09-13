@@ -80,7 +80,7 @@ struct WelcomeBackView: View {
                     .foregroundColor(.red)
             }
             
-            Spacer().frame(width: 0, height: 170)
+            Spacer()
         }
       
 
