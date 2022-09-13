@@ -22,29 +22,27 @@ struct EditCategory: View {
                     Text(categ.category_name)
                     
                     Spacer()
+                }
+                
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    // Delete Category
+                    Button(role: .destructive) {
+                        categoryData.deleteData(categoryToDelete: categ)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
                     
-                    Group {
-                        // Delete Category
-                        Button {
-                            categoryData.deleteData(categoryToDelete: categ)
-                        } label: {
-                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
-                        }
-                        
-                        // Edit Product
-                        Button {
-                            showingUpdateSheet.toggle()
-                        } label: {
-                            Image(systemName: "pencil")
-                                .resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 18, height: 18)
-                        }
-                        .sheet(isPresented: $showingUpdateSheet) {
-                            UpdateCategSheetView(categoryClicked: categ)
-                        }
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                    } label: {
+                        Label("Pencil", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateCategSheetView(categoryClicked: categ)
                     }
                 }
+                
             }
         }
         .searchable(text: $searchText)

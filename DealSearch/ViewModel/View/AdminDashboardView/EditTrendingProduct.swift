@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditTrendingProduct: View {
+struct EditTrendingProduct: View {
     @State private var showingAddSheet = false
     @StateObject var productData = TrendingProductData()
     @State private var searchText = ""
@@ -21,29 +21,31 @@ struct EditTrendingProduct: View {
                     Text(prod.product_name)
                     
                     Spacer()
-                    
-                    // Delete Product
-                    Button {
+                }
+                // Delete Product
+                swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(role: .destructive) {
                         productData.deleteData(productToDelete: prod)
                     } label: {
-                        Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+                
+            }
+            .searchable(text: $searchText)
+            .navigationTitle("Trending Products")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button("Add Product") {
+                        showingAddSheet.toggle()
+                        print("Pressed")
+                    }
+                    .sheet(isPresented: $showingAddSheet) {
+                        AddToTrendingList()
                     }
                 }
             }
-        }
-        .searchable(text: $searchText)
-        .navigationTitle("Trending Products")
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Button("Add Product") {
-                    showingAddSheet.toggle()
-                    print("Pressed")
-                }
-                .sheet(isPresented: $showingAddSheet) {
-                    AddToTrendingList()
-                }
-            }
+            
         }
         
     }

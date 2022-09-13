@@ -22,29 +22,27 @@ struct EditShop: View {
                     Text(shop.shop_name)
                     
                     Spacer()
+                }
+                
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    // Delete Shop
+                    Button(role: .destructive) {
+                        shopData.deleteData(shopToDelete: shop)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
                     
-                    Group {
-                        // Delete Shop
-                        Button {
-                            shopData.deleteData(shopToDelete: shop)
-                        } label: {
-                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
-                        }
-                        
-                        // Edit Product
-                        Button {
-                            showingUpdateSheet.toggle()
-                        } label: {
-                            Image(systemName: "pencil")
-                                .resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 18, height: 18)
-                        }
-                        .sheet(isPresented: $showingUpdateSheet) {
-                            UpdateShopSheetView(shopClicked: shop)
-                        }
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                    } label: {
+                        Label("Pencil", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateShopSheetView(shopClicked: shop)
                     }
                 }
+                
             }
         }
         .searchable(text: $searchText)

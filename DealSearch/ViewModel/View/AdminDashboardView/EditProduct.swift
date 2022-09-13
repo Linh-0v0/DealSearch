@@ -22,27 +22,26 @@ struct EditProduct: View {
                     Text(prod.product_name)
                     
                     Spacer()
+                }
+                .padding(.vertical)
+                
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    // Delete Product
+                    Button(role: .destructive) {
+                        productData.deleteData(productToDelete: prod)
+                        print("Delete Item")
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
                     
-                    Group {
-                        // Delete Product
-                        Button {
-                            productData.deleteData(productToDelete: prod)
-                        } label: {
-                            Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
-                        }
-                        
-                        // Edit Product
-                        Button {
-                            showingUpdateSheet.toggle()
-                        } label: {
-                            Image(systemName: "pencil")
-                                .resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 18, height: 18)
-                        }
-                        .sheet(isPresented: $showingUpdateSheet) {
-                            UpdateProdSheetView(productClicked: prod)
-                        }
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                    } label: {
+                        Label("Pencil", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateProdSheetView(productClicked: prod)
                     }
                 }
             }
@@ -70,6 +69,7 @@ struct EditProduct: View {
             return productData.productList.filter {$0.product_name.contains(searchText) || $0.id.contains(searchText)}
         }
     }
+    
 }
 
 struct EditProduct_Previews: PreviewProvider {

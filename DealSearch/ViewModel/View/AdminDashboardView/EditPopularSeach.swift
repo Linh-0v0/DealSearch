@@ -21,15 +21,17 @@ struct EditPopularSeach: View {
                     Text(search.product_name)
                     
                     Spacer()
-                    
+                }
+                
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                     // Delete Product
-                    Button {
+                    Button(role: .destructive) {
                         popularSearchData.deleteData(searchToDelete: search)
                     } label: {
-                        Image(systemName: "minus.circle").resizable().aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                        Label("Delete", systemImage: "trash")
                     }
                 }
+                
             }
         }
         .searchable(text: $searchText)
