@@ -9,9 +9,15 @@ import SwiftUI
 
 struct ShopContentView: View {
     
-    private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
-    @State private var searchText = ""
+    @StateObject var currentProduct: CurrentProductData
+    @StateObject var currentCateg: CurrentSearchData
+    @StateObject private var categoryData = CategoryData()
+    
+    @State var isFetching = true
+    @State var fetchedSearchkey: [PopularSearch] = []
+    @State var fetchedProduct: [Product] = []
     
     var body: some View {
         ScrollView {
@@ -21,14 +27,9 @@ struct ShopContentView: View {
                     Text("Popular search")
                         .font(.system(size: 24, weight: .bold, design: Font.Design.default))
                         .padding(.bottom, 20)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack (spacing: 10) {
-                            ForEach(0..<3, id: \.self) { index in
-                                 PopularSearchView()
-                            }
-                        }
-                    }
-
+                    
+                    popularSearch
+                    
                 }
                 .padding(.top, 20)
                 
@@ -49,52 +50,14 @@ struct ShopContentView: View {
                 }
                 
                 // MARK: CATEGORY
-                VStack (alignment: .leading) {
-                    Text("Category")
-                        .font(.system(size: 24, weight: .bold))
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHGrid(rows: gridItemLayout, spacing: 20) {
-                            ForEach(0..<10, id: \.self) { index in
-                                CategoryView()
-                            }
-                        }
-                        .frame(height: 280)
-                    }
-                    .padding(.trailing, 30)
-                }
+                categoryView
                 
                 // MARK: PRODUCT LIST
                 VStack (alignment: .leading, spacing: 30) {
-                    ForEach(0..<3, id: \.self) {index in
-                        VStack(alignment:.leading, spacing: 20){
-                            HStack {
-                                Text("Product list")
-                                    .font(.system(size: 20, weight: .bold))
-                                
-                                Spacer()
-                                Button(action: {
-                                    print("Clicked")
-                                }, label: {
-                                    Text("View all")
-                                        .foregroundColor(Color.gray)
-                                })
-                                
-                            }
-                            .padding(.trailing, 30)
-                            
-                            ScrollView(.horizontal) {
-                                HStack(spacing: 10) {
-                                    ForEach(0..<3, id: \.self) { index in
-                                        ProductCardView()
-                                    }
-                                }
-                                .padding(.trailing, 30)
-                                
-                            }
-                        }
+                    Text("Product list")
+                        .font(.system(size: 20, weight: .bold))
                         
-                    }
-                    
+                    productRowList
                 }
             }
             
@@ -105,6 +68,147 @@ struct ShopContentView: View {
 
 struct ShopContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopContentView()
+        ShopContentView(currentProduct: CurrentProductData(categoryClickedId: 1), currentCateg: CurrentSearchData(categoryClickedId: 1))
+    }
+}
+
+extension ShopContentView {
+    var categoryView: some View {
+        VStack (alignment: .leading) {
+            Text("Category")
+                .font(.system(size: 24, weight: .bold))
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: gridItemLayout, spacing: 20) {
+                    ForEach(categoryData.categoryList) { cate in
+                        Button(action: {
+                            currentCateg.getData(categoryClickedId: Int(cate.id)!)
+                            fetchedSearchkey = currentCateg.currentSearch
+                            
+                            currentProduct.getData(categoryClickedId: Int(cate.id)!)
+                            fetchedProduct = currentProduct.currentProduct
+                            
+                            print("CURRENT SEARCH AFTER CLICKED: \(fetchedSearchkey)")
+                        }, label: {
+                            VStack {
+                                AsyncImage(url: URL(string: cate.category_image)) { phase in
+                                    if let image = phase.image {
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100, height: 100)
+                                    } else if phase.error != nil {
+                                        Rectangle()
+                                            .fill(.green)
+                                            .cornerRadius(20)
+                                            .frame(width: 100, height: 100)
+                                    } else {
+                                        ProgressView()
+                                    }
+                                }
+                                
+                                Text(cate.category_name)
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.black)
+                            }
+                        })
+                    }
+                }
+                .frame(height: 280)
+            }
+            .padding(.trailing, 30)
+        }
+    }
+}
+
+extension ShopContentView {
+    var productRowList: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                if !fetchedProduct.isEmpty {
+                    ForEach(fetchedProduct) { product in
+                        VStack {
+                            ZStack {
+                                Image("")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 150)
+                            }
+                            .cornerRadius(20)
+                            .clipped()
+                            .aspectRatio(1, contentMode: .fit)
+
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(product.product_name)
+                                        .frame(width: 200, height: 200)
+                                        
+                                        .font(.system(size: 20, weight: .bold))
+                                        .foregroundColor(.primary)
+                                        .truncationMode(.tail)
+                                    
+                                    Text("$ PRICE".uppercased())
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.secondary)
+
+                                    VStack(alignment: .center) {
+                                        Button(action: {
+                                            print("Clicked")
+                                        }, label: {
+                                            Text("Store")
+                                                .frame(maxWidth: .infinity)
+                                                .padding()
+                                                .foregroundColor(Color.white)
+                                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.black))
+                                        })
+                                    }
+                                }
+                                .layoutPriority(100)
+
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                        }
+                        .padding()
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
+
+                        )
+                        .padding(.trailing, 10)
+                    }
+                }
+                
+            }
+            .padding(.trailing, 20)
+
+        }
+    }
+}
+
+extension ShopContentView {
+    var popularSearch: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack (spacing: 10) {
+                if !fetchedSearchkey.isEmpty {
+                    ForEach(fetchedSearchkey) { search in
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                            Text(search.product_name)
+                                .fontWeight(.bold)
+                        }
+                        .padding()
+                        .background(
+                             Capsule()
+                                 .strokeBorder(Color.black, lineWidth: 0.8)
+                                 .clipped()
+                        )
+                        .clipShape(Capsule())
+                    }
+                }
+                
+            }
+        }
     }
 }

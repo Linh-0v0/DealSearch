@@ -12,7 +12,7 @@ struct LandingNavigation: View {
         // Check Login state in UserDefault
         // to navigate to specific view
         if !Defaults.getCurrentUserDetail().email.isEmpty {
-            TestView()
+            MainTabView()
         } else {
             WelcomeView()
         }

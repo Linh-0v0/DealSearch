@@ -11,7 +11,7 @@ struct MainTabView: View {
     @State private var selectedIndex = 0
     var body: some View {
         TabView(selection: $selectedIndex) {
-            ShopContentView()
+            ShopContentView(currentProduct: CurrentProductData(categoryClickedId: 1), currentCateg: CurrentSearchData(categoryClickedId: 1))
                 .onTapGesture {
                     self.selectedIndex = 0
                 }

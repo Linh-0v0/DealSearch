@@ -20,8 +20,8 @@ struct MotherView: View {
                 WelcomeView()
             case .emailVerifyPage:
                 EmailVerifyView()
-            case .testPage:
-                TestView()
+            case .mainTab:
+                MainTabView()
             case .registerPage:
                 RegisterView(emailInputted: .constant(""), emailFound: CurrentUserData(emailInputted: ""))
             case .welcomeBackPage:

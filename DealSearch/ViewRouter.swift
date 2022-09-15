@@ -20,7 +20,7 @@ enum Page {
     case emailVerifyPage
     case registerPage
     case welcomeBackPage
-    case testPage
+    case mainTab
     
     //Admin
     case editProduct

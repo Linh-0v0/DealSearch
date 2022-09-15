@@ -152,7 +152,7 @@ struct RegisterView: View {
                     // Save Email to UserDefault
                     Defaults.save(emailInputted, firstName: firstName, lastName: lastName, favDeal: "")
                     signUpProcessing = true
-                    viewRouter.currentPage = .testPage
+                    viewRouter.currentPage = .mainTab
                 }
             }
             

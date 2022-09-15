@@ -15,7 +15,7 @@ struct EmailVerifyView: View {
     var body: some View {
         // If logged in, go to Home Page
         if !Defaults.getCurrentUserDetail().email.isEmpty {
-            TestView()
+            MainTabView()
         } else {
             content
         }

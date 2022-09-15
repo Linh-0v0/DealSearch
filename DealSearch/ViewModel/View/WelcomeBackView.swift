@@ -101,7 +101,7 @@ struct WelcomeBackView: View {
                               lastName: emailFound.currentUserData[0].lastName,
                               favDeal: Defaults.getSpecifiedUserDetail(email: emailInputted).favDeal)
                 signInProcessing = true
-                viewRouter.currentPage = .testPage
+                viewRouter.currentPage = .mainTab
             }
         }
     }
