@@ -14,6 +14,7 @@ struct ShopContentView: View {
     @StateObject var currentProduct: CurrentProductData
     @StateObject var currentCateg: CurrentSearchData
     @StateObject private var categoryData = CategoryData()
+    @StateObject private var trendingData = TrendingProductData()
     
     @State var isFetching = true
     @State var fetchedSearchkey: [PopularSearch] = []
@@ -33,16 +34,49 @@ struct ShopContentView: View {
                 }
                 .padding(.top, 20)
                 
-                // MARK: TRENDING SEARCH
+                // MARK: TRENDING PRODUCT SEARCH
                 VStack (alignment: .center) {
                     Text("Trending search")
                         .font(.system(size: 28, weight: .bold, design: Font.Design.default))
                         .padding(.bottom,20)
                         .padding(.trailing, 30)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack (spacing: 10) {
-                            ForEach(0..<3, id: \.self) { index in
-                                TrendingSearchView()
+                        HStack(spacing: 15) {
+                            ForEach(trendingData.trendingProductList) { trendProd in
+                                Button(action: {
+                                    ProductDetailView()
+                                    
+                                }, label: {
+                                    VStack {
+                                        AsyncImage(url: URL(string: trendProd.product_image)) { phase in
+                                            if let image = phase.image {
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 150)
+                                                    .cornerRadius(20)
+                                                    .background(Color.black)
+                                                    .opacity(0.8)
+                                                    .frame(width: 150, height: 150)
+                                            } else if phase.error != nil {
+                                                Image(systemName: "photo")
+                                                               .imageScale(.large)
+                                                               .foregroundColor(.gray)
+                                                    .frame(width: 150, height: 150)
+                                                    .border(Color.gray, width: 1)
+                                                    
+                                            } else {
+                                                ProgressView()
+                                            }
+                                        }
+                                        
+                                        Text(trendProd.product_name)
+                                            .padding(.bottom, 10)
+                                            .font(.system(size: 13, weight: .bold))
+                                            .foregroundColor(Color.black)
+                                            .frame(width: 150, height: 20)
+                                    }
+                                })
                             }
                             .cornerRadius(20)
                         }
@@ -70,7 +104,7 @@ struct ShopContentView: View {
                         .padding(.trailing,30)
                         
                     }
-                        
+                    
                     productRowList
                 }
             }
@@ -111,10 +145,11 @@ extension ShopContentView {
                                             .scaledToFit()
                                             .frame(width: 100, height: 100)
                                     } else if phase.error != nil {
-                                        Rectangle()
-                                            .fill(.green)
-                                            .cornerRadius(20)
+                                        Image(systemName: "photo")
+                                                       .imageScale(.large)
+                                                       .foregroundColor(.gray)
                                             .frame(width: 100, height: 100)
+                                            .border(Color.gray, width: 1)
                                     } else {
                                         ProgressView()
                                     }
@@ -151,7 +186,7 @@ extension ShopContentView {
                             .cornerRadius(20)
                             .clipped()
                             .aspectRatio(1, contentMode: .fit)
-
+                            
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(product.product_name)
@@ -163,7 +198,7 @@ extension ShopContentView {
                                     Text("$ PRICE".uppercased())
                                         .font(.system(size: 16))
                                         .foregroundColor(.secondary)
-
+                                    
                                     VStack(alignment: .center) {
                                         Button(action: {
                                             print("Clicked")
@@ -177,7 +212,7 @@ extension ShopContentView {
                                     }
                                 }
                                 .layoutPriority(100)
-
+                                
                                 Spacer()
                             }
                             .padding(.top, 10)
@@ -187,7 +222,7 @@ extension ShopContentView {
                         .overlay(
                             RoundedRectangle(cornerRadius: 25)
                                 .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-
+                            
                         )
                         .padding(.trailing, 10)
                     }
@@ -195,7 +230,7 @@ extension ShopContentView {
                 
             }
             .padding(.trailing, 20)
-
+            
         }
     }
 }
@@ -213,9 +248,9 @@ extension ShopContentView {
                         }
                         .padding()
                         .background(
-                             Capsule()
-                                 .strokeBorder(Color.black, lineWidth: 0.8)
-                                 .clipped()
+                            Capsule()
+                                .strokeBorder(Color.black, lineWidth: 0.8)
+                                .clipped()
                         )
                         .clipShape(Capsule())
                     }
