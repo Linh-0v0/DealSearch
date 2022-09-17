@@ -22,12 +22,12 @@ class DealCalcSorted: ObservableObject {
                  for prod in productList {
                      if ele.key == prod.id {
                          prodDealSortedTemp.append(prod)
+                         break
                      }
                  }
              }
-             print("prodDealSortedTemp")
-             
              self.prodDealSorted = prodDealSortedTemp
+            print(self.prodDealSorted)
             
         } else {
              let dealSortedList = dealSortHighLow(prodDealCalc: calcDeal(product: productList))
@@ -39,8 +39,6 @@ class DealCalcSorted: ObservableObject {
                      }
                  }
              }
-             print("prodDealSortedTemp")
-             
              self.prodDealSorted = prodDealSortedTemp
         }
         
@@ -48,13 +46,13 @@ class DealCalcSorted: ObservableObject {
     
     //Return Array cuz .sorted() return array
     func dealSortLowHigh(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
-        var arrSorted = prodDealCalc.sorted(by: {$0.value > $1.value})
+        var arrSorted = prodDealCalc.sorted(by: {$0.value < $1.value})
 //        print(arrSorted)
         return arrSorted
     }
     
     func dealSortHighLow(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
-        var arrSorted = prodDealCalc.sorted(by: {$0.value < $1.value})
+        var arrSorted = prodDealCalc.sorted(by: {$0.value > $1.value})
 //        print(arrSorted)
         return arrSorted
     }
@@ -64,9 +62,7 @@ class DealCalcSorted: ObservableObject {
         for item in product {
             var ratio = item.product_price / item.product_deal
             productArrTemp[item.id] = ratio
-            print(item.id)
         }
-        print("calcDeal")
         return productArrTemp
     }
     

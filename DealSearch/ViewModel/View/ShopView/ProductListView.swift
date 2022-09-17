@@ -17,7 +17,7 @@ struct ProductListView: View {
     @State var shopClickedId: Int = 0
     @State var fetchedSearchkey: [PopularSearch] = []
     @State var fetchedProduct: [Product] = []
-    
+    @State var sortedFetchedProduct: [Product] = []
     
     var gridItemVLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -25,10 +25,10 @@ struct ProductListView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
                 if shopClickedId == 0 {
-                Text("All Products")
-                    .foregroundColor(Color("Green"))
-                    .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
-                    .padding(.top, 30)
+                    Text("All Products")
+                        .foregroundColor(Color("Green"))
+                        .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
+                        .padding(.top, 30)
                 } else {
                     Text(getShopInfo(shopId: String(shopClickedId), shopList: shopData.shopList).shop_name)
                         .foregroundColor(Color("Green"))
@@ -118,10 +118,11 @@ extension ProductListView {
             Button {
                 // Get Product By Shop
                 currentProdByShop.getData(shopClickedId: shopClickedId)
-                fetchedProduct = currentProdByShop.currentProduct
                 
                 //Sort Product low -> high
-                dealCalcSorted.productDealSorted(productList: fetchedProduct, lowToHigh: true)
+                dealCalcSorted.productDealSorted(productList: currentProdByShop.currentProduct, lowToHigh: true)
+                fetchedProduct = dealCalcSorted.prodDealSorted
+                print("Ordered Low -> High")
             } label: {
                 Text("Price: Low to High")
                     .padding(.all, 15)
@@ -133,10 +134,11 @@ extension ProductListView {
             Button {
                 // Get Product By Shop
                 currentProdByShop.getData(shopClickedId: shopClickedId)
-                fetchedProduct = currentProdByShop.currentProduct
                 
                 //Sort Product high -> low
-                dealCalcSorted.productDealSorted(productList: fetchedProduct, lowToHigh: false)
+                dealCalcSorted.productDealSorted(productList: currentProdByShop.currentProduct, lowToHigh: false)
+                fetchedProduct = dealCalcSorted.prodDealSorted
+                print("Ordered High -> Low")
             } label: {
                 Text("Price: High to Low")
                     .padding(.all, 15)
@@ -158,7 +160,9 @@ extension ProductListView {
                         shopClickedId = Int(shop.id) ?? 1
                         // Get Product By Shop
                         currentProdByShop.getData(shopClickedId: shopClickedId)
+                        
                         fetchedProduct = currentProdByShop.currentProduct
+                        
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(Color("Black"))
                         Text(shop.shop_name)
@@ -183,169 +187,59 @@ extension ProductListView {
     var productCardView: some View {
         
         LazyVGrid(columns: gridItemVLayout, spacing: 20) {
-            if shopClickedId == 0 {
-                ForEach(productData.productList) { prod in
-                    VStack {
-                        VStack {
-                            AsyncImage(url: URL(string: prod.product_image)) { phase in
-                                if let image = phase.image {
-                                    image
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
-                                        .cornerRadius(20)
-                                        .background(Color.black)
-                                        .opacity(0.8)
-                                        .frame(width: 150, height: 150)
-                                } else if phase.error != nil {
-                                    Image(systemName: "photo")
-                                        .imageScale(.large)
-                                        .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
-                                        .border(Color.gray, width: 1)
-                                    
-                                } else {
-                                    ProgressView()
-                                }
-                            }
-                            
-                            
-                            
-                            VStack(alignment: .leading) {
-                                Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.primary)
-                                    .frame(width: 130, height: 80)
-                                
-                                Text(String(prod.product_price))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                                Text(String(prod.product_deal))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                            }
-                            .layoutPriority(100)
-                            Spacer()
-                            
-                        }
-                    }
-                    .padding()
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-                        
-                    )}
-                
-            } else if shopClickedId != 0 {
-                ForEach(currentProdByShop.currentProduct) { prod in
-                    VStack {
-                        VStack {
-                            AsyncImage(url: URL(string: prod.product_image)) { phase in
-                                if let image = phase.image {
-                                    image
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
-                                        .cornerRadius(20)
-                                        .background(Color.black)
-                                        .opacity(0.8)
-                                        .frame(width: 150, height: 150)
-                                } else if phase.error != nil {
-                                    Image(systemName: "photo")
-                                        .imageScale(.large)
-                                        .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
-                                        .border(Color.gray, width: 1)
-                                    
-                                } else {
-                                    ProgressView()
-                                }
-                            }
-                            
-                            
-                            
-                            VStack(alignment: .leading) {
-                                Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.primary)
-                                    .frame(width: 130, height: 80)
-                                
-                                Text(String(prod.product_price))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                                Text(String(prod.product_deal))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                            }
-                            .layoutPriority(100)
-                            Spacer()
-                            
-                        }
-                    }
-                    .padding()
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-                        
-                    )}
-                
-            } else if (shopClickedId != 0 && !dealCalcSorted.prodDealSorted.isEmpty) {
-                ForEach(dealCalcSorted.prodDealSorted) { prod in
-                    VStack {
-                        VStack {
-                            AsyncImage(url: URL(string: prod.product_image)) { phase in
-                                if let image = phase.image {
-                                    image
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
-                                        .cornerRadius(20)
-                                        .background(Color.black)
-                                        .opacity(0.8)
-                                        .frame(width: 150, height: 150)
-                                } else if phase.error != nil {
-                                    Image(systemName: "photo")
-                                        .imageScale(.large)
-                                        .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
-                                        .border(Color.gray, width: 1)
-                                    
-                                } else {
-                                    ProgressView()
-                                }
-                            }
-                            
-                            
-                            
-                            VStack(alignment: .leading) {
-                                Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.primary)
-                                    .frame(width: 130, height: 80)
-                                
-                                Text(String(prod.product_price))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                                Text(String(prod.product_deal))
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.secondary)
-                            }
-                            .layoutPriority(100)
-                            Spacer()
-                            
-                        }
-                    }
-                    .padding()
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-                        
-                    )}
-            }
             
+            ForEach(fetchedProduct) { prod in
+                VStack {
+                    VStack {
+                        AsyncImage(url: URL(string: prod.product_image)) { phase in
+                            if let image = phase.image {
+                                image
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(width: 130, height: 150)
+                                    .cornerRadius(20)
+                                    .background(Color.black)
+                                    .opacity(0.8)
+                                    .frame(width: 150, height: 150)
+                            } else if phase.error != nil {
+                                Image(systemName: "photo")
+                                    .imageScale(.large)
+                                    .foregroundColor(.gray)
+                                    .frame(width: 130, height: 150)
+                                    .border(Color.gray, width: 1)
+                                
+                            } else {
+                                ProgressView()
+                            }
+                        }
+                        
+                        
+                        
+                        VStack(alignment: .leading) {
+                            Text(prod.product_name)
+                                .font(.system(size: 17, weight: .bold))
+                                .foregroundColor(.primary)
+                                .frame(width: 130, height: 80)
+                            
+                            Text(String(prod.product_price))
+                                .font(.system(size: 16))
+                                .foregroundColor(.secondary)
+                            Text(String(prod.product_deal))
+                                .font(.system(size: 16))
+                                .foregroundColor(.secondary)
+                        }
+                        .layoutPriority(100)
+                        Spacer()
+                        
+                    }
+                }
+                .padding()
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 25)
+                        .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
+                    
+                )}
         }
         
     }
