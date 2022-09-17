@@ -10,15 +10,30 @@ import SwiftUI
 struct SearchView: View {
     @ObservedObject var viewModel = SearchViewModel()
     @StateObject var productData = ProductData()
+    @State var searchText = ""
     
+    var searchableProduct: [Product] {
+        if searchText.isEmpty {
+            return productData.productList
+        } else {
+            let lowercasedQuery = searchText.lowercased()            
+            return productData.productList.filter({
+                $0.product_name.lowercased().contains(lowercasedQuery)
+            })
+            
+        }
+    }
+    
+   
     var body: some View {
+        
         VStack(alignment: .leading) {
-            SearchBarView(text: $viewModel.searchText)
+            SearchBarView(text: $searchText)
                 .padding()
             
             ScrollView {
                 LazyVStack {
-                    ForEach(productData.productList) { product in
+                    ForEach(searchableProduct) { product in
                         HStack(spacing: 20) {
                             Rectangle()
                                 .fill(Color(.systemGray6))
@@ -29,7 +44,7 @@ struct SearchView: View {
                                 Text(product.product_name)
                                     .font(.subheadline)
                                     .fontWeight(.bold)
-                                    .frame(width: .infinity, height: 50)
+                                    .frame(height: 50)
                                 
                                 Text(String(product.product_deal_1))
                                     .font(.subheadline)

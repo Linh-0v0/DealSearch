@@ -8,18 +8,18 @@
 import Foundation
 
 class SearchViewModel: ObservableObject {
-    @Published var products = [Product]()
-    @Published var searchText = ""
+//    @Publisished var products = ProductData
+//    @Published var searchText = ""
     
-    var searchableProduct: [Product] {
-        if searchText.isEmpty {
-            return products
-        } else {
-            let lowercasedQuery = searchText.lowercased()
-            
-            return products.filter({
-                $0.product_name.contains(lowercasedQuery)
-            })
-        }
-    }
+//    var searchableProduct: [Product] {
+//        if searchText.isEmpty {
+//            return products
+//        } else {
+//            let lowercasedQuery = searchText.lowercased()
+//            print(lowercasedQuery)
+//            return products.filter({
+//                $0.product_name.contains(lowercasedQuery)
+//            })
+//        }
+//    }
 }
