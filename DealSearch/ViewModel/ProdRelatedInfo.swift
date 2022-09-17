@@ -8,12 +8,9 @@
 import Foundation
 import SwiftUI
 
-func getShopInfo(shopId: String) -> Shop {
-
-    @StateObject var shopList = ShopData()
-
+func getShopInfo(shopId: String, shopList: [Shop]) -> Shop {
     var shopFound: Shop?
-    for shop in shopList.shopList {
+    for shop in shopList {
         if shop.id == shopId {
             shopFound = shop
             break

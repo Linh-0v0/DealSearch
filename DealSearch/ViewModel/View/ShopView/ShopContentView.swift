@@ -54,14 +54,9 @@ struct ShopContentView: View {
                         
                         Spacer()
                         
-                        Button(action: {
-                            print("Clicked")
-                        }, label: {
-                            Text("View all")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        })
-                        .padding(.trailing,30)
+                        NavigationLink(destination: ProductListView(currentProdByShop: CurrentProdByShop(shopClickedId: 0))) {
+                            Text("View All")
+                        }
                         
                     }
                     

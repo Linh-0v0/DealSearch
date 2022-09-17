@@ -17,7 +17,6 @@ struct ProductListView: View {
     @State var shopClickedId: Int = 0
     @State var fetchedSearchkey: [PopularSearch] = []
     @State var fetchedProduct: [Product] = []
-    @State var sortedFetchedProduct: [Product] = []
     
     
     var gridItemVLayout = [GridItem(.flexible()), GridItem(.flexible())]
@@ -25,12 +24,17 @@ struct ProductListView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
-                
-                Text("Men Shirt")
+                if shopClickedId == 0 {
+                Text("All Products")
                     .foregroundColor(Color("Green"))
                     .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
                     .padding(.top, 30)
-                
+                } else {
+                    Text(getShopInfo(shopId: String(shopClickedId), shopList: shopData.shopList).shop_name)
+                        .foregroundColor(Color("Green"))
+                        .font(Font.custom("Montserrat-Bold", size: 36)).foregroundColor(Color("Green"))
+                        .padding(.top, 30)
+                }
                 // MARK: POPULAR SEARCH
                 VStack(alignment: .leading) {
                     Text("Popular search")
@@ -74,6 +78,7 @@ struct ProductListView: View {
         }
         
     }
+    
 }
 
 struct ProductListView_Previews: PreviewProvider {
@@ -113,10 +118,10 @@ extension ProductListView {
             Button {
                 // Get Product By Shop
                 currentProdByShop.getData(shopClickedId: shopClickedId)
-                sortedFetchedProduct = currentProdByShop.currentProduct
+                fetchedProduct = currentProdByShop.currentProduct
                 
                 //Sort Product low -> high
-                dealCalcSorted.productDealSorted(productList: sortedFetchedProduct, lowToHigh: true)
+                dealCalcSorted.productDealSorted(productList: fetchedProduct, lowToHigh: true)
             } label: {
                 Text("Price: Low to High")
                     .padding(.all, 15)
@@ -128,10 +133,10 @@ extension ProductListView {
             Button {
                 // Get Product By Shop
                 currentProdByShop.getData(shopClickedId: shopClickedId)
-                sortedFetchedProduct = currentProdByShop.currentProduct
+                fetchedProduct = currentProdByShop.currentProduct
                 
                 //Sort Product high -> low
-                dealCalcSorted.productDealSorted(productList: sortedFetchedProduct, lowToHigh: false)
+                dealCalcSorted.productDealSorted(productList: fetchedProduct, lowToHigh: false)
             } label: {
                 Text("Price: High to Low")
                     .padding(.all, 15)
