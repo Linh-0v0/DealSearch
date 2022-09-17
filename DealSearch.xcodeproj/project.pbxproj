@@ -78,6 +78,8 @@
 		EA953B8028D0AD2E00317D57 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B7F28D0AD2E00317D57 /* NotificationView.swift */; };
 		EA953B8328D0AD5A00317D57 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B8228D0AD5A00317D57 /* AccountView.swift */; };
 		EA953B8B28D0C15B00317D57 /* CurrentProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B8A28D0C15B00317D57 /* CurrentProductData.swift */; };
+		EADDF80E28D5CD5000D73792 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDF80D28D5CD5000D73792 /* SearchBarView.swift */; };
+		EADDF81028D5D75D00D73792 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDF80F28D5D75D00D73792 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +154,8 @@
 		EA953B7F28D0AD2E00317D57 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		EA953B8228D0AD5A00317D57 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		EA953B8A28D0C15B00317D57 /* CurrentProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProductData.swift; sourceTree = "<group>"; };
+		EADDF80D28D5CD5000D73792 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		EADDF80F28D5D75D00D73792 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +218,7 @@
 				C43EA58928CF9FA10025945C /* CurrentSearchData.swift */,
 				C469F22228C65A22003F401A /* DealCalcSorted.swift */,
 				C469F22628C65A22003F401A /* ProdRelatedInfo.swift */,
+				EADDF80F28D5D75D00D73792 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				EA953B5E28D0AADF00317D57 /* SearchView.swift */,
+				EADDF80D28D5CD5000D73792 /* SearchBarView.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -463,9 +469,11 @@
 				C43EA58C28CFA07B0025945C /* KeysearchByCategView.swift in Sources */,
 				C43EA58628CF9BFD0025945C /* PopularSearch.swift in Sources */,
 				EA953B7028D0ABA200317D57 /* ProductImageView.swift in Sources */,
+				EADDF81028D5D75D00D73792 /* SearchViewModel.swift in Sources */,
 				C469F22B28C65A22003F401A /* UserData.swift in Sources */,
 				C469F22728C65A22003F401A /* CategoryData.swift in Sources */,
 				C47EBDB528D5B46600721A4F /* TestView.swift in Sources */,
+				EADDF80E28D5CD5000D73792 /* SearchBarView.swift in Sources */,
 				C4DF286728CE58A000FB9B1E /* AddProduct.swift in Sources */,
 				C43EA57A28CEC13F0025945C /* EditShop.swift in Sources */,
 				EA953B6628D0AB7300317D57 /* EcomStoreView.swift in Sources */,
