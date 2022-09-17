@@ -211,7 +211,7 @@ extension ShopContentView {
                                         .truncationMode(.tail)
                                         
                                     
-                                    Text("$ PRICE".uppercased())
+                                    Text("$ Price: " + String(product.product_deal))
                                         .font(.system(size: 16))
                                         .foregroundColor(.secondary)
                                     
