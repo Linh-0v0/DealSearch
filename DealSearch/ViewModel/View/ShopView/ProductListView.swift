@@ -124,7 +124,7 @@ extension ProductListView {
                 fetchedProduct = dealCalcSorted.prodDealSorted
                 print("Ordered Low -> High")
             } label: {
-                Text("Price: Low to High")
+                Text("Deal: Low to High")
                     .padding(.all, 15)
                     .background(Color("Green"))
                     .cornerRadius(20)
@@ -140,7 +140,7 @@ extension ProductListView {
                 fetchedProduct = dealCalcSorted.prodDealSorted
                 print("Ordered High -> Low")
             } label: {
-                Text("Price: High to Low")
+                Text("Deal: High to Low")
                     .padding(.all, 15)
                     .background(Color("Green"))
                     .cornerRadius(20)
@@ -216,22 +216,32 @@ extension ProductListView {
                         
                         VStack(alignment: .leading) {
                             Text(prod.product_name)
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.subheadline)
+                                .fontWeight(.bold)
                                 .foregroundColor(.primary)
-                                .frame(width: 130, height: 80)
+                                .frame(width: 130, height: 50)
                             
-                            Text(String(prod.product_price))
-                                .font(.system(size: 16))
+                            Text("Deal: " + String(prod.product_deal))
+                                .bold()
+                                .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            Text(String(prod.product_deal))
-                                .font(.system(size: 16))
+                            
+                            Text("Old Price: " + String(prod.product_price))
+                                .font(.caption)
                                 .foregroundColor(.secondary)
+                            
+                            Text("Sale Off: " + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                                .bold()
+                            
                         }
                         .layoutPriority(100)
                         Spacer()
                         
                     }
                 }
+                .frame(width: 140, height: 280)
                 .padding()
                 .cornerRadius(10)
                 .overlay(
