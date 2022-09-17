@@ -10,7 +10,6 @@ import FirebaseAuth
 
 struct AccountView: View {
     @StateObject var emailFinding: CurrentUserData
-    @State var isCheckingEmail = true
     
     @EnvironmentObject var viewRouter: ViewRouter
     @State var signOutProcessing = false
@@ -28,8 +27,11 @@ struct AccountView: View {
                 
             }
             Spacer()
+            editDashboard
+                .padding(.horizontal, 30)
             logoutSession
                 .padding(.horizontal, 30)
+           
         }
         .frame(maxWidth: .infinity)
         
@@ -46,12 +48,6 @@ struct AccountView: View {
         viewRouter.currentPage = .emailVerifyPage
     }
     
-    private func delayView() async {
-        // Wait for 1 second to fetch data
-        // (1 second = 1_000_000_000 nanoseconds)
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
-        isCheckingEmail = false
-    }
 }
 
 struct AccountView_Previews: PreviewProvider {
@@ -172,14 +168,22 @@ extension AccountView {
                 }
                 .modifier(accountProfilePaddingBtwField())
                 
-                if emailFinding.currentUserData[0].isAdmin == 1 {
-                    NavigationLink(destination: AdminDashboard()){
-                        Text("Edit Dashboard")
-                    }
-                }
             }
         }
         .frame(maxWidth: .infinity)
     }
 }
 
+extension AccountView {
+    var editDashboard: some View {
+        Text("Edit Dashboard")
+            .font(Font.custom("Montserrat-Regular", size: 15)).foregroundColor(.blue)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    NavigationLink(destination: AdminDashboard()){
+                        Text("Edit Dashboard")
+                    }
+                }
+            }
+    }
+}
