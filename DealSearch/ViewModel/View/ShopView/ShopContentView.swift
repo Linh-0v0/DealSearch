@@ -83,18 +83,18 @@ struct ShopContentView_Previews: PreviewProvider {
 extension ShopContentView {
     var trendingSearchView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 40) {
+            HStack(spacing: 20) {
                 ForEach(trendingData.trendingProductList) { trendProd in
                     Button(action: {
                         print("Clicked")
                     }, label: {
                         VStack {
+                            
                             AsyncImage(url: URL(string: trendProd.product_image)) { phase in
                                 if let image = phase.image {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(width: 150)
                                         .opacity(0.8)
                                         .frame(width: 150, height: 150)
                                 } else if phase.error != nil {
@@ -102,14 +102,19 @@ extension ShopContentView {
                                        .imageScale(.large)
                                        .foregroundColor(.gray)
                                         .frame(width: 150, height: 150)
-                                        .border(Color.gray, width: 1)
-                                        .cornerRadius(20)
                                     
-                                        
                                 } else {
                                     ProgressView()
+                                        .frame(width: 150, height: 150)
                                 }
                             }
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
+
+                            )
+                            
                             
                             Text(trendProd.product_name)
                                 .padding(.top, 10)
