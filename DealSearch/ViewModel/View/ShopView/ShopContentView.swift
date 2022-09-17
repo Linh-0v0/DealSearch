@@ -56,7 +56,10 @@ struct ShopContentView: View {
                         
                         NavigationLink(destination: ProductListView(currentProdByShop: CurrentProdByShop(shopClickedId: 0))) {
                             Text("View All")
+                                .foregroundColor(Color(.systemGray2))
+                                .font(.subheadline)
                         }
+                        .padding(.trailing, 30)
                         
                     }
                     

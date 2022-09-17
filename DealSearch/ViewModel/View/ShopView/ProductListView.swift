@@ -17,7 +17,7 @@ struct ProductListView: View {
     @State var shopClickedId: Int = 0
     @State var fetchedSearchkey: [PopularSearch] = []
     @State var fetchedProduct: [Product] = []
-    @State var sortedFetchedProduct: [Product] = []
+    
     
     var gridItemVLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -160,15 +160,14 @@ extension ProductListView {
                         shopClickedId = Int(shop.id) ?? 1
                         // Get Product By Shop
                         currentProdByShop.getData(shopClickedId: shopClickedId)
-                        
                         fetchedProduct = currentProdByShop.currentProduct
-                        
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(Color("Black"))
                         Text(shop.shop_name)
                             .font(Font.custom("Montserrat-Regular", size: 15)).foregroundColor(Color("Black"))
                         
                     }
+                    .frame(minWidth: 150)
                     .padding()
                     .background(
                         Capsule()
@@ -241,6 +240,6 @@ extension ProductListView {
                     
                 )}
         }
-        
+        .padding(.trailing, 30)
     }
 }
