@@ -47,6 +47,7 @@
 		C469F24628C65B5C003F401A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24528C65B5C003F401A /* FirebaseAuth */; };
 		C469F24828C65B5C003F401A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24728C65B5C003F401A /* FirebaseFirestore */; };
 		C46CE78828CB8E1E0047DE96 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CE78728CB8E1E0047DE96 /* Category.swift */; };
+		C47EBDB528D5B46600721A4F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EBDB428D5B46600721A4F /* TestView.swift */; };
 		C498AFB928C8FB9600DB5CA3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498AFB828C8FB9600DB5CA3 /* Product.swift */; };
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
@@ -76,7 +77,6 @@
 		EA953B7D28D0ACFF00317D57 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B7C28D0ACFF00317D57 /* MainTabView.swift */; };
 		EA953B8028D0AD2E00317D57 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B7F28D0AD2E00317D57 /* NotificationView.swift */; };
 		EA953B8328D0AD5A00317D57 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B8228D0AD5A00317D57 /* AccountView.swift */; };
-		EA953B8528D0B18700317D57 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B8428D0B18700317D57 /* TestView.swift */; };
 		EA953B8B28D0C15B00317D57 /* CurrentProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA953B8A28D0C15B00317D57 /* CurrentProductData.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +120,7 @@
 		C469F23628C65A2F003F401A /* WelcomeBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
 		C469F24228C65ABA003F401A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C46CE78728CB8E1E0047DE96 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C47EBDB428D5B46600721A4F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C498AFB828C8FB9600DB5CA3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
@@ -150,7 +151,6 @@
 		EA953B7C28D0ACFF00317D57 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		EA953B7F28D0AD2E00317D57 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		EA953B8228D0AD5A00317D57 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		EA953B8428D0B18700317D57 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestView.swift; path = ../../../../../../.Trash/TestView.swift; sourceTree = "<group>"; };
 		EA953B8A28D0C15B00317D57 /* CurrentProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProductData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,7 +228,7 @@
 				EA953B5D28D0AAD300317D57 /* SearchView */,
 				EA953B5628D0AA3A00317D57 /* ShopView */,
 				C4DF286528CE582800FB9B1E /* AdminDashboardView */,
-				EA953B8428D0B18700317D57 /* TestView.swift */,
+				C47EBDB428D5B46600721A4F /* TestView.swift */,
 				C43EA58B28CFA07B0025945C /* KeysearchByCategView.swift */,
 				C469F22F28C65A2F003F401A /* ButtonAnimation.swift */,
 				C402416128C8944700B205B8 /* LandingNavigation.swift */,
@@ -465,6 +465,7 @@
 				EA953B7028D0ABA200317D57 /* ProductImageView.swift in Sources */,
 				C469F22B28C65A22003F401A /* UserData.swift in Sources */,
 				C469F22728C65A22003F401A /* CategoryData.swift in Sources */,
+				C47EBDB528D5B46600721A4F /* TestView.swift in Sources */,
 				C4DF286728CE58A000FB9B1E /* AddProduct.swift in Sources */,
 				C43EA57A28CEC13F0025945C /* EditShop.swift in Sources */,
 				EA953B6628D0AB7300317D57 /* EcomStoreView.swift in Sources */,
@@ -485,7 +486,6 @@
 				C469F22C28C65A22003F401A /* ProdRelatedInfo.swift in Sources */,
 				C469F23C28C65A2F003F401A /* RegisterView.swift in Sources */,
 				C43EA58028CEFBA90025945C /* AdminDashboard.swift in Sources */,
-				EA953B8528D0B18700317D57 /* TestView.swift in Sources */,
 				EA953B7D28D0ACFF00317D57 /* MainTabView.swift in Sources */,
 				EA953B6828D0AB7A00317D57 /* FilterView.swift in Sources */,
 				C43EA57828CEC1280025945C /* AddCategory.swift in Sources */,
