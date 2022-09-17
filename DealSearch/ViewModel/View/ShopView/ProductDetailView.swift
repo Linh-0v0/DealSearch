@@ -7,63 +7,30 @@
 
 import SwiftUI
 
-struct ProductDetailVie: View {
+struct ProductDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 // MARK: PRODUCT IMAGE
-                ProductImageView()
+                productImageView
                 
                 // MARK: PRODUCT DETAIL
                 VStack(alignment: .leading) {
-                    ProductNameView()
+                    productNameView
                     
-                    ProductPriceView()
+                    productPriceView
                     
                     // MARK: REVIEW SESSION
-                    ProductReviewView()
+                    productReviewView
                     
                     // MARK: PRICE COMPARE
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading, spacing: 20) {
-                            Text("Deal compare")
-                                .font(.system(size: 22, weight: .bold))
-
-                            Text("We found 12 other places, the deals are from $ 200 - $ 1000")
-                                .foregroundColor(Color.gray)
-                        }
-
-                        ForEach(0..<2, id: \.self) { index in
-                            ShopCompareView()
-                            ForEach(0..<3, id: \.self) { index in
-                                ProductCompareView()
-                            }
-                        }
-                        .padding(.bottom, 10)
-                    }
+                    priceCompareView
                     
                     // MARK: PRODUCT DESCRIPTION
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("About the product")
-                            .font(.system(size: 22, weight: .bold))
-                        
-                        Text("Product description")
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.gray)
-                    }
-                    .padding(.bottom, 10)
+                    productDescriptionView
                     
                     // MARK: USER COMMENT
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("Reviews from buyer")
-                            .font(.system(size: 22, weight: .bold))
-                        
-                        VStack(alignment: .leading, spacing: 30) {
-                            ForEach(0..<3, id: \.self) { index in
-                                CommentView()
-                            }
-                        }
-                    }
+                    userCommentView
                 }
                 .padding(.top, 20)
                 .padding(.trailing, 30)
@@ -74,8 +41,207 @@ struct ProductDetailVie: View {
     }
 }
 
-struct ProductDetailVie_Previews: PreviewProvider {
+struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailVie()
+        ProductDetailView()
+    }
+}
+
+extension ProductDetailView {
+    var productImageView: some View {
+        ZStack {
+            Image("menshirt")
+                .resizable()
+                .scaledToFill()
+                .frame(height: 400)
+        }
+        .clipped()
+        .aspectRatio(1, contentMode: .fit)
+        
+    }
+}
+
+extension ProductDetailView {
+    var productNameView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Product name")
+                .font(.system(size: 26, weight: .bold))
+            
+            Button(action: {
+                print("Clicked")
+            }, label: {
+                Text("Notification the deal")
+                    .foregroundColor(Color.orange)
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+            })
+        }
+        .padding(.bottom, 20)
+    }
+}
+
+extension ProductDetailView {
+    var productPriceView: some View {
+        VStack {
+            HStack {
+                Text("Price from store")
+                    .foregroundColor(Color.gray)
+                
+                Text("Shopee")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .background(
+                        Capsule()
+                            .fill(Color.orange)
+                    )
+            }
+            .padding(.bottom, 20)
+            
+            // MARK: PRICE SESSION
+            HStack {
+                VStack(alignment: .leading,spacing: 3) {
+                    Text("$ 500.00")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(Color.red)
+                    
+                    Text("no longer $ 600.00")
+                        .font(.system(size: 15))
+                        .foregroundColor(Color.gray)
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    print("Clicked")
+                }, label: {
+                    Text("Go to store")
+                        .padding(.horizontal, 40)
+                        .padding(.vertical)
+                        .foregroundColor(Color.white)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.orange)
+                        )
+                })
+            }
+        }
+        
+        
+    }
+}
+
+extension ProductDetailView {
+    var productReviewView: some View {
+        VStack(alignment: .trailing, spacing: 10) {
+            Text("4.3 review stars")
+                .foregroundColor(Color.yellow)
+            
+            HStack {
+                Spacer()
+                Text("6 reviews")
+                
+                Text("128 sale values")
+            }
+            .foregroundColor(Color.gray)
+        }
+        .padding(.top,10)
+        .padding(.bottom, 20)
+        .frame(maxWidth:.infinity)
+
+    }
+}
+
+extension ProductDetailView {
+    var priceCompareView: some View {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Deal compare")
+                    .font(.system(size: 22, weight: .bold))
+
+                Text("We found 12 other places, the deals are from $ 200 - $ 1000")
+                    .foregroundColor(Color.gray)
+            }
+
+            ForEach(0..<2, id: \.self) { index in
+                Text("Shopee")
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .background(
+                        Capsule()
+                            .fill(Color.orange)
+                    )
+                ForEach(0..<3, id: \.self) { index in
+                    HStack {
+                        HStack {
+                            ZStack {
+                                Image("menshirt")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 80)
+                            }
+                            .clipped()
+                            .aspectRatio(1, contentMode: .fit)
+
+                            Text("Product name")
+                                .font(.system(size: 16))
+                        }
+                        Spacer()
+                        HStack {
+                            Text("$ 400")
+
+                            Button(action: {
+                                print("Clicked")
+                            }, label: {
+                                Text("Go to store")
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical)
+                                    .foregroundColor(Color.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .fill(Color.orange)
+                                    )
+                            })
+                        }
+
+                    }
+                    .padding(.vertical, 10)
+                    .frame(height: 100)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+                    
+                    Divider()
+                }
+            }
+            .padding(.bottom, 10)
+        }
+    }
+}
+
+extension ProductDetailView {
+    var productDescriptionView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("About the product")
+                .font(.system(size: 22, weight: .bold))
+            
+            Text("Product description")
+                .font(.system(size: 16))
+                .foregroundColor(Color.gray)
+        }
+        .padding(.bottom, 10)
+    }
+}
+
+extension ProductDetailView {
+    var userCommentView: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Reviews from buyer")
+                .font(.system(size: 22, weight: .bold))
+            
+            VStack(alignment: .leading, spacing: 30) {
+                ForEach(0..<3, id: \.self) { index in
+                    CommentView()
+                }
+            }
+        }
     }
 }
