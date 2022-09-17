@@ -10,30 +10,39 @@ import FirebaseAuth
 
 struct AccountView: View {
     @StateObject var emailFinding: CurrentUserData
+    @State private var isCheckingEmail = true
     
     @EnvironmentObject var viewRouter: ViewRouter
     @State var signOutProcessing = false
     @StateObject var userData = CurrentUserData(emailInputted: Defaults.getCurrentUserDetail().email)
     
     var body: some View {
-        VStack(alignment: .center) {
-            VStack {
-                headerView
-                
-                actionButton
-                
-                profileDetail
-                
-                
+        ZStack {
+            if isCheckingEmail {
+                // While fetching data, display this view
+                EmptyView()
+            } else {
+                VStack(alignment: .center) {
+                    VStack {
+                        headerView
+                        
+                        actionButton
+                        
+                        profileDetail
+                    }
+                    Spacer()
+                    if emailFinding.currentUserData[0].isAdmin == 1 {
+                        editDashboard
+                            .padding(.horizontal, 30)
+                    }
+                    logoutSession
+                        .padding(.horizontal, 30)
+                }
+                .frame(maxWidth: .infinity)
             }
-            Spacer()
-            editDashboard
-                .padding(.horizontal, 30)
-            logoutSession
-                .padding(.horizontal, 30)
-           
+        } .task {
+            await delayView()
         }
-        .frame(maxWidth: .infinity)
         
     }
     
@@ -46,6 +55,13 @@ struct AccountView: View {
             signOutProcessing = false
         }
         viewRouter.currentPage = .emailVerifyPage
+    }
+    
+    private func delayView() async {
+        // Wait for 1 second to fetch data
+        // (1 second = 1_000_000_000 nanoseconds)
+        try? await Task.sleep(nanoseconds: 500_000_000)
+        isCheckingEmail = false
     }
     
 }
