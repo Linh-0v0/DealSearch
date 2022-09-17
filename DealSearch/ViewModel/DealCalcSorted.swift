@@ -27,7 +27,6 @@ class DealCalcSorted: ObservableObject {
                  }
              }
              self.prodDealSorted = prodDealSortedTemp
-            print(self.prodDealSorted)
             
         } else {
              let dealSortedList = dealSortHighLow(prodDealCalc: calcDeal(product: productList))
