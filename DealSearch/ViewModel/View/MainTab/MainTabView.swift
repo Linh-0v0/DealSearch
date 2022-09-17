@@ -35,7 +35,8 @@ struct MainTabView: View {
                     Image(systemName: "bell")
                 }.tag(2)
             
-            AccountView(emailFinding: CurrentUserData(emailInputted: ""))
+            AccountView()
+                .offset(y: -55)
                 .onTapGesture {
                     self.selectedIndex = 3
                 }

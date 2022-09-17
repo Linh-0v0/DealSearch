@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseAuth
 
 struct AccountView: View {
-    @StateObject var emailFinding: CurrentUserData
     @State private var isCheckingEmail = true
     
     @EnvironmentObject var viewRouter: ViewRouter
@@ -31,7 +30,7 @@ struct AccountView: View {
                         profileDetail
                     }
                     Spacer()
-                    if emailFinding.currentUserData[0].isAdmin == 1 {
+                    if userData.currentUserData[0].isAdmin == 1 {
                         editDashboard
                             .padding(.horizontal, 30)
                     }
@@ -39,8 +38,9 @@ struct AccountView: View {
                         .padding(.horizontal, 30)
                 }
                 .frame(maxWidth: .infinity)
+               
             }
-        } .task {
+        }.task {
             await delayView()
         }
         
@@ -68,7 +68,7 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(emailFinding: CurrentUserData(emailInputted: "hoa@gmail.com"))
+        AccountView()
     }
 }
 
@@ -142,39 +142,40 @@ extension AccountView {
     var profileDetail: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Duc Ho Minh")
+                Text(userData.currentUserData[0].firstName)
+                    .font(.title2).bold()
+                Text(userData.currentUserData[0].lastName)
                     .font(.title2).bold()
                 
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundColor(.blue)
-                
             }
             .padding(.bottom, 40)
             
             // MARK: Info Form
-            if !emailFinding.currentUserData.isEmpty {
+            if !userData.currentUserData.isEmpty {
                 
                 HStack {
                     Text("Phone Number:").modifier(accountProfileTitle())
-                    Text(emailFinding.currentUserData[0].phoneNumber).modifier(accountProfileField())
+                    Text(userData.currentUserData[0].phoneNumber).modifier(accountProfileField())
                 }
                 .modifier(accountProfilePaddingBtwField())
                 
                 HStack {
                     Text("Email:").modifier(accountProfileTitle())
-                    Text(emailFinding.currentUserData[0].email).modifier(accountProfileField())
+                    Text(userData.currentUserData[0].email).modifier(accountProfileField())
                 }
                 .modifier(accountProfilePaddingBtwField())
                 
                 HStack {
                     Text("Date of birth:").modifier(accountProfileTitle())
-                    Text(emailFinding.currentUserData[0].dateOfBirth).modifier(accountProfileField())
+                    Text(userData.currentUserData[0].dateOfBirth).modifier(accountProfileField())
                 }
                 .modifier(accountProfilePaddingBtwField())
                 
                 HStack {
                     Text("Account Type:").modifier(accountProfileTitle())
-                    if emailFinding.currentUserData[0].isAdmin == 1 {
+                    if userData.currentUserData[0].isAdmin == 1 {
                         Text("Admin").modifier(accountProfileField())
                         
                     } else {
