@@ -239,7 +239,53 @@ extension ProductDetailView {
             
             VStack(alignment: .leading, spacing: 30) {
                 ForEach(0..<3, id: \.self) { index in
-                    CommentView()
+                    VStack(alignment: .leading, spacing: 15) {
+                        HStack(spacing: 20) {
+                            Rectangle()
+                                .fill(.gray)
+                                .opacity(0.2)
+                                .frame(width: 60, height: 60)
+                                .cornerRadius(50)
+                            
+                            VStack(alignment: .leading, spacing: 5) {
+                                HStack(spacing: 15) {
+                                    Text("User name")
+                                        .font(.system(size: 16))
+                                        .foregroundColor(Color.gray)
+                                    
+                                    HStack {
+                                        Image(systemName: "magnifyingglass")
+                                        Text("Bought on Shopee")
+                                            .fontWeight(.medium)
+                                            .foregroundColor(Color.orange)
+                                            .font(.system(size: 16))
+                                    }
+                                }
+                                
+                                Text("4.3 review stars")
+                                    .foregroundColor(Color.yellow)
+                            }
+                        }
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Good product")
+                            
+                            ZStack {
+                                Image("menshirt")
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            .frame(width: 100, height:100)
+                            .clipped()
+                            .aspectRatio(1, contentMode: .fit)
+                            
+                            Text("1 year ago")
+                                .font(.system(size: 16))
+                                .foregroundColor(Color.gray)
+                        }
+                        
+                    }
+                    Divider()
                 }
             }
         }
