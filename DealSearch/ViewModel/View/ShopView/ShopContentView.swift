@@ -40,47 +40,7 @@ struct ShopContentView: View {
                         .font(.system(size: 28, weight: .bold, design: Font.Design.default))
                         .padding(.bottom,20)
                         .padding(.trailing, 30)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 15) {
-                            ForEach(trendingData.trendingProductList) { trendProd in
-                                Button(action: {
-                                    ProductDetailView()
-                                    
-                                }, label: {
-                                    VStack {
-                                        AsyncImage(url: URL(string: trendProd.product_image)) { phase in
-                                            if let image = phase.image {
-                                                image
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fill)
-                                                    .frame(width: 150)
-                                                    .cornerRadius(20)
-                                                    .background(Color.black)
-                                                    .opacity(0.8)
-                                                    .frame(width: 150, height: 150)
-                                            } else if phase.error != nil {
-                                                Image(systemName: "photo")
-                                                               .imageScale(.large)
-                                                               .foregroundColor(.gray)
-                                                    .frame(width: 150, height: 150)
-                                                    .border(Color.gray, width: 1)
-                                                    
-                                            } else {
-                                                ProgressView()
-                                            }
-                                        }
-                                        
-                                        Text(trendProd.product_name)
-                                            .padding(.bottom, 10)
-                                            .font(.system(size: 13, weight: .bold))
-                                            .foregroundColor(Color.black)
-                                            .frame(width: 150, height: 20)
-                                    }
-                                })
-                            }
-                            .cornerRadius(20)
-                        }
-                    }
+                    trendingSearchView
                 }
                 
                 // MARK: CATEGORY
@@ -117,6 +77,50 @@ struct ShopContentView: View {
 struct ShopContentView_Previews: PreviewProvider {
     static var previews: some View {
         ShopContentView(currentProduct: CurrentProductData(categoryClickedId: 1), currentCateg: CurrentSearchData(categoryClickedId: 1))
+    }
+}
+
+extension ShopContentView {
+    var trendingSearchView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 40) {
+                ForEach(trendingData.trendingProductList) { trendProd in
+                    Button(action: {
+                        print("Clicked")
+                    }, label: {
+                        VStack {
+                            AsyncImage(url: URL(string: trendProd.product_image)) { phase in
+                                if let image = phase.image {
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 150)
+                                        .opacity(0.8)
+                                        .frame(width: 150, height: 150)
+                                } else if phase.error != nil {
+                                    Image(systemName: "photo")
+                                       .imageScale(.large)
+                                       .foregroundColor(.gray)
+                                        .frame(width: 150, height: 150)
+                                        .border(Color.gray, width: 1)
+                                        .cornerRadius(20)
+                                    
+                                        
+                                } else {
+                                    ProgressView()
+                                }
+                            }
+                            
+                            Text(trendProd.product_name)
+                                .padding(.top, 10)
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(Color.black)
+                                .frame(width: 150, height: 30)
+                        }
+                    })
+                }
+            }
+        }
     }
 }
 
@@ -177,23 +181,32 @@ extension ShopContentView {
                 if !fetchedProduct.isEmpty {
                     ForEach(fetchedProduct) { product in
                         VStack {
-                            ZStack {
-                                Image("")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(height: 150)
+                            AsyncImage(url: URL(string: product.product_image)) { phase in
+                                if let image = phase.image {
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                } else if phase.error != nil {
+                                    Image(systemName: "photo")
+                                                   .imageScale(.large)
+                                                   .foregroundColor(.gray)
+                                        .frame(width: 100, height: 100)
+                                        .border(Color.gray, width: 1)
+                                } else {
+                                    ProgressView()
+                                }
                             }
-                            .cornerRadius(20)
-                            .clipped()
-                            .aspectRatio(1, contentMode: .fit)
                             
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(product.product_name)
-                                        .frame(width: 200)
-                                        .font(.system(size: 20, weight: .bold))
+                                        .fontWeight(.bold)
+                                        .frame(height: 20)
+                                        .font(.subheadline)
                                         .foregroundColor(.primary)
                                         .truncationMode(.tail)
+                                        
                                     
                                     Text("$ PRICE".uppercased())
                                         .font(.system(size: 16))
@@ -211,9 +224,7 @@ extension ShopContentView {
                                         })
                                     }
                                 }
-                                .layoutPriority(100)
-                                
-                                Spacer()
+                                .frame(width: 150)
                             }
                             .padding(.top, 10)
                         }
