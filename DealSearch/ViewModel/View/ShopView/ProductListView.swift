@@ -165,6 +165,7 @@ extension ProductListView {
                             .font(Font.custom("Montserrat-Regular", size: 15)).foregroundColor(Color("Black"))
                         
                     }
+                    .frame(minWidth: 150)
                     .padding()
                     .background(
                         Capsule()
@@ -182,7 +183,7 @@ extension ProductListView {
 extension ProductListView {
     var productCardView: some View {
         
-        LazyVGrid(columns: gridItemVLayout, spacing: 20) {
+        LazyVGrid(columns: gridItemVLayout) {
             if shopClickedId == 0 {
                 ForEach(productData.productList) { prod in
                     VStack {
@@ -192,16 +193,15 @@ extension ProductListView {
                                     image
                                         .resizable()
                                         .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .cornerRadius(20)
                                         .background(Color.black)
                                         .opacity(0.8)
-                                        .frame(width: 150, height: 150)
                                 } else if phase.error != nil {
                                     Image(systemName: "photo")
                                         .imageScale(.large)
                                         .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .border(Color.gray, width: 1)
                                     
                                 } else {
@@ -213,7 +213,8 @@ extension ProductListView {
                             
                             VStack(alignment: .leading) {
                                 Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
                                     .foregroundColor(.primary)
                                     .frame(width: 130, height: 80)
                                 
@@ -246,16 +247,15 @@ extension ProductListView {
                                     image
                                         .resizable()
                                         .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .cornerRadius(20)
                                         .background(Color.black)
                                         .opacity(0.8)
-                                        .frame(width: 150, height: 150)
                                 } else if phase.error != nil {
                                     Image(systemName: "photo")
                                         .imageScale(.large)
                                         .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .border(Color.gray, width: 1)
                                     
                                 } else {
@@ -267,7 +267,8 @@ extension ProductListView {
                             
                             VStack(alignment: .leading) {
                                 Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
                                     .foregroundColor(.primary)
                                     .frame(width: 130, height: 80)
                                 
@@ -300,16 +301,15 @@ extension ProductListView {
                                     image
                                         .resizable()
                                         .aspectRatio(1, contentMode: .fit)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .cornerRadius(20)
                                         .background(Color.black)
                                         .opacity(0.8)
-                                        .frame(width: 150, height: 150)
                                 } else if phase.error != nil {
                                     Image(systemName: "photo")
                                         .imageScale(.large)
                                         .foregroundColor(.gray)
-                                        .frame(width: 130, height: 150)
+                                        .frame(width: 100, height: 100)
                                         .border(Color.gray, width: 1)
                                     
                                 } else {
@@ -321,7 +321,8 @@ extension ProductListView {
                             
                             VStack(alignment: .leading) {
                                 Text(prod.product_name)
-                                    .font(.system(size: 17, weight: .bold))
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
                                     .foregroundColor(.primary)
                                     .frame(width: 130, height: 80)
                                 
@@ -347,6 +348,6 @@ extension ProductListView {
             }
             
         }
-        
+        .padding(.trailing, 30)
     }
 }
