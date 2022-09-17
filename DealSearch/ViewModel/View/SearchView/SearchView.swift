@@ -16,11 +16,11 @@ struct SearchView: View {
         if searchText.isEmpty {
             return productData.productList
         } else {
-            let lowercasedQuery = searchText.lowercased()
-            print(lowercasedQuery)
+            let lowercasedQuery = searchText.lowercased()            
             return productData.productList.filter({
-                $0.product_name.contains(lowercasedQuery)
+                $0.product_name.lowercased().contains(lowercasedQuery)
             })
+            
         }
     }
     
