@@ -54,8 +54,22 @@ struct ShopContentView: View {
                 
                 // MARK: PRODUCT LIST
                 VStack (alignment: .leading, spacing: 30) {
-                    Text("Product list")
-                        .font(.system(size: 20, weight: .bold))
+                    HStack {
+                        Text("Product list")
+                            .font(.system(size: 20, weight: .bold))
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            print("Clicked")
+                        }, label: {
+                            Text("View all")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        })
+                        .padding(.trailing,30)
+                        
+                    }
                         
                     productRowList
                 }
@@ -141,8 +155,7 @@ extension ShopContentView {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(product.product_name)
-                                        .frame(width: 200, height: 200)
-                                        
+                                        .frame(width: 200)
                                         .font(.system(size: 20, weight: .bold))
                                         .foregroundColor(.primary)
                                         .truncationMode(.tail)
