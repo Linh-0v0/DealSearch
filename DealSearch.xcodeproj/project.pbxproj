@@ -48,6 +48,7 @@
 		C469F24828C65B5C003F401A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C469F24728C65B5C003F401A /* FirebaseFirestore */; };
 		C46CE78828CB8E1E0047DE96 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CE78728CB8E1E0047DE96 /* Category.swift */; };
 		C47EBDB528D5B46600721A4F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EBDB428D5B46600721A4F /* TestView.swift */; };
+		C47EBDBA28D5E45B00721A4F /* CurrentProdByShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EBDB928D5E45B00721A4F /* CurrentProdByShop.swift */; };
 		C498AFB928C8FB9600DB5CA3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498AFB828C8FB9600DB5CA3 /* Product.swift */; };
 		C4CB7CC628B8A7CF00B017EB /* DealSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */; };
 		C4CB7CCA28B8A7D100B017EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB7CC928B8A7D100B017EB /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		C469F24228C65ABA003F401A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C46CE78728CB8E1E0047DE96 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C47EBDB428D5B46600721A4F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		C47EBDB928D5E45B00721A4F /* CurrentProdByShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProdByShop.swift; sourceTree = "<group>"; };
 		C498AFB828C8FB9600DB5CA3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C4CB7CC228B8A7CF00B017EB /* DealSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB7CC528B8A7CF00B017EB /* DealSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSearchApp.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				C402415B28C7232B00B205B8 /* CurrentUserData.swift */,
 				C469F22428C65A22003F401A /* ProductData.swift */,
 				EA953B8A28D0C15B00317D57 /* CurrentProductData.swift */,
+				C47EBDB928D5E45B00721A4F /* CurrentProdByShop.swift */,
 				C469F22328C65A22003F401A /* ShopData.swift */,
 				C469F22128C65A22003F401A /* CategoryData.swift */,
 				C4DF286828CE5F8100FB9B1E /* TrendingProductData.swift */,
@@ -517,6 +520,7 @@
 				C469F23728C65A2F003F401A /* EmailVerifyView.swift in Sources */,
 				EA953B7A28D0ABD000317D57 /* TrendingSearchView.swift in Sources */,
 				EA953B6228D0AB3C00317D57 /* CategoryView.swift in Sources */,
+				C47EBDBA28D5E45B00721A4F /* CurrentProdByShop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

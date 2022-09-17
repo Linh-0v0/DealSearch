@@ -10,18 +10,18 @@ import SwiftUI
 
 class DealCalcSorted: ObservableObject {
     @Published var prodDealSorted = [Product]()
-    @StateObject private var productList = ProductData()
     
-    init() {
-        productDealSorted(productList: productList.productList)
-    }
-    
-    func productDealSorted(productList: [Product]) {
+    func productDealSorted(productList: [Product], lowToHigh: Bool) {
+        var dealSortedList: Array<(key:String, value:Double)>
         // [Product]
         var prodDealSortedTemp: [Product] = []
-        // Array<(key, value)>
-        let dealSortedList = dealSort(prodDealCalc: calcDeal(product: productList))
-
+        if lowToHigh {
+            // Array<(key, value)>
+            dealSortedList = dealSortLowHigh(prodDealCalc: calcDeal(product: productList))
+        } else {
+            dealSortedList = dealSortHighLow(prodDealCalc: calcDeal(product: productList))
+        }
+       
         for ele in dealSortedList {
             for prod in productList {
                 if ele.key == prod.id {
@@ -29,13 +29,19 @@ class DealCalcSorted: ObservableObject {
                 }
             }
         }
-//        print(prodDealSortedTemp)
+        print(prodDealSortedTemp)
         self.prodDealSorted = prodDealSortedTemp
     }
     
     //Return Array cuz .sorted() return array
-    func dealSort(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
+    func dealSortLowHigh(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
         var arrSorted = prodDealCalc.sorted(by: {$0.value > $1.value})
+//        print(arrSorted)
+        return arrSorted
+    }
+    
+    func dealSortHighLow(prodDealCalc: [String:Double]) -> Array<(key:String, value:Double)> {
+        var arrSorted = prodDealCalc.sorted(by: {$0.value < $1.value})
 //        print(arrSorted)
         return arrSorted
     }
