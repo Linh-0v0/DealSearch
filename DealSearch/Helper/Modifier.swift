@@ -31,3 +31,27 @@ struct registerPaddingBtwField: ViewModifier{
             .padding(.bottom, 15)
     }
 }
+
+struct accountProfileTitle: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("Montserrat-SemiBold", size: 16)).foregroundColor(Color("Black"))
+            .padding(.bottom, 0)
+    }
+}
+
+
+struct accountProfileField: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("Montserrat-Regular", size: 15)).foregroundColor(Color("Black"))
+            .padding(.bottom, 0)
+    }
+}
+
+struct accountProfilePaddingBtwField: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, 15)
+    }
+}

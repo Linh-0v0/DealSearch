@@ -11,7 +11,7 @@ struct CheckEmailExist: View {
     @Binding var isExisted: Bool
     @Binding var emailInputted: String
     @StateObject var emailFinding: CurrentUserData
-    @State var isCheckingEmail = true
+    @State private var isCheckingEmail = true
     
     var body: some View {
         ZStack {
