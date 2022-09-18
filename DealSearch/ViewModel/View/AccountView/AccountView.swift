@@ -1,13 +1,13 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Canh Cut Team
-  Created  date: 12/09/2022
-  Last modified: 17/09/2022
-  Acknowledgement: None
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Canh Cut Team
+ Created  date: 12/09/2022
+ Last modified: 17/09/2022
+ Acknowledgement: None
+ */
 
 
 import SwiftUI
@@ -39,11 +39,13 @@ struct AccountView: View {
                         editDashboard
                             .padding(.horizontal, 30)
                     }
+                    Spacer()
                     logoutSession
                         .padding(.horizontal, 30)
+                        .padding(.bottom, 15)
                 }
                 .frame(maxWidth: .infinity)
-               
+                
             }
         }.task {
             await delayView()
@@ -80,25 +82,22 @@ struct AccountView_Previews: PreviewProvider {
 // MARK: LOGOUT SESSION
 extension AccountView {
     var logoutSession: some View {
-        Text("Log out")
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .padding()
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color("Green"))
-            )
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button("Log out") {
-                        Defaults.clearUserSessionData()
-                        signOutUser()
-                        print("Click Log out !!!")
-                    }
-                }
-            }
+        Button {
+            Defaults.clearUserSessionData()
+            signOutUser()
+            print("Click Log out !!!")
+        } label: {
+            Text("Log out")
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color("Green"))
+                )
+        }
     }
 }
 
