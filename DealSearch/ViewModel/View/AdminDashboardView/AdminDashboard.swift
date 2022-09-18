@@ -1,9 +1,13 @@
-//
-//  AdminDashboard.swift
-//  DealSearch
-//
-//  Created by Vu Bui Khanh Linh on 12/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 12/09/2022
+  Last modified: 16/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -49,7 +53,7 @@ struct AdminDashboard: View {
     private func delayView() async {
         // Wait for 1 second to fetch data
         // (1 second = 1_000_000_000 nanoseconds)
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        try? await Task.sleep(nanoseconds: 500_000_000)
         isCheckingEmail = false
     }
 }

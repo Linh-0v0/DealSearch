@@ -1,14 +1,17 @@
-//
-//  SearchView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 13/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 13/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel = SearchViewModel()
     @StateObject var productData = ProductData()
     @State var searchText = ""
     

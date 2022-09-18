@@ -1,14 +1,14 @@
-//
-//  AddShop.swift
-//  DealSearch
-//
-//  Created by Vu Bui Khanh Linh on 12/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 12/09/2022
+  Last modified: 15/09/2022
+  Acknowledgement: None
+*/
 
-
-//var id: String
-//var shop_logo: String
-//var shop_name: String
 import SwiftUI
 
 struct AddShop: View {

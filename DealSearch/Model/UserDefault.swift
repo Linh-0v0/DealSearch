@@ -3,9 +3,9 @@
   Course: COSC2659 iOS Development
   Semester: 2022B
   Assessment: Assignment 3
-
-  Created date: 18/08/2022
-  Last modified: 28/08/2022
+  Author: Canh Cut Team
+  Created  date: 01/09/2022
+  Last modified: 10/09/2022
   Acknowledgement:
     - UserDefaults Logic: https://viblo.asia/p/userdefaults-trong-swift-51-WAyK8OkN5xX
 */

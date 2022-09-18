@@ -1,9 +1,13 @@
-//
-//  ShopContentView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 11/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 11/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -78,6 +82,7 @@ struct ShopContentView_Previews: PreviewProvider {
     }
 }
 
+// MARK: TRENDING PRODUCTS VIEW
 extension ShopContentView {
     var trendingSearchView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -127,6 +132,7 @@ extension ShopContentView {
     }
 }
 
+// MARK: CATEGORY VIEW
 extension ShopContentView {
     var categoryView: some View {
         VStack (alignment: .leading) {
@@ -177,6 +183,7 @@ extension ShopContentView {
     }
 }
 
+//MARK: PRODUCTS VIEW
 extension ShopContentView {
     var productRowList: some View {
         ScrollView(.horizontal) {
@@ -249,6 +256,7 @@ extension ShopContentView {
     }
 }
 
+// MARK: POPULAR SEARCH KEYWORDS
 extension ShopContentView {
     var popularSearch: some View {
         ScrollView(.horizontal, showsIndicators: false) {

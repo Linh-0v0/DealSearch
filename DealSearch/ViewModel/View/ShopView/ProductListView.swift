@@ -1,9 +1,13 @@
-//
-//  ProductListView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 11/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 11/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -17,7 +21,6 @@ struct ProductListView: View {
     @State var shopClickedId: Int = 0
     @State var fetchedSearchkey: [PopularSearch] = []
     @State var fetchedProduct: [Product] = []
-    
     
     var gridItemVLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -42,7 +45,7 @@ struct ProductListView: View {
                     popularSearch
                 }
                 
-                // MARK: FILTER
+                // MARK: ORDERED BY BUTTONS
                 HStack {
                     Text("Ordered by:")
                         .foregroundColor(Color.gray)
@@ -66,7 +69,7 @@ struct ProductListView: View {
                 .cornerRadius(20)
                 .padding(.trailing,30)
                 
-                // MARK: PRODUCT LIST
+                // MARK: PRODUCT CARD
                 VStack(alignment: .leading) {
                     Text("RECOMMEND FOR YOU")
                         .font(.system(size: 20, weight: .bold))
@@ -87,6 +90,7 @@ struct ProductListView_Previews: PreviewProvider {
     }
 }
 
+// MARK: POPULAR SEARCH KEYWORD
 extension ProductListView {
     var popularSearch: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -112,6 +116,7 @@ extension ProductListView {
     }
 }
 
+// MARK: ORDERED BY BUTTONS
 extension ProductListView {
     var filterView: some View {
         HStack(spacing: 10) {
@@ -151,6 +156,7 @@ extension ProductListView {
     }
 }
 
+// MARK: ECOM STORE VIEW
 extension ProductListView {
     var ecomStoreView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -182,6 +188,7 @@ extension ProductListView {
     }
 }
 
+// MARK: PRODUCT CARD VIEW
 extension ProductListView {
     var productCardView: some View {
         

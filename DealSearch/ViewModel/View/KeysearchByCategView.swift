@@ -1,9 +1,13 @@
-//
-//  KeysearchByCategView.swift
-//  DealSearch
-//
-//  Created by Vu Bui Khanh Linh on 13/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 13/09/2022
+  Last modified: 15/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 

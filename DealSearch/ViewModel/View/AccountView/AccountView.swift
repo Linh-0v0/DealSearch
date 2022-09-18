@@ -1,9 +1,14 @@
-//
-//  AccountView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 12/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 12/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
+
 
 import SwiftUI
 import FirebaseAuth
@@ -72,6 +77,7 @@ struct AccountView_Previews: PreviewProvider {
     }
 }
 
+// MARK: LOGOUT SESSION
 extension AccountView {
     var logoutSession: some View {
         Text("Log out")
@@ -96,6 +102,8 @@ extension AccountView {
     }
 }
 
+
+// MARK: HEADER VIEW
 extension AccountView {
     var headerView: some View {
         ZStack(alignment: .bottomLeading) {
@@ -103,16 +111,6 @@ extension AccountView {
                 .ignoresSafeArea()
             
             VStack {
-                Button {
-                    
-                } label: {
-                    Image(systemName: "arrow.left")
-                        .resizable()
-                        .frame(width: 20, height: 16)
-                        .foregroundColor(.white)
-                        .offset(x: 11, y: 12)
-                }
-                
                 Circle()
                     .frame(width: 72, height: 72)
                     .offset(x: 16, y: 24)
@@ -122,6 +120,7 @@ extension AccountView {
     }
 }
 
+// MARK: BELL BUTTON
 extension AccountView {
     var actionButton: some View {
         HStack {
@@ -138,6 +137,7 @@ extension AccountView {
     }
 }
 
+// MARK: PROFILE DETAIL
 extension AccountView {
     var profileDetail: some View {
         VStack(alignment: .leading) {

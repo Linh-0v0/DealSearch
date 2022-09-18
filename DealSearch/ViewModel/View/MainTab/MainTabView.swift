@@ -1,14 +1,19 @@
-//
-//  MainTabView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 13/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 13/09/2022
+  Last modified: 18/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedIndex = 0
+    
     var body: some View {
         TabView(selection: $selectedIndex) {
             ShopContentView(currentProduct: CurrentProductData(categoryClickedId: 1), currentCateg: CurrentSearchData(categoryClickedId: 1))
@@ -36,7 +41,6 @@ struct MainTabView: View {
                 }.tag(2)
             
             AccountView()
-                .offset(y: -55)
                 .onTapGesture {
                     self.selectedIndex = 3
                 }

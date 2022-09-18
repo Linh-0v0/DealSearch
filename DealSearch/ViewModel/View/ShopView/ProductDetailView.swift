@@ -5,31 +5,37 @@
 //  Created by Duc Ho on 11/09/2022.
 //
 
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 11/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
+
 import SwiftUI
 
 struct ProductDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                // MARK: PRODUCT IMAGE
                 productImageView
                 
-                // MARK: PRODUCT DETAIL
                 VStack(alignment: .leading) {
                     productNameView
                     
                     productPriceView
                     
-                    // MARK: REVIEW SESSION
+                    
                     productReviewView
                     
-                    // MARK: PRICE COMPARE
                     priceCompareView
                     
-                    // MARK: PRODUCT DESCRIPTION
                     productDescriptionView
                     
-                    // MARK: USER COMMENT
                     userCommentView
                 }
                 .padding(.top, 20)
@@ -47,6 +53,7 @@ struct ProductDetailView_Previews: PreviewProvider {
     }
 }
 
+// MARK: PRODUCT IMAGE
 extension ProductDetailView {
     var productImageView: some View {
         ZStack {
@@ -61,6 +68,7 @@ extension ProductDetailView {
     }
 }
 
+// MARK: PRODUCT NAME VIEW
 extension ProductDetailView {
     var productNameView: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -130,6 +138,7 @@ extension ProductDetailView {
     }
 }
 
+// MARK: REVIEW SESSION
 extension ProductDetailView {
     var productReviewView: some View {
         VStack(alignment: .trailing, spacing: 10) {
@@ -151,6 +160,7 @@ extension ProductDetailView {
     }
 }
 
+// MARK: PRICE COMPARE
 extension ProductDetailView {
     var priceCompareView: some View {
         VStack(alignment: .leading) {
@@ -217,6 +227,7 @@ extension ProductDetailView {
     }
 }
 
+// MARK: PRODUCT DESCRIPTION
 extension ProductDetailView {
     var productDescriptionView: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -231,6 +242,7 @@ extension ProductDetailView {
     }
 }
 
+// MARK: USER COMMENT
 extension ProductDetailView {
     var userCommentView: some View {
         VStack(alignment: .leading, spacing: 20) {

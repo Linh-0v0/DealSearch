@@ -1,9 +1,13 @@
-//
-//  NotificationView.swift
-//  DealSearch
-//
-//  Created by Duc Ho on 13/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Canh Cut Team
+  Created  date: 13/09/2022
+  Last modified: 17/09/2022
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -32,6 +36,7 @@ struct NotificationView_Previews: PreviewProvider {
     }
 }
 
+// MARK: DAILY NOTIFICATION
 extension NotificationView {
     var dailyNotiView: some View {
         VStack(alignment: .leading) {
@@ -101,6 +106,7 @@ extension NotificationView {
     }
 }
 
+// MARK: HEADER NOTIFICATION
 extension NotificationView {
     var headerNotiView: some View {
         ZStack(alignment: .top) {
