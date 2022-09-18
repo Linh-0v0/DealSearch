@@ -1,13 +1,13 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Canh Cut Team
-  Created  date: 11/09/2022
-  Last modified: 17/09/2022
-  Acknowledgement: None
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Canh Cut Team
+ Created  date: 11/09/2022
+ Last modified: 17/09/2022
+ Acknowledgement: None
+ */
 
 import SwiftUI
 
@@ -191,75 +191,146 @@ extension ProductListView {
 // MARK: PRODUCT CARD VIEW
 extension ProductListView {
     var productCardView: some View {
-        
-        LazyVGrid(columns: gridItemVLayout, spacing: 20) {
-            
-            ForEach(fetchedProduct) { prod in
-                VStack {
-                    VStack {
-                        AsyncImage(url: URL(string: prod.product_image)) { phase in
-                            if let image = phase.image {
-                                image
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .frame(width: 130, height: 150)
-                                    .cornerRadius(20)
-                                    .opacity(0.8)
-                                    .frame(width: 150, height: 150)
-                            } else if phase.error != nil {
-                                Image(systemName: "photo")
-                                    .imageScale(.large)
-                                    .foregroundColor(.gray)
-                                    .frame(width: 130, height: 150)
-                                    .border(Color.gray, width: 1)
+        ZStack {
+            if fetchedProduct.isEmpty {
+                LazyVGrid(columns: gridItemVLayout, spacing: 20) {
+                    ForEach(productData.productList) { prod in
+                        VStack {
+                            VStack {
+                                AsyncImage(url: URL(string: prod.product_image)) { phase in
+                                    if let image = phase.image {
+                                        image
+                                            .resizable()
+                                            .aspectRatio(1, contentMode: .fit)
+                                            .frame(width: 130, height: 150)
+                                            .cornerRadius(20)
+                                            .opacity(0.8)
+                                            .frame(width: 150, height: 150)
+                                    } else if phase.error != nil {
+                                        Image(systemName: "photo")
+                                            .imageScale(.large)
+                                            .foregroundColor(.gray)
+                                            .frame(width: 130, height: 150)
+                                            .border(Color.gray, width: 1)
+                                        
+                                    } else {
+                                        ProgressView()
+                                    }
+                                }
                                 
-                            } else {
-                                ProgressView()
+                                
+                                
+                                VStack(alignment: .leading) {
+                                    Text(prod.product_name)
+                                        .font(.subheadline)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.primary)
+                                        .frame(width: 130, height: 50)
+                                    
+                                    Text("Deal: " + String(prod.product_deal))
+                                        .bold()
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text("Old Price: " + String(prod.product_price))
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text("-" + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
+                                        .font(.subheadline)
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .padding()
+                                        .frame(width: 150, height: 40)
+                                        .background(RoundedRectangle(cornerRadius: 20).fill(Color("Green")))
+                                    
+                                    
+                                }
+                                .layoutPriority(100)
+                                Spacer()
+                                
                             }
                         }
-                        
-                        
-                        
-                        VStack(alignment: .leading) {
-                            Text(prod.product_name)
-                                .font(.subheadline)
-                                .fontWeight(.bold)
-                                .foregroundColor(.primary)
-                                .frame(width: 130, height: 50)
+                        .frame(width: 140, height: 280)
+                        .padding()
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
                             
-                            Text("Deal: " + String(prod.product_deal))
-                                .bold()
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                            
-                            Text("Old Price: " + String(prod.product_price))
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                            
-                            Text("-" + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                                .bold()
-                                .padding()
-                                .frame(width: 150, height: 40)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color("Green")))
-                                
-                            
-                        }
-                        .layoutPriority(100)
-                        Spacer()
-                        
-                    }
+                        )}
                 }
-                .frame(width: 140, height: 280)
-                .padding()
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 25)
-                        .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
-                    
-                )}
+                .padding(.trailing, 30)
+            } else {
+                LazyVGrid(columns: gridItemVLayout, spacing: 20) {
+                    ForEach(fetchedProduct) { prod in
+                        VStack {
+                            VStack {
+                                AsyncImage(url: URL(string: prod.product_image)) { phase in
+                                    if let image = phase.image {
+                                        image
+                                            .resizable()
+                                            .aspectRatio(1, contentMode: .fit)
+                                            .frame(width: 130, height: 150)
+                                            .cornerRadius(20)
+                                            .opacity(0.8)
+                                            .frame(width: 150, height: 150)
+                                    } else if phase.error != nil {
+                                        Image(systemName: "photo")
+                                            .imageScale(.large)
+                                            .foregroundColor(.gray)
+                                            .frame(width: 130, height: 150)
+                                            .border(Color.gray, width: 1)
+                                        
+                                    } else {
+                                        ProgressView()
+                                    }
+                                }
+                                
+                                
+                                
+                                VStack(alignment: .leading) {
+                                    Text(prod.product_name)
+                                        .font(.subheadline)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.primary)
+                                        .frame(width: 130, height: 50)
+                                    
+                                    Text("Deal: " + String(prod.product_deal))
+                                        .bold()
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text("Old Price: " + String(prod.product_price))
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text("-" + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
+                                        .font(.subheadline)
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .padding()
+                                        .frame(width: 150, height: 40)
+                                        .background(RoundedRectangle(cornerRadius: 20).fill(Color("Green")))
+                                    
+                                    
+                                }
+                                .layoutPriority(100)
+                                Spacer()
+                                
+                            }
+                        }
+                        .frame(width: 140, height: 280)
+                        .padding()
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .strokeBorder(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 0.8)
+                            
+                        )}
+                }
+                .padding(.trailing, 30)
+            }
         }
-        .padding(.trailing, 30)
     }
 }
