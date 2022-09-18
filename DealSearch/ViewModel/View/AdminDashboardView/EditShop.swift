@@ -12,6 +12,7 @@
 import SwiftUI
 
 struct EditShop: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var showingUpdateSheet = false
     @State private var showingAddShop = false
     @StateObject var shopData = ShopData()
@@ -26,6 +27,17 @@ struct EditShop: View {
                     Text(shop.shop_name)
                     
                     Spacer()
+                    
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                        viewRouter.currentPage = .editShop
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateShopSheetView(shopClicked: shop)
+                    }
                 }
                 
                 .swipeActions(edge: .trailing, allowsFullSwipe: false) {
@@ -34,16 +46,6 @@ struct EditShop: View {
                         shopData.deleteData(shopToDelete: shop)
                     } label: {
                         Label("Delete", systemImage: "trash")
-                    }
-                    
-                    // Edit Product
-                    Button {
-                        showingUpdateSheet.toggle()
-                    } label: {
-                        Label("Pencil", systemImage: "pencil")
-                    }
-                    .sheet(isPresented: $showingUpdateSheet) {
-                        UpdateShopSheetView(shopClicked: shop)
                     }
                 }
                 

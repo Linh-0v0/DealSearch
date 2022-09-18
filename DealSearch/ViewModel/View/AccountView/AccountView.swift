@@ -35,11 +35,13 @@ struct AccountView: View {
                         profileDetail
                     }
                     Spacer()
-                    Spacer()
+                
                     if userData.currentUserData[0].isAdmin == 1 {
                         editDashboard
                             .padding(.horizontal, 30)
                     }
+                    
+                    Spacer()
                     
                     logoutSession
                         .padding(.horizontal, 30)

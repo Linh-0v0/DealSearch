@@ -12,6 +12,7 @@
 import SwiftUI
 
 struct EditProduct: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var showingUpdateSheet = false
     @State private var showingAddProduct = false
     @StateObject var productData = ProductData()
@@ -26,6 +27,18 @@ struct EditProduct: View {
                     Text(prod.product_name)
                     
                     Spacer()
+                    
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                        print("Click Edit")
+                        viewRouter.currentPage = .editProduct
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateProdSheetView(productClicked: prod)
+                    }
                 }
                 .padding(.vertical)
                 
@@ -38,15 +51,6 @@ struct EditProduct: View {
                         Label("Delete", systemImage: "trash")
                     }
                     
-                    // Edit Product
-                    Button {
-                        showingUpdateSheet.toggle()
-                    } label: {
-                        Label("Pencil", systemImage: "pencil")
-                    }
-                    .sheet(isPresented: $showingUpdateSheet) {
-                        UpdateProdSheetView(productClicked: prod)
-                    }
                 }
             }
         }

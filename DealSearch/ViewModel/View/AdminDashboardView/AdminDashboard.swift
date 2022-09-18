@@ -1,13 +1,13 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Canh Cut Team
-  Created  date: 12/09/2022
-  Last modified: 16/09/2022
-  Acknowledgement: None
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Canh Cut Team
+ Created  date: 12/09/2022
+ Last modified: 16/09/2022
+ Acknowledgement: None
+ */
 
 import SwiftUI
 
@@ -29,24 +29,27 @@ struct AdminDashboard: View {
     
     var content: some View {
         VStack {
-            if userData.currentUserData[0].isAdmin == 1 {
-                VStack {
-                    List {
-                        NavigationLink(destination: EditProduct()) {
-                            Text("Edit Products")
-                        }
-                        NavigationLink(destination: EditTrendingProduct()) {
-                            Text("Edit Trending Products")
-                        }
-                        NavigationLink(destination: EditShop()) {
-                            Text("Edit Shops")
-                        }
-                        NavigationLink(destination: EditCategory()) {
-                            Text("Edit Category")
-                        }
+            
+            VStack {
+                List {
+                    NavigationLink(destination: EditProduct()) {
+                        Text("Edit Products")
+                    }
+                    NavigationLink(destination: EditTrendingProduct()) {
+                        Text("Edit Trending Products")
+                    }
+                    NavigationLink(destination: EditShop()) {
+                        Text("Edit Shops")
+                    }
+                    NavigationLink(destination: EditCategory()) {
+                        Text("Edit Category")
+                    }
+                    NavigationLink(destination: EditPopularSeach()) {
+                        Text("Edit Popular Search")
                     }
                 }
             }
+            
         }
     }
     

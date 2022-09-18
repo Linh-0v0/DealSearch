@@ -12,6 +12,7 @@
 import SwiftUI
 
 struct EditCategory: View {
+    @EnvironmentObject var viewRouter: ViewRouter
     @State private var showingUpdateSheet = false
     @State private var showingAddCategory = false
     @StateObject var categoryData = CategoryData()
@@ -26,6 +27,17 @@ struct EditCategory: View {
                     Text(categ.category_name)
                     
                     Spacer()
+                    
+                    // Edit Product
+                    Button {
+                        showingUpdateSheet.toggle()
+                        viewRouter.currentPage = .editCategory
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .sheet(isPresented: $showingUpdateSheet) {
+                        UpdateCategSheetView(categoryClicked: categ)
+                    }
                 }
                 
                 .swipeActions(edge: .trailing, allowsFullSwipe: false) {
@@ -34,16 +46,6 @@ struct EditCategory: View {
                         categoryData.deleteData(categoryToDelete: categ)
                     } label: {
                         Label("Delete", systemImage: "trash")
-                    }
-                    
-                    // Edit Product
-                    Button {
-                        showingUpdateSheet.toggle()
-                    } label: {
-                        Label("Pencil", systemImage: "pencil")
-                    }
-                    .sheet(isPresented: $showingUpdateSheet) {
-                        UpdateCategSheetView(categoryClicked: categ)
                     }
                 }
                 
