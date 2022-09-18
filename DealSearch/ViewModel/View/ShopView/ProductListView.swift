@@ -197,7 +197,6 @@ extension ProductListView {
                                     .aspectRatio(1, contentMode: .fit)
                                     .frame(width: 130, height: 150)
                                     .cornerRadius(20)
-                                    .background(Color.black)
                                     .opacity(0.8)
                                     .frame(width: 150, height: 150)
                             } else if phase.error != nil {
@@ -230,10 +229,14 @@ extension ProductListView {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             
-                            Text("Sale Off: " + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
+                            Text("-" + String(round(((prod.product_price - prod.product_deal)*100)/prod.product_price)) + "%")
                                 .font(.subheadline)
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .bold()
+                                .padding()
+                                .frame(width: 150, height: 40)
+                                .background(RoundedRectangle(cornerRadius: 20).fill(Color("Green")))
+                                
                             
                         }
                         .layoutPriority(100)
