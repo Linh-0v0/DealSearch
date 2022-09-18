@@ -88,7 +88,7 @@ struct EditProduct_Previews: PreviewProvider {
 // MARK: UPDATE SHEET
 struct UpdateProdSheetView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var productData = TrendingProductData()
+    @StateObject var productData = ProductData()
     @State var productClicked: Product
     @State private var updateMessage = ""
     
