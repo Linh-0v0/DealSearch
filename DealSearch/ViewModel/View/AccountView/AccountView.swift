@@ -35,11 +35,12 @@ struct AccountView: View {
                         profileDetail
                     }
                     Spacer()
+                    Spacer()
                     if userData.currentUserData[0].isAdmin == 1 {
                         editDashboard
                             .padding(.horizontal, 30)
                     }
-                    Spacer()
+                    
                     logoutSession
                         .padding(.horizontal, 30)
                         .padding(.bottom, 15)
@@ -192,14 +193,9 @@ extension AccountView {
 
 extension AccountView {
     var editDashboard: some View {
-        Text("Edit Dashboard")
-            .font(Font.custom("Montserrat-Regular", size: 15)).foregroundColor(.blue)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    NavigationLink(destination: AdminDashboard()){
-                        Text("Edit Dashboard")
-                    }
-                }
-            }
+        NavigationLink(destination: AdminDashboard()){
+            Text("Edit Dashboard")
+                .font(Font.custom("Montserrat-Regular", size: 17)).foregroundColor(.blue)
+        }
     }
 }
