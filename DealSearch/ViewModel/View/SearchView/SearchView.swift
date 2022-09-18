@@ -49,7 +49,7 @@ struct SearchView: View {
                                     .fontWeight(.bold)
                                     .frame(height: 50)
                                 
-                                Text(String(product.product_deal_1))
+                                Text(String(product.product_deal))
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
