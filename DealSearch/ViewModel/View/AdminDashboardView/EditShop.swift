@@ -31,7 +31,6 @@ struct EditShop: View {
                     // Edit Product
                     Button {
                         showingUpdateSheet.toggle()
-                        viewRouter.currentPage = .editShop
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }

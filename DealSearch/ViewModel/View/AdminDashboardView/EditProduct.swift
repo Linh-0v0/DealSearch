@@ -32,7 +32,6 @@ struct EditProduct: View {
                     Button {
                         showingUpdateSheet.toggle()
                         print("Click Edit")
-                        viewRouter.currentPage = .editProduct
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }
