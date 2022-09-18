@@ -13,7 +13,7 @@ import SwiftUI
 
 struct EditTrendingProduct: View {
     @State private var showingAddSheet = false
-    @StateObject var productData = TrendingProductData()
+    @StateObject var trendProductData = TrendingProductData()
     @State private var searchText = ""
     
     var body: some View {
@@ -29,7 +29,7 @@ struct EditTrendingProduct: View {
                 // Delete Product
                 swipeActions(edge: .trailing, allowsFullSwipe: false) {
                     Button(role: .destructive) {
-                        productData.deleteData(productToDelete: prod)
+                        trendProductData.deleteData(productToDelete: prod)
                     } label: {
                         Label("Delete", systemImage: "trash")
                     }
@@ -56,9 +56,9 @@ struct EditTrendingProduct: View {
     
     var searchResults: [Product] {
         if searchText.isEmpty {
-            return productData.trendingProductList
+            return trendProductData.trendingProductList
         } else {
-            return productData.trendingProductList.filter {$0.product_name.contains(searchText) || $0.id.contains(searchText)}
+            return trendProductData.trendingProductList.filter {$0.product_name.contains(searchText) || $0.id.contains(searchText)}
         }
     }
 }
@@ -66,6 +66,6 @@ struct EditTrendingProduct: View {
 
 struct EditTrendingProduct_Previews: PreviewProvider {
     static var previews: some View {
-        EditTrendingProduct(productData: TrendingProductData())
+        EditTrendingProduct(trendProductData: TrendingProductData())
     }
 }
